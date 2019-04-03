@@ -41,6 +41,26 @@ return [
             'provider' => 'users',
         ],
 
+        'enseignant' => [
+            'driver' => 'session',
+            'provider' => 'enseignants',
+        ],
+
+        'etudiant' => [
+            'driver' => 'session',
+            'provider' => 'etudiants',
+        ],
+
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admins',
+        ],
+
+        'encryptor' => [
+            'driver' => 'session',
+            'provider' => 'encryptors',
+        ],
+
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
@@ -69,6 +89,26 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\User::class,
+        ],
+
+        'enseignants' => [
+            'driver' => 'eloquent',
+            'model'  => App\Models\Enseignant::class,
+        ],
+
+        'etudiants' => [
+            'driver' => 'eloquent',
+            'model'  => App\Models\Etudiant::class,
+        ],
+
+        'admins' => [
+            'driver' => 'eloquent',
+            'model'  => App\Models\Admin::class,
+        ],
+
+        'encryptors' => [
+            'driver' => 'eloquent',
+            'model'  => App\Models\Encryptor::class,
         ],
 
         // 'users' => [

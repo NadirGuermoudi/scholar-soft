@@ -37,9 +37,15 @@ class RouteServiceProvider extends ServiceProvider
     {
         $this->mapApiRoutes();
 
-        $this->mapWebRoutes();
+        $this->mapStudentRoutes();
 
-        //
+        $this->mapTeacherRoutes();
+
+        $this->mapAdminRoutes();
+
+        $this->mapEncryptorRoutes();
+        
+        $this->mapWebRoutes();
     }
 
     /**
@@ -52,8 +58,8 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapWebRoutes()
     {
         Route::middleware('web')
-             ->namespace($this->namespace)
-             ->group(base_path('routes/web.php'));
+            ->namespace($this->namespace)
+            ->group(base_path('routes/web.php'));
     }
 
     /**
@@ -69,5 +75,37 @@ class RouteServiceProvider extends ServiceProvider
              ->middleware('api')
              ->namespace($this->namespace)
              ->group(base_path('routes/api.php'));
+    }
+
+    protected function mapStudentRoutes()
+    {
+        Route::domain('student.scholar-soft.test')
+            ->middleware('web')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/student.php'));
+    }
+
+    protected function mapTeacherRoutes()
+    {
+        Route::domain('teacher.scholar-soft.test')
+            ->middleware('web')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/teacher.php'));
+    }
+
+    protected function mapAdminRoutes()
+    {
+        Route::domain('admin.scholar-soft.test')
+            ->middleware('web')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/admin.php'));
+    }
+
+    protected function mapEncryptorRoutes()
+    {
+        Route::domain('encryptor.scholar-soft.test')
+            ->middleware('web')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/encryptor.php'));
     }
 }
