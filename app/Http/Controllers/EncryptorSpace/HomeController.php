@@ -24,6 +24,6 @@ class HomeController extends Controller
 	 */
 	public function index()
 	{
-		return 'felicitation vous ete connecter chere codeur';
+		return view('encryptorSpace.home');
 	}
 }

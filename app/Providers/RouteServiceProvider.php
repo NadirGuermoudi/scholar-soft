@@ -79,7 +79,7 @@ class RouteServiceProvider extends ServiceProvider
 
     protected function mapStudentRoutes()
     {
-        Route::domain('student.scholar-soft.test')
+        Route::domain('student.' . parse_url(config('app.url'), PHP_URL_HOST))
             ->middleware('web')
             ->namespace($this->namespace)
             ->group(base_path('routes/student.php'));
@@ -87,7 +87,7 @@ class RouteServiceProvider extends ServiceProvider
 
     protected function mapTeacherRoutes()
     {
-        Route::domain('teacher.scholar-soft.test')
+        Route::domain('teacher.' . parse_url(config('app.url'), PHP_URL_HOST))
             ->middleware('web')
             ->namespace($this->namespace)
             ->group(base_path('routes/teacher.php'));
@@ -95,7 +95,7 @@ class RouteServiceProvider extends ServiceProvider
 
     protected function mapAdminRoutes()
     {
-        Route::domain('admin.scholar-soft.test')
+        Route::domain('admin.' . parse_url(config('app.url'), PHP_URL_HOST))
             ->middleware('web')
             ->namespace($this->namespace)
             ->group(base_path('routes/admin.php'));
@@ -103,7 +103,7 @@ class RouteServiceProvider extends ServiceProvider
 
     protected function mapEncryptorRoutes()
     {
-        Route::domain('encryptor.scholar-soft.test')
+        Route::domain('encryptor.' . parse_url(config('app.url'), PHP_URL_HOST))
             ->middleware('web')
             ->namespace($this->namespace)
             ->group(base_path('routes/encryptor.php'));
