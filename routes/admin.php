@@ -21,3 +21,5 @@ Route::get('/home', 'AdminSpace\HomeController@index');
  */
 Route::group(['middleware'=>'admin'], function() {
 });
+
+route::resource('salles','AdminSpace\SalleController');
