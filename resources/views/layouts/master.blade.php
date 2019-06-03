@@ -112,12 +112,12 @@
 	<!-- This page plugins -->
 	<!-- ============================================================== -->
 	<!-- chartist chart -->
-	{{-- <script src="{{asset('monster/assets/plugins/chartist-js/dist/chartist.min.js')}}"></script> --}}
-	{{-- <script src="{{asset('monster/assets/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.min.js')}}"></script> --}}
+	<script src="{{asset('monster/assets/plugins/chartist-js/dist/chartist.min.js')}}"></script>
+	<script src="{{asset('monster/assets/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.min.js')}}"></script>
 	<!-- Chart JS -->
-	{{-- <script src="{{asset('monster/assets/plugins/echarts/echarts-all.js')}}"></script> --}}
+	<script src="{{asset('monster/assets/plugins/echarts/echarts-all.js')}}"></script>
 	<!-- Chart JS -->
-	{{-- <script src="{{asset('monster/dark/js/dashboard1.js')}}"></script> --}}
+	<script src="{{asset('monster/dark/js/dashboard1.js')}}"></script>
 	<!-- ============================================================== -->
 	<!-- Style switcher -->
 	<!-- ============================================================== -->
