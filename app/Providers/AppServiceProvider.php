@@ -15,7 +15,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        schema::defaultStringLength(191);
+        Schema::defaultStringLength(191);
     }
 
     /**
