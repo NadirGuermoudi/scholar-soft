@@ -39,7 +39,7 @@
 				<li class="nav-devider"></li>
 
 				<li>
-					<a href="#" aria-expanded="false"><i class="mdi mdi-chair-school"></i><span class="hide-menu">Salles </span></a>
+					<a href="{{route('salles.index')}}" aria-expanded="false"><i class="mdi mdi-chair-school"></i><span class="hide-menu">Salles </span></a>
 				</li>
 
 				<li>
