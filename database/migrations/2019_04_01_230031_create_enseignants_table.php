@@ -19,7 +19,7 @@ class CreateEnseignantsTable extends Migration
 			$table->string('nom');
 			$table->string('prenom');
 			$table->date('date-naissance')->nullable();
-			$table->string('grade');
+			$table->enum('grade', ['MAA', 'MAB', 'MCA', 'MCB', 'Doctorant', 'Professeur']);
 			$table->boolean('admin')->default(false);
 			$table->string('email')->unique();
 			$table->string('password');
