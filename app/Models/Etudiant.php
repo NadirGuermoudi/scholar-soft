@@ -15,4 +15,14 @@ class Etudiant extends Authenticatable
 	protected $fillable = ['matricule', 'nom', 'prenom', 'email', 'password'];
 
 	protected $hidden = ['password', 'remember_token'];
+
+	public function groupes()
+	{
+		return $this->belongsToMany('App\Models\Groupe');
+	}
+
+	public function absences()
+	{
+		return $this->belongsToMany('App\Models\Seance', 'absences');
+	}
 }
