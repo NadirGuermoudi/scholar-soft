@@ -21,12 +21,7 @@
                                             </tr>
                                         </thead>
                                         <tfoot>
-                                            <tr>
-                                                <th>Nom</th>
-                                                <th>Capacité</th>
-                                                <th>Action</th>
-                                            </tr>
-                                            <tr>
+                                        	<tr>
                                             	<div>
                                             	  <button href="{{route('salles.create')}}" type="button" class="btn btn-block btn-outline-success btn-md" data-toggle="modal" data-target="#add-contact" ><i class="fa fa-plus"> Ajouter une salle</i></button>
                                             	  <div id="add-contact" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -69,6 +64,12 @@
 
                                             	</div>
                                             </tr>
+                                            <tr>
+                                                <th>Nom</th>
+                                                <th>Capacité</th>
+                                                <th>Action</th>
+                                            </tr>
+                                            
                                         </tfoot>
                                         <tbody>
                                         	@foreach($salles as $salle)
