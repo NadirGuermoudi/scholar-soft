@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\AdminSpace;
 
 use Illuminate\Http\Request;
+use App\Models\Salle;
 use App\Http\Controllers\Controller;
 
 
@@ -15,7 +16,8 @@ class SalleController extends Controller
      */
     public function index()
     {
-        return view('adminSpace/salles/index');
+        $salles = Salle::all();
+        return view('adminSpace/salles/index', compact('salles'));
     }
 
     /**
@@ -25,7 +27,7 @@ class SalleController extends Controller
      */
     public function create()
     {
-        //
+        return view('adminSpace/salles/create');
     }
 
     /**
