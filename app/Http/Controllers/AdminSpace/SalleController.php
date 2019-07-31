@@ -38,7 +38,16 @@ class SalleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+                        'nom' => 'required',
+                        'capacite' => 'required'
+        ]); 
+
+        Salle::create($request->except(['_token']));
+
+        return redirect()->route('salles.index');
+
+
     }
 
     /**
