@@ -2,92 +2,112 @@
 @section('title','Salles | Scholar-soft')
 @section('content')
 	
-
 	<div class="container-fluid">
 
 		<div class="row">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-block">
-                                <h4 class="card-title"> Lliste des salles  </h4>
-                                <h6 class="card-subtitle">Exporter les données en Copy, CSV, Excel, PDF ou Imprimer</h6>
-                                <div class="table-responsive m-t-40">
-                                    <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
-                                        <thead>
-                                            <tr>
-                                                <th>Nom</th>
-                                                <th>Capacité</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tfoot>
-                                        	<tr>
-                                            	<div>
-                                            	  <button  type="button" class="btn btn-block btn-outline-success btn-md" data-toggle="modal" data-target="#add-contact" ><i class="fa fa-plus"> Ajouter une salle</i></button>
-                                            	  <br>
-                                            	  <div id="add-contact" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                            	  	<div class="modal-dialog">
-                                            	  	<div class="modal-content">
-	                                            	  	<div class="modal-header">
-	                                            	  	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-	                                            	  	<h4 class="modal-title" id="myModalLabel">Add New Contact</h4> </div>
-	                                            	  	<div class="modal-body">
+            
+            <div class="col-12">
+				
+				<div class="card">
+                            
+                    <div class="card-block">
+                               
+						<h4 class="card-title">
+							Lliste des salles 
+						</h4>
+                                
+						<h6 class="card-subtitle">
+							Exporter les données en Copy, CSV, Excel, PDF ou Imprimer
+						</h6>
+					
+						<div class="table-responsive m-t-40">
+							
+							<table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+								<thead>
+                                    <tr>
+                                        <th>Nom</th>
+                                        <th>Capacité</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <div>
+                                          	<button type="button" class="btn  btn-danger btn-block btn-md" data-toggle="modal" data-target="#add-salle" >
+                                          		<i class="fa fa-plus">
+                                          			Ajouter une salle
+                                          		</i>
+											</button>
+                                           
+											{{-- including the add Modal --}}
+											@include('adminSpace/salles/modals/addModal')
 
-	                                            	  	@include('adminSpace/salles/create')
+                                           <br>         
+                                            	  
 
-
-	                                            	  	
-	                                        </div>
-	                                        <div class="modal-footer">
-	                                        	<button type="button" class="btn btn-info waves-effect" data-dismiss="modal">Save</button>
-	                                        	<button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Cancel</button>
-	                                        </div>
-                                        </div>	{{-- /. modal-content --}}
-                                    </div>{{-- / . modal dialog  --}}
-                                </div>
-
-                                            	</div>
-                                            </tr>
-                                            <tr>
-                                                <th>Nom</th>
-                                                <th>Capacité</th>
-                                                <th>Action</th>
-                                            </tr>
+                                        </div>
+                                    </tr>
+                                    <tr>
+                                        <th>Nom</th>
+                                        <th>Capacité</th>
+                                        <th>Action</th>
+                                    </tr>
                                             
-                                        </tfoot>
-                                        <tbody>
-                                        	@foreach($salles as $salle)
-                                        		<tr>
-                                        			<td> {{$salle->nom}} </td>
-                                        			<td> {{$salle->capacite}} </td>
-                                        			<td>
+                                </tfoot>
+                                    <tbody>
+                                    	@foreach($salles as $salle)
+                                      	<tr>
+                                       		<td> 
+                                       			{{$salle->nom}} 
+                                       		</td>
 
-                                        				<a href="" class="btn text-info">
-                                        				<i class="fa fa-edit"></i>
-                                        				</a>
+                                       		<td>
+                                       			{{$salle->capacite}}
+                                       		</td>
 
-                                        				<a href="" class="btn text-danger">
-                                        				<i class="fa fa-times"></i>
-                                        				</a>
+                                       		<td>
 
-                                        				<a href="" class="btn text-dark">
-                                        				<i class="fa fa-eye"></i>
-                                        				</a>
 
-                                        				
-                                        			</td>
-                                        		</tr>
-                                        	@endforeach
-                                        </tbody>
+                                        		<button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#edit-salle{{$salle->id}}">
+                                        			<i class="fa fa-edit">
+                                        			</i>
+                                        		</button>
+                                        		{{-- including the edit Modal --}}
+                                        		@include('adminSpace/salles/modals/editModal')
 
-                                    </table>
 
-                                </div>
-                            </div>
+                                        		<button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#delete-salle{{$salle->id}}">
+                                        			<i class="fa fa-times">
+                                        			</i>
+                                        		</button>
+                                        		{{-- including the delete Modal --}}
+                                        		@include('adminSpace/salles/modals/deleteModal')
+
+
+
+
+
+
+                                        		{{-- 
+												we don't need eye here
+                                        		<a href="" class="btn text-dark">
+                                        			<i class="fa fa-eye">
+                                        			</i>
+                                        		</a> --}}
+
+                                        	</td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+
+                            </table>
+
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+   	</div>
                     
 
 	

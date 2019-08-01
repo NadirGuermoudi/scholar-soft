@@ -92,6 +92,10 @@ class SalleController extends Controller
      */
     public function destroy($id)
     {
-        //
+    
+        Salle::destroy($id);
+        return redirect()->route('salles.index')->with('success',
+                         'Vous avez supprimé une salle');
+
     }
 }

@@ -82,7 +82,20 @@
 		@endif
 		<!-- Page wrapper  -->
 		<div class="page-wrapper">
-			
+			<br> {{-- ce br est utile pour un bon affichage de
+			l'alert --}}
+			@if(Session::has('success'))
+			{{-- ce if est pour le message indiquant des remarques suite à des évenement de suppressions ou d'ajout d'un objet d'une table --}}
+					
+					<div style="width:400px;margin-left:300px;"class="alert alert-success alert-dismissible fade show" role="alert">
+					  <strong> {{Session::get('success')}} </strong> 
+					  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					    <span aria-hidden="true">&times;</span>
+					  </button>
+					</div>
+
+			@endif
+
 			@yield('content')
 
 			<!-- footer -->
