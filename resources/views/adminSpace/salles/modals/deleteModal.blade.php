@@ -28,9 +28,9 @@ we don't need a delete page, the modal is enough
 					@csrf
 
 					<button type="submit" class="btn btn-default waves-effect">
-						Oui
+						Oui 
 					</button>
-
+						&nbsp;
 					<button type="button" class="btn btn-default waves-effect" data-dismiss="modal">
 						Annuler
 					</button>
