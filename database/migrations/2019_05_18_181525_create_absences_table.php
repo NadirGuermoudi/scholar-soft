@@ -14,7 +14,8 @@ class CreateAbsencesTable extends Migration
     public function up()
     {
         Schema::create('absences', function (Blueprint $table) {
-            $table->date('absent_at');
+            $table->date('date');
+            $table->boolean('presence')->default(false);
             $table->boolean('justified')->default(false);
             $table->string('justification')->nullable();
             
@@ -26,7 +27,7 @@ class CreateAbsencesTable extends Migration
 
             $table->primary(['absent_at', 'seance_id', 'etudiant_id']);
 
-            // $table->timestamps();
+            $table->timestamps();
         });
     }
 

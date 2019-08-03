@@ -19,7 +19,10 @@ class EtudiantsTableSeeder extends Seeder
 			'prenom' => 'Nadir',
 			'email' => 'nadir.guermoudi@gmail.com',
 			'password' => bcrypt('password'),
+			'remember_token' => Str::random(10),
 		]);
+
+		factory('App\Models\Etudiant', 200)->create();
 	}
 
 	// $table->bigIncrements('id');
