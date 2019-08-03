@@ -23,3 +23,5 @@ Route::group(['middleware'=>'admin'], function() {
 });
 
 route::resource('salles','AdminSpace\SalleController');
+
+Route::resource('teachers','AdminSpace\TeachersController');

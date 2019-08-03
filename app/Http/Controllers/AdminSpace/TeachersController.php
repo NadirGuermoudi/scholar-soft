@@ -15,7 +15,8 @@ class TeachersController extends Controller
      */
     public function index()
     {
-        //
+        $enseignants = Enseignant::all();
+        return view('adminSpace/teachers/index', compact('enseignants'));
     }
 
     /**
