@@ -22,7 +22,7 @@ class CreateGroupeSeanceTable extends Migration
 
             $table->primary(['seance_id', 'groupe_id']);
             
-            // $table->timestamps();
+            $table->timestamps();
         });
     }
 

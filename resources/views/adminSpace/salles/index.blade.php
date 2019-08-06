@@ -33,7 +33,7 @@
                                 <tfoot>
                                     <tr>
                                         <div>
-                                          	<button type="button" class="btn  btn-danger btn-block btn-md" data-toggle="modal" data-target="#add-salle" >
+                                          	<button type="button" class="btn  btn-success btn-block btn-md" data-toggle="modal" data-target="#add-salle" >
                                           		<i class="fa fa-plus">
                                           			Ajouter une salle
                                           		</i>

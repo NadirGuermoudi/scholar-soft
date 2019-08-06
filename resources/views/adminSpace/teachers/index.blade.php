@@ -81,7 +81,7 @@
                                         </td>
 
                                         <td>
-                                            {{$enseignant->date}}
+                                            {{$enseignant->date_naissance}}
                                         </td>
 
                                         <td>

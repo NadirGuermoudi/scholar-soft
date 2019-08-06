@@ -22,8 +22,7 @@ class CreateGroupeEtudiantTable extends Migration
 
             $table->primary(['groupe_id', 'etudiant_id']);
 
-
-            // $table->timestamps();
+            $table->timestamps();
         });
     }
 

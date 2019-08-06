@@ -15,9 +15,9 @@ class CreateGroupesTable extends Migration
     {
         Schema::create('groupes', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('specialite');
+            $table->string('specialite', 40);
             $table->integer('numero');
-            $table->year('annee');
+            $table->string('annee', 10);
             $table->timestamps();
         });
     }
