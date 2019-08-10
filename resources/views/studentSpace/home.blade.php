@@ -1,36 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-	<p>Hello world !!!</p>
-	<p>Hello world !!!</p>
-	<p>Hello world !!!</p>
-	<p>Hello world !!!</p>
-	<p>Hello world !!!</p>
-	<p>Hello world !!!</p>
-	<p>Hello world !!!</p>
-	<p>Hello world !!!</p>
-	<p>Hello world !!!</p>
-	<p>Hello world !!!</p>
-	<p>Hello world !!!</p>
-	<p>Hello world !!!</p>
-	<p>Hello world !!!</p>
-	<p>Hello world !!!</p>
-	<p>Hello world !!!</p>
-	<p>Hello world !!!</p>
-	<p>Hello world !!!</p>
-	<p>Hello world !!!</p>
-	<p>Hello world !!!</p>
-	<p>Hello world !!!</p>
-	<p>Hello world !!!</p>
-	<p>Hello world !!!</p>
-	<p>Hello world !!!</p>
-	<p>Hello world !!!</p>
-	<p>Hello world !!!</p>
-	<p>Hello world !!!</p>
-	<p>Hello world !!!</p>
-	<p>Hello world !!!</p>
-	<p>Hello world !!!</p>
-	<p>Hello world !!!</p>
-	<p>Hello world !!!</p>
-	<p>Hello world !!!</p>
+
+	<p> &nbsp; welcome back {{Auth::guard('etudiant')->user()->nom}} </p>
+
 @endsection

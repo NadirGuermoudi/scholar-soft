@@ -13,7 +13,7 @@
 	 
 		<title>{{ page_title($title ?? '') }}</title> 
 	
-	
+
 	<!-- Bootstrap Core CSS -->
 	{{-- <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet"> --}}
 	<link href="{{asset('monster/assets/plugins/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">

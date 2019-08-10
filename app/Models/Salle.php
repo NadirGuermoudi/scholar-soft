@@ -7,4 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class Salle extends Model
 {
     protected $fillable = ['nom', 'capacite'];
+
 }

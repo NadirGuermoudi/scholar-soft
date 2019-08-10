@@ -25,25 +25,33 @@
 			<ul id="sidebarnav">
 				<li class="nav-small-cap">PERSONNEL</li>
 				<li>
-					<a href="#" aria-expanded="false"><i class="fa fa-users"></i><span class="hide-menu">Enseignants </span></a>
+					<a href="/" aria-expanded="false"><i class="fas fa-home"></i><span class="hide-menu">Accueil </span></a>
 				</li>
 				
 				<li>
-					<a href="#" aria-expanded="false"><i class="fa fa-users"></i><span class="hide-menu">Etudiants </span></a>
+					<a href="{{route( 'absence.show' , Auth::guard('etudiant')->user()->id    )}}" aria-expanded="false"><i class="fa fa-calendar-times"></i>
+						<span class="hide-menu">Voir mes absences </span>
+					</a>
 				</li>
 
 				<li>
-					<a href="#" aria-expanded="false"><i class="fa fa-users"></i><span class="hide-menu">Chiffreurs </span></a>
+			<a href="#" aria-expanded="false"><i class="fa fa-sticky-note-o"></i>
+						<span class="hide-menu">Voir mes notes </span>
+					</a>
 				</li>
 
 				<li class="nav-devider"></li>
 
 				<li>
-					<a href="#" aria-expanded="false"><i class="mdi mdi-chair-school"></i><span class="hide-menu">Salles </span></a>
+					<a href="#" aria-expanded="false"><i class="mdi mdi-chair-school"></i>
+						<span class="hide-menu">Salles </span>
+					</a>
 				</li>
 
 				<li>
-					<a href="#" aria-expanded="false"><i class="ti-settings"></i><span class="hide-menu">Paramètres </span></a>
+					<a href="#" aria-expanded="false"><i class="ti-settings"></i>
+						<span class="hide-menu">Paramètres </span>
+					</a>
 				</li>
 
 			</ul>

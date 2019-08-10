@@ -1,13 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\AdminSpace;
+namespace App\Http\Controllers\StudentSpace;
 
 use Illuminate\Http\Request;
-use App\Models\Salle;
 use App\Http\Controllers\Controller;
+use App\Models\Absence;
+use app\Models\Seance;
+use app\Models\Etudiant;
 
 
-class SalleController extends Controller
+class AbsenceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,15 +19,13 @@ class SalleController extends Controller
 
     public function __construct()
     {
-        $this->middleware('admin');
+        $this->middleware('etudiant');
     }
-
 
     
     public function index()
     {
-        $salles = Salle::all();
-        return view('adminSpace/salles/index', compact('salles'));
+        //
     }
 
     /**
@@ -35,7 +35,7 @@ class SalleController extends Controller
      */
     public function create()
     {
-        // return view('adminSpace/salles/create');
+        //
     }
 
     /**
@@ -46,14 +46,7 @@ class SalleController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-                        'nom' => 'required',
-                        'capacite' => 'required'
-        ]); 
-
-        Salle::create($request->except(['_token']));
-
-        return redirect()->route('salles.index')->with('success','la salle est ajoutée avec succès');
+        //
     }
 
     /**
@@ -64,7 +57,13 @@ class SalleController extends Controller
      */
     public function show($id)
     {
-        //
+        
+        /* The next query is supposed to get related absences and also get the seance related to each absence */
+
+        $absences = Absence::where('etudiant_id', '=' , $id)->with('Seance')->get();
+        return view('studentSpace/voirAbsences/index', compact('absences'));
+
+
     }
 
     /**
@@ -75,7 +74,7 @@ class SalleController extends Controller
      */
     public function edit($id)
     {
-        
+        //
     }
 
     /**
@@ -87,23 +86,7 @@ class SalleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
-
-        $request->validate([
-                        'nom' => 'required',
-                        'capacite' => 'required'
-        ]); 
-
-        $salle = Salle::findOrFail($id)->first();
-        $salle->update([
-            'nom' => $request->nom,
-            'capacite' => $request->capacite
-        ]);
-
-        return redirect(route('salles.index'));
-
-
-
+        //
     }
 
     /**
@@ -114,10 +97,6 @@ class SalleController extends Controller
      */
     public function destroy($id)
     {
-    
-        Salle::destroy($id);
-        return redirect()->route('salles.index')->with('success',
-                         'Vous avez supprimé une salle');
-
+        //
     }
 }
