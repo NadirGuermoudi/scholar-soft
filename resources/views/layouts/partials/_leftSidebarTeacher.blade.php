@@ -25,7 +25,9 @@
 			<ul id="sidebarnav">
 				<li class="nav-small-cap">PERSONNEL</li>
 				<li>
-					<a href="#" aria-expanded="false"><i class="fa fa-users"></i><span class="hide-menu">Enseignants </span></a>
+					<a href="{{route('seances.index')}}" aria-expanded="false">
+						<i class="fa fa-leanpub"></i><span class="hide-menu">Séances </span>
+					</a>
 				</li>
 				
 				<li>

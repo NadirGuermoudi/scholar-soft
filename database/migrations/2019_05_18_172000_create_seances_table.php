@@ -20,11 +20,12 @@ class CreateSeancesTable extends Migration
             $table->enum('jour', ['DIMANCHE', 'LUNDI', 'MARDI', 'MERCREDI', 'JEUDI', 'VENDREDI', 'SAMEDI']);
             $table->time('heur_debut');
             $table->time('heur_fin');
+            $table->boolean('once_two_week')->default(false);
 
             $table->unsignedBigInteger('salle_id')->nullable();
             $table->unsignedBigInteger('enseignant_id')->nullable();
             
-            // $table->timestamps();
+            $table->timestamps();
 
             $table->foreign('salle_id')->references('id')->on('salles')->onDelete('set null');
             $table->foreign('enseignant_id')->references('id')->on('enseignants')->onDelete('set null');
