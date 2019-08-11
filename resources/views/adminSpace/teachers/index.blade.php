@@ -39,14 +39,14 @@
                                 <tr>
                                     <div>
                                         <button type="button" class="btn  btn-success btn-block btn-md"
-                                                data-toggle="modal" data-target="#add-salle">
+                                                data-toggle="modal" data-target="#add-teacher">
                                             <i class="fa fa-plus">
                                                 Ajouter un enseignant
                                             </i>
                                         </button>
 
                                         {{-- including the add Modal --}}
-                                        @include('adminSpace/salles/modals/addModal')
+                                        @include('adminSpace/teachers/modals/addModal')
 
                                         <br>
 
@@ -98,6 +98,27 @@
 
                                         <td>
                                             {{$enseignant->email}}
+                                        </td>
+
+                                        <td>
+
+
+                                            <button type="button" class="btn btn-outline-info" data-toggle="modal"
+                                                    data-target="#edit-salle{{$enseignant->id}}">
+                                                <i class="fa fa-edit">
+                                                </i>
+                                            </button>
+                                            {{-- including the edit Modal --}}
+                                            @include('adminSpace/teachers/modals/editModal')
+
+
+                                            <button type="button" class="btn btn-outline-danger" data-toggle="modal"
+                                                    data-target="#delete-enseignant{{$enseignant->id}}">
+                                                <i class="fa fa-times">
+                                                </i>
+                                            </button>
+                                            {{-- including the delete Modal --}}
+                                            @include('adminSpace/teachers/modals/deleteModal')
                                         </td>
 
                                     </tr>

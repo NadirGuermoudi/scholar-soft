@@ -5,6 +5,7 @@ namespace App\Http\Controllers\AdminSpace;
 use App\Models\Enseignant;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use mysql_xdevapi\Exception;
 
 class TeachersController extends Controller
 {
@@ -26,24 +27,50 @@ class TeachersController extends Controller
      */
     public function create()
     {
-        //
+        return view('adminSpace/teachers/create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'matricule' => 'required',
+            'nom' => 'required',
+            'prenom' => 'required',
+            'email' => 'required|email',
+            'grade' => 'required',
+            'password' => 'required'
+        ]);
+
+
+        $enseignant = new Enseignant();
+
+        $enseignant->matricule = $request->input('matricule');
+        $enseignant->nom = $request->input('nom');
+        $enseignant->prenom = $request->input('prenom');
+        $enseignant->date_naissance = $request->input('date_naissance');
+        $enseignant->grade = $request->input('grade');
+        if ($request->input('admin'))
+            $enseignant->admin = true;
+        else
+            $enseignant->admin = false;
+        $enseignant->email = $request->input('email');
+        $enseignant->password = bcrypt($request->input('password'));
+        $enseignant->save();
+
+
+        return redirect()->route('teachers.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Enseignant  $enseignant
+     * @param \App\Models\Enseignant $enseignant
      * @return \Illuminate\Http\Response
      */
     public function show(Enseignant $enseignant)
@@ -54,7 +81,7 @@ class TeachersController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Enseignant  $enseignant
+     * @param \App\Models\Enseignant $enseignant
      * @return \Illuminate\Http\Response
      */
     public function edit(Enseignant $enseignant)
@@ -65,8 +92,8 @@ class TeachersController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Enseignant  $enseignant
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\Enseignant $enseignant
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Enseignant $enseignant)
@@ -77,11 +104,15 @@ class TeachersController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Enseignant  $enseignant
+     * @param \App\Models\Enseignant $enseignant
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Enseignant $enseignant)
+    public function destroy($id)
     {
-        //
+        Enseignant::destroy($id);
+//        $enseignant = Enseignant::find($id);
+//        Enseignant::destroy($enseignant);
+        return redirect()->route('teachers.index')->with('success',
+            'Vous avez supprimé un enseignant');
     }
 }
