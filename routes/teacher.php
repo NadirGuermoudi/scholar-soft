@@ -13,11 +13,13 @@ Route::post('/logout', 'Auth\LoginTeacherController@logout')->name('teacher.logo
 Route::get('/', 'TeacherSpace\HomeController@index');
 Route::get('/home', 'TeacherSpace\HomeController@index');
 
-// Teacher routes here ...
-
 /*
  _  teacher profile routes
  */
 Route::group(['middleware'=>'enseignant'], function() {
 	//
 });
+
+// Teacher routes here ...
+
+route::resource('seances','TeacherSpace\SeanceController');

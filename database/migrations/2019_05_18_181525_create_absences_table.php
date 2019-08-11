@@ -25,7 +25,7 @@ class CreateAbsencesTable extends Migration
             $table->foreign('seance_id')->references('id')->on('seances')->onDelete('cascade');
             $table->foreign('etudiant_id')->references('id')->on('etudiants')->onDelete('cascade');
 
-            $table->primary(['absent_at', 'seance_id', 'etudiant_id']);
+            $table->primary(['date', 'seance_id', 'etudiant_id']);
 
             $table->timestamps();
         });
