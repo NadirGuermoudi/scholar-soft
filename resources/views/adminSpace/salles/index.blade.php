@@ -35,10 +35,10 @@
                                     <tr>
                                         <div>
                                           	<button type="button" class="btn  btn-success btn-block btn-md" data-toggle="modal" data-target="#add-salle" >
-                                          		<i class="fa fa-plus">
-                                          			Ajouter une salle
-                                          		</i>
-											</button>
+                                          	 <i class="fas fa-plus">
+                                          	 </i>
+                                              Ajouter une salle
+											                       </button>
                                            
 											{{-- including the add Modal --}}
 											@include('adminSpace/salles/modals/addModal')

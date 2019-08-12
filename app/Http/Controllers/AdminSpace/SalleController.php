@@ -53,7 +53,9 @@ class SalleController extends Controller
 
         Salle::create($request->except(['_token']));
 
+        flashy('la salle est crée');
         return redirect()->route('salles.index')->with('success','la salle est ajoutée avec succès');
+
     }
 
     /**
@@ -100,6 +102,7 @@ class SalleController extends Controller
             'capacite' => $request->capacite
         ]);
 
+        flashy('mise à jour de salle effectuée');
         return redirect(route('salles.index'));
 
 
@@ -116,6 +119,7 @@ class SalleController extends Controller
     {
     
         Salle::destroy($id);
+        flashy('vous avez supprimée une salle');
         return redirect()->route('salles.index')->with('success',
                          'Vous avez supprimé une salle');
 
