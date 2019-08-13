@@ -27,4 +27,12 @@ class Seance extends Model
 		return $this->belongsToMany('App\Models\Etudiant', 'absences');
 		// return $this->belongsToMany('App\Models\Groupe', 'seance_groupe', 'user_id', 'role_id');
 	}
+
+	public function absences()
+	{
+		return $this->hasMany(Absence::class);
+	}
+
+	
+	
 }
