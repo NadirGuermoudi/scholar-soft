@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\TeacherSpace;
 
 use App\Models\Seance;
+use App\Models\Salle;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Auth;
@@ -27,7 +28,8 @@ class SeanceController extends Controller
 	public function index()
 	{
 		$seances = Seance::where('enseignant_id', Auth::guard('enseignant')->user()->id)->get();
-		return view('teacherSpace/seances/index', compact('seances'));
+		$salles = Salle::all();
+		return view('teacherSpace/seances/index', compact('seances', 'salles'));
 	}
 
 	/**
@@ -37,7 +39,7 @@ class SeanceController extends Controller
 	 */
 	public function create()
 	{
-		return view('teacherSpace/seances/create');
+		// return view('teacherSpace/seances/create');
 	}
 
 	/**
