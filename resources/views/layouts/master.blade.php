@@ -13,7 +13,7 @@
 	 
 		<title>{{ page_title($title ?? '') }}</title> 
 	
-	
+
 	<!-- Bootstrap Core CSS -->
 	{{-- <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet"> --}}
 	<link href="{{asset('monster/assets/plugins/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
@@ -116,7 +116,7 @@
 	@include('flashy::message')
 
 	<!-- FontAwesome -->
-	{{-- <script src="https://kit.fontawesome.com/360b1a6ac0.js"></script> --}}
+	<script src="https://kit.fontawesome.com/360b1a6ac0.js"></script>
 
 	@stack('scripts') {{-- @push('scripts') @endpush --}}
 </body>
