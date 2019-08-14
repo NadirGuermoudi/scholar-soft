@@ -104,7 +104,7 @@
 
 
                                             <button type="button" class="btn btn-outline-info" data-toggle="modal"
-                                                    data-target="#edit-salle{{$enseignant->id}}">
+																										data-target="#edit-enseignant{{$enseignant->id}}">
                                                 <i class="fa fa-edit">
                                                 </i>
                                             </button>

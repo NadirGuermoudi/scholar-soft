@@ -32,7 +32,7 @@
             <ul id="sidebarnav">
                 <li class="nav-small-cap">PERSONNEL</li>
                 <li>
-                    <a href="#" aria-expanded="false"><i class="fa fa-users"></i><span
+									<a href="{{route('teachers.index')}}" aria-expanded="false"><i class="fa fa-users"></i><span
                                 class="hide-menu">Enseignants </span></a>
                 </li>
 
@@ -42,7 +42,7 @@
                 </li>
 
                 <li>
-                    <a href="#" aria-expanded="false"><i class="fa fa-users"></i><span
+									<a href="{{route('encryptors.index')}}" aria-expanded="false"><i class="fa fa-users"></i><span
                                 class="hide-menu">Chiffreurs </span></a>
                 </li>
 
@@ -51,11 +51,6 @@
                 <li>
                     <a href="{{route('salles.index')}}" aria-expanded="false"><i class="mdi mdi-chair-school"></i><span
                                 class="hide-menu">Salles </span></a>
-                </li>
-
-                <li>
-                    <a href="{{route('teachers.index')}}" aria-expanded="false"><i class="mdi mdi-chair-school"></i><span
-                                class="hide-menu">Enseignants</span></a>
                 </li>
 
                 <li>

@@ -21,22 +21,22 @@
 
                         <div class="col-md-12 m-b-20">
                             <input type="text" class="form-control" placeholder="Matricule"
-                                   name="matricule">
+																	 name="matricule" required>
                         </div>
 
                         <div class="col-md-12 m-b-20">
                             <input type="text" class="form-control" placeholder="Nom"
-                                   name="nom">
+																	 name="nom" required>
                         </div>
 
                         <div class="col-md-12 m-b-20">
                             <input type="text" class="form-control" placeholder="Prenom"
-                                   name="prenom">
+																	 name="prenom" required>
                         </div>
 
                         <div class="col-md-12 m-b-20">
                             <input type="email" class="form-control" placeholder="Email"
-                                   name="email">
+																	 name="email" required>
                         </div>
 
                         <div class="col-md-12 m-b-20">
@@ -45,7 +45,8 @@
                         </div>
 
                         <div class="col-md-12 m-b-20">
-                            <select name="grade" id="grade" class="col-md-12 select2-dropdown text-dark form-control">
+													<select name="grade" id="grade" class="col-md-12 select2-dropdown text-dark form-control"
+																	required>
                                 <option value="" disabled selected>Grade</option>
                                 <option value="MAA">MAA</option>
                                 <option value="MAB">MAB</option>
@@ -58,7 +59,7 @@
 
                         <div class="col-md-12 m-b-20">
                             <input type="password" class="form-control" placeholder="Mot de passe"
-                                   name="password">
+																	 name="password" required>
                         </div>
 
                         <div class="col-md-12 m-b-20">

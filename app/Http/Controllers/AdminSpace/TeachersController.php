@@ -63,7 +63,7 @@ class TeachersController extends Controller
         $enseignant->password = bcrypt($request->input('password'));
         $enseignant->save();
 
-
+			flashy()->success('Enseignant creer avec succès ', 'http://your-awesome-link.com');
         return redirect()->route('teachers.index');
     }
 
@@ -96,9 +96,38 @@ class TeachersController extends Controller
      * @param \App\Models\Enseignant $enseignant
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Enseignant $enseignant)
+	public function update(Request $request, $id)
     {
-        //
+			$enseignant = Enseignant::where('id', '=', $id)->first();
+
+			$request->validate([
+				'matricule' => 'required',
+				'nom' => 'required',
+				'prenom' => 'required',
+				'email' => 'required|email',
+				'grade' => 'required',
+			]);
+
+			$enseignant->matricule = $request->get('matricule');
+			$enseignant->nom = $request->get('nom');
+			$enseignant->prenom = $request->get('prenom');
+			$enseignant->date_naissance = $request->get('date_naissance');
+			$enseignant->grade = $request->get('grade');
+
+			if ($request->get('admin'))
+				$enseignant->admin = true;
+			else
+				$enseignant->admin = false;
+
+			$enseignant->email = $request->get('email');
+
+			if ($request->get('password'))
+				$enseignant->password = bcrypt($request->get('password'));
+
+			$enseignant->save();
+
+			flashy()->success('Enseignant editer avec succès ', 'http://your-awesome-link.com');
+			return redirect()->route('teachers.index');
     }
 
     /**
@@ -110,9 +139,8 @@ class TeachersController extends Controller
     public function destroy($id)
     {
         Enseignant::destroy($id);
-//        $enseignant = Enseignant::find($id);
-//        Enseignant::destroy($enseignant);
-        return redirect()->route('teachers.index')->with('success',
-            'Vous avez supprimé un enseignant');
+
+			flashy()->success('Enseignant supprimer avec succès ', 'http://your-awesome-link.com');
+			return redirect()->route('teachers.index');
     }
 }
