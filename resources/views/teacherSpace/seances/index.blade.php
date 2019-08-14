@@ -1,5 +1,6 @@
 @extends('layouts.master', ['title' => 'Séances'])
 @include('layouts/partials/#tableExport')
+@include('layouts/partials/#chosen')
 
 @section('content')
 <div class="container-fluid">
@@ -11,12 +12,13 @@
 
 					{{-- add seance --}}
 					<div>
-						<button type="button" class="btn  btn-success btn-block btn-md" data-toggle="modal" data-target="#add-salle">
+						<!-- Button trigger modal -->
+						<button type="button" class="btn  btn-success btn-block btn-md" data-toggle="modal" data-target="#add-seance">
 							<i class="fa fa-plus"></i> Ajouter une séance
 						</button>
 
 						{{-- including the add Modal --}}
-						@include('adminSpace/salles/modals/addModal')
+						@include('teacherSpace/seances/_createSeanceModal')
 						<br>
 					</div>
 					{{-- end add seance --}}
@@ -58,7 +60,6 @@
 									</button>
 									{{-- including the edit Modal --}}
 									{{-- @include('teacherSpace/seances/editModal') --}}
-
 
 									<button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#delete-seance{{$seance->id}}">
 										<i class="fa fa-times"></i>

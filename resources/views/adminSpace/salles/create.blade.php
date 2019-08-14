@@ -1,10 +1,18 @@
 
 	<div class="card">
 	    <div class="card-block">
-			<h4 class="card-title m-b-40">Tab with dropdown</h4>
+			{{-- <h4 class="card-title m-b-40">Tab with dropdown</h4> --}}
 				<ul class="nav nav-tabs" id="myTab" role="tablist">
 					
-					<li class="nav-item"> <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home5" role="tab" aria-controls="home5" aria-expanded="true"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="hidden-xs-down"> Ajout simple </span></a> 
+					<li class="nav-item"> 
+						<a class="nav-link active" id="home-tab" data-toggle="tab" href="#home5" role="tab" aria-controls="home5" aria-expanded="true">
+							<span class="hidden-sm-up">
+								<i class="ti-home"></i>
+							</span> 
+							<span class="hidden-xs-down">
+								Ajout simple 
+							</span>
+						</a> 
 					</li>
 					
 					<li class="nav-item"> 
@@ -36,9 +44,9 @@
 						</div>
 	                           
 						<div class="col-md-12 m-b-20">
-							<input type="text" class="form-control" placeholder="capicité"
+							<input type="text" class="form-control" min="1" max="10000" placeholder="capicité"
 							name="capacite">
-						</div>          		  	
+						</div>
 						
 	                                    		  	
 						<div class="col-md-12 m-b-20">

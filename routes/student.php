@@ -20,3 +20,5 @@ Route::get('/home', 'StudentSpace\HomeController@index');
  */
 Route::group(['middleware'=>'etudiant'], function() {
 });
+
+route::resource('absence','StudentSpace\AbsenceController');

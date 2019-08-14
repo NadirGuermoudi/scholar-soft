@@ -13,15 +13,10 @@
 	 
 		<title>{{ page_title($title ?? '') }}</title> 
 	
-	
+
 	<!-- Bootstrap Core CSS -->
 	{{-- <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet"> --}}
 	<link href="{{asset('monster/assets/plugins/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
-	<!-- chartist CSS -->
-	<link href="{{asset('monster/assets/plugins/chartist-js/dist/chartist.min.css')}}" rel="stylesheet">
-	<link href="{{asset('monster/assets/plugins/chartist-js/dist/chartist-init.css')}}" rel="stylesheet">
-	<link href="{{asset('monster/assets/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.css')}}" rel="stylesheet">
-	<link href="{{asset('monster/assets/plugins/css-chart/css-chart.css')}}" rel="stylesheet">
 	<!-- Custom CSS -->
 	<link href="{{asset('monster/dark/css/style.css')}}" rel="stylesheet">
 	<!-- You can change the theme colors from here -->
@@ -112,25 +107,16 @@
 	<!--Custom JavaScript -->
 	<script src="{{asset('monster/dark/js/custom.min.js')}}"></script>
 	<!-- ============================================================== -->
-	<!-- This page plugins -->
-	<!-- ============================================================== -->
-	<!-- chartist chart -->
-	<script src="{{asset('monster/assets/plugins/chartist-js/dist/chartist.min.js')}}"></script>
-	<script src="{{asset('monster/assets/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.min.js')}}"></script>
-	<!-- Chart JS -->
-	<script src="{{asset('monster/assets/plugins/echarts/echarts-all.js')}}"></script>
-	<!-- Chart JS -->
-	<script src="{{asset('monster/dark/js/dashboard1.js')}}"></script>
-	<!-- ============================================================== -->
 	<!-- Style switcher -->
 	<!-- ============================================================== -->
 	<script src="{{asset('monster/assets/plugins/styleswitcher/jQuery.style.switcher.js')}}"></script>
 
+	{{-- <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script> --}}
 	<!-- Flashy -->
 	@include('flashy::message')
 
 	<!-- FontAwesome -->
-	{{-- <script src="https://kit.fontawesome.com/360b1a6ac0.js"></script> --}}
+	<script src="https://kit.fontawesome.com/360b1a6ac0.js"></script>
 
 	@stack('scripts') {{-- @push('scripts') @endpush --}}
 </body>
