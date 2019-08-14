@@ -16,4 +16,8 @@ class Enseignant extends Authenticatable
 
 	protected $hidden = ['password',  'remember_token'];
 
+	public function seances()
+	{
+		return $this->hasMany('App\Models\Seance');
+	}
 }

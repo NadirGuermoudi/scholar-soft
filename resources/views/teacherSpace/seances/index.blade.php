@@ -23,7 +23,7 @@
 					</div>
 					{{-- end add seance --}}
 
-					<table id="example23" class="display nowrap table table-hover table-striped table-bordered">
+					<table id="example23" class="responsive display nowrap table table-hover table-striped table-bordered">
 						<thead>
 							<tr>
 								<th>Jour</th>
