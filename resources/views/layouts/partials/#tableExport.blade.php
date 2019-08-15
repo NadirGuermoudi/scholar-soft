@@ -1,3 +1,7 @@
+@push('styles')
+<link href="{{asset('monster/assets/plugins/datatables-responsive/css/responsive.dataTables.css')}}" rel="stylesheet">
+@endpush
+
 @push('scripts')		
 <!-- This is data table -->
 <script src="{{asset('monster/assets/plugins/datatables/jquery.dataTables.min.js')}}"></script>
