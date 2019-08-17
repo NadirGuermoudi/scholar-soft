@@ -28,7 +28,7 @@ class CreateSeancesTable extends Migration
             $table->timestamps();
 
             $table->foreign('salle_id')->references('id')->on('salles')->onDelete('set null');
-            $table->foreign('enseignant_id')->references('id')->on('enseignants')->onDelete('set null');
+            $table->foreign('enseignant_id')->references('id')->on('enseignants')->onDelete('cascade');
         });
     }
 

@@ -13,13 +13,10 @@
 					{{-- add seance --}}
 					<div>
 						<!-- Button trigger modal -->
-						<button type="button" class="btn  btn-success btn-block btn-md" data-toggle="modal" data-target="#add-seance">
+						<a href="{{ route('seances.create') }}" class="btn  btn-success btn-block btn-md">
 							<i class="fa fa-plus"></i> Ajouter une séance
-						</button>
-
-						{{-- including the add Modal --}}
-						@include('teacherSpace/seances/_createSeanceModal')
-						<br>
+						</a>
+						<br/>
 					</div>
 					{{-- end add seance --}}
 
@@ -29,8 +26,10 @@
 								<th>Jour</th>
 								<th>Heur_debut</th>
 								<th>Heur_fin</th>
+								<th>Salle</th>
 								<th>Type</th>
 								<th>Module</th>
+								<th>Groupes</th>
 								<th>Actions</th>
 							</tr>
 						</thead>
@@ -40,8 +39,10 @@
 								<th>Jour</th>
 								<th>Heur_debut</th>
 								<th>Heur_fin</th>
+								<th>Salle</th>
 								<th>Type</th>
 								<th>Module</th>
+								<th>Groupes</th>
 								<th>Actions</th>
 							</tr>
 						</tfoot>
@@ -50,16 +51,14 @@
 							@foreach($seances as $seance)
 							<tr>
 								<td>{{ $seance->jour }}</td>
-								<td>{{ $seance->heur_debut }}</td>
-								<td>{{ $seance->heur_fin }}</td>
+								<td><center>{{ substr ($seance->heur_debut, 0, 5) }}</center></td>
+								<td><center>{{ substr ($seance->heur_fin, 0, 5) }}</center></td>
+								<td>{{ $seance->salle->nom }}</td>
 								<td>{{ $seance->type }}</td>
 								<td>{{ $seance->module }}</td>
+								<td><ul>@foreach($seance->groupes as $groupe)<li>{{ $groupe->specialite }} G{{ $groupe->numero }}</li>@endforeach</ul></td>
 								<td>
-									<button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#edit-seance{{$seance->id}}">
-										<i class="fa fa-edit"></i>
-									</button>
-									{{-- including the edit Modal --}}
-									{{-- @include('teacherSpace/seances/editModal') --}}
+									<a href="{{ route('seances.edit', $seance) }}" class="btn btn-outline-info"><i class="fa fa-edit"></i></a>
 
 									<button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#delete-seance{{$seance->id}}">
 										<i class="fa fa-times"></i>
