@@ -32,7 +32,4 @@ class Seance extends Model
 	{
 		return $this->hasMany(Absence::class);
 	}
-
-	
-	
 }

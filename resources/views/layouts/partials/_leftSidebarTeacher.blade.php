@@ -26,16 +26,16 @@
 				<li class="nav-small-cap">PERSONNEL</li>
 				<li>
 					<a href="{{route('seances.index')}}" aria-expanded="false">
-						<i class="fa fa-leanpub"></i><span class="hide-menu">Séances </span>
+						<i class="fa fa-leanpub fa-lg"></i><span class="hide-menu"> Séances </span>
 					</a>
 				</li>
 				
 				<li>
-					<a href="#" aria-expanded="false"><i class="fa fa-users"></i><span class="hide-menu">Etudiants </span></a>
+					<a href="#" aria-expanded="false"><i class="fa fa-users fa-lg"></i><span class="hide-menu"> Etudiants </span></a>
 				</li>
 
 				<li>
-					<a href="#" aria-expanded="false"><i class="fa fa-users"></i><span class="hide-menu">Chiffreurs </span></a>
+					<a href="#" aria-expanded="false"><i class="fa fa-users fa-lg"></i><span class="hide-menu"> Chiffreurs </span></a>
 				</li>
 
 				<li class="nav-devider"></li>
