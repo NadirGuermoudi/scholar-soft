@@ -22,3 +22,9 @@ Route::group(['middleware'=>'etudiant'], function() {
 });
 
 route::resource('absence','StudentSpace\AbsenceController');
+
+Route::get('/emploiDuTemps', [
+					'as' => 'emploiDuTemps'  ,
+					'uses' => 'StudentSpace\EmploiDuTempsController@index'					
+				]
+		  );

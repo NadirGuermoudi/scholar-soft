@@ -25,32 +25,58 @@
 			<ul id="sidebarnav">
 				<li class="nav-small-cap">PERSONNEL</li>
 				<li>
-					<a href="/" aria-expanded="false"><i class="fas fa-home"></i><span class="hide-menu">Accueil </span></a>
-				</li>
-				
-				<li>
-					<a href="{{route( 'absence.show' , Auth::guard('etudiant')->user()->id    )}}" aria-expanded="false"><i class="fa fa-calendar-times"></i>
-						<span class="hide-menu">Voir mes absences </span>
+					<a href="/" aria-expanded="false">
+						<i class="fas fa-home fa-lg"></i>
+						<span class="hide-menu">
+							Accueil 
+						</span>
 					</a>
 				</li>
 
 				<li>
-			<a href="#" aria-expanded="false"><i class="fa fa-sticky-note-o"></i>
-						<span class="hide-menu">Voir mes notes </span>
+					<a href="{{route('emploiDuTemps')}}" aria-expanded="false">
+						<i class="far fa-calendar-alt fa-lg"></i>
+						<span class="hide-menu">
+							Emploi du temps 
+						</span>
+					</a>
+				</li>
+				
+				<li>
+					<a href="{{route( 'absence.show' , Auth::guard('etudiant')->user()->id    )}}" aria-expanded="false">
+						<i class="fa fa-calendar-times fa-lg"></i>
+						<span class="hide-menu">
+							Voir mes absences 
+						</span>
+					</a>
+				</li>
+
+				<li>
+					<a href="#" aria-expanded="false">
+						<i class="far fa-clipboard fa-lg"></i>
+						<span class="hide-menu">
+							Voir mes notes 
+						</span>
 					</a>
 				</li>
 
 				<li class="nav-devider"></li>
 
 				<li>
-					<a href="#" aria-expanded="false"><i class="mdi mdi-chair-school"></i>
-						<span class="hide-menu">Salles </span>
+					<a href="#" aria-expanded="false">
+						<i class="fas fa-door-open fa-lg"></i>
+						<span class="hide-menu">
+							Salles 
+						</span>
 					</a>
 				</li>
 
 				<li>
-					<a href="#" aria-expanded="false"><i class="ti-settings"></i>
-						<span class="hide-menu">Paramètres </span>
+					<a href="#" aria-expanded="false">
+						<i class="fas fa-cog fa-lg"></i>
+						<span class="hide-menu">
+							Paramètres
+						</span>
 					</a>
 				</li>
 

@@ -35,7 +35,7 @@
                                     <tr>
                                         <div>
                                           	<button type="button" class="btn  btn-success btn-block btn-md" data-toggle="modal" data-target="#add-salle" >
-                                          	 <i class="fas fa-plus">
+                                          	 <i class="fas fa-plus" >
                                           	 </i>
                                               Ajouter une salle
 											                       </button>
