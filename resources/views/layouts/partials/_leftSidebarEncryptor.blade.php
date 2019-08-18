@@ -7,7 +7,7 @@
 			{{-- <div class="profile-img"> <img src="{{asset('images/monster/users/1.jpg')}}" alt="user" /> </div> --}}
 			<div class="profile-img"> <span class="round round-danger">{{ strtoupper(substr( Auth::guard('encryptor')->user()->prenom, 0, 1)) }}</span> </div>
 			<!-- User profile text-->
-			<div class="profile-text"> <a href="#" class="dropdown-toggle link u-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">{{strtoupper(Auth::guard('encryptor')->user()->nom) . ' ' . ucfirst(Auth::guard('encryptor')->user()->prenom) }} <span class="caret"></span></a>
+			<div class="profile-text"> <a href="#" class="dropdown-toggle link u-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">{{ Auth::guard('encryptor')->user()->fullName }} <span class="caret"></span></a>
 				<div class="dropdown-menu animated flipInY">
 					<a href="#" class="dropdown-item"><i class="ti-user"></i> My Profile</a>
 					<a href="#" class="dropdown-item"><i class="ti-wallet"></i> My Balance</a>

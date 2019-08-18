@@ -11,7 +11,7 @@
             <!-- User profile text-->
             <div class="profile-text"><a href="#" class="dropdown-toggle link u-dropdown" data-toggle="dropdown"
                                          role="button" aria-haspopup="true"
-                                         aria-expanded="true">{{strtoupper(Auth::guard('admin')->user()->nom) . ' ' . ucfirst(Auth::guard('admin')->user()->prenom) }}
+                                         aria-expanded="true">{{Auth::guard('admin')->user()->fullName }}
                     <span class="caret"></span></a>
                 <div class="dropdown-menu animated flipInY">
                     <a href="#" class="dropdown-item"><i class="ti-user"></i> My Profile</a>
@@ -32,18 +32,18 @@
             <ul id="sidebarnav">
                 <li class="nav-small-cap">PERSONNEL</li>
                 <li>
-									<a href="{{route('teachers.index')}}" aria-expanded="false"><i class="fa fa-users"></i><span
-                                class="hide-menu">Enseignants </span></a>
+                   <a href="{{route('teachers.index')}}" aria-expanded="false"><i class="fa fa-users"></i><span
+                    class="hide-menu">Enseignants </span></a>
                 </li>
 
                 <li>
-                    <a href="#" aria-expanded="false"><i class="fa fa-users"></i><span
-                                class="hide-menu">Etudiants </span></a>
+                   <a href="{{route('encryptors.index')}}" aria-expanded="false"><i class="fa fa-users"></i><span
+                    class="hide-menu">Chiffreurs </span></a>
                 </li>
 
                 <li>
-									<a href="{{route('encryptors.index')}}" aria-expanded="false"><i class="fa fa-users"></i><span
-                                class="hide-menu">Chiffreurs </span></a>
+                    <a href="{{ route('etudiants.index') }}" aria-expanded="false"><i class="fa fa-users"></i><span
+                        class="hide-menu">Etudiants </span></a>
                 </li>
 
                 <li class="nav-devider"></li>
