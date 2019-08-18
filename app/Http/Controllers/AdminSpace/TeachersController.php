@@ -73,8 +73,8 @@ class TeachersController extends Controller
         $enseignant->password = bcrypt($request->input('password'));
         $enseignant->save();
 
-			flashy()->success('Enseignant creer avec succès !');
-        return redirect()->route('teachers.index');
+        flashy()->success('Enseignant creer avec succès !');
+        return redirect()->route('teachers.create');
     }
 
     /**

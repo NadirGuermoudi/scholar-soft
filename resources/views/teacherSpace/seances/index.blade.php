@@ -1,6 +1,5 @@
 @extends('layouts.master', ['title' => 'Séances'])
 @include('layouts/partials/#tableExport')
-@include('layouts/partials/#chosen')
 
 @section('content')
 <div class="container-fluid">
