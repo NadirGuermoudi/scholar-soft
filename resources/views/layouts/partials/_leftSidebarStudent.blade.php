@@ -43,7 +43,8 @@
 				</li>
 				
 				<li>
-					<a href="{{route( 'absence.show' , Auth::guard('etudiant')->user()->id    )}}" aria-expanded="false">
+
+					<a href="{{route( 'absence.index' )}}" aria-expanded="false">
 						<i class="fa fa-calendar-times fa-lg"></i>
 						<span class="hide-menu">
 							Voir mes absences 
@@ -72,7 +73,7 @@
 				</li>
 
 				<li>
-					<a href="#" aria-expanded="false">
+					<a href="{{route('student.parametres')}}" aria-expanded="false">
 						<i class="fas fa-cog fa-lg"></i>
 						<span class="hide-menu">
 							Paramètres
