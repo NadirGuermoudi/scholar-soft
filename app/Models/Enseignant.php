@@ -20,4 +20,8 @@ class Enseignant extends Authenticatable
 	{
 		return $this->hasMany('App\Models\Seance');
 	}
+
+	public function getFullNameAttribute() {
+		return strtoupper($this->nom) . ' ' . ucfirst($this->prenom);
+	}
 }
