@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\TeacherSpace;
 
 use App\Models\Seance;
+use App\Models\Salle;
+use App\Models\Groupe;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Auth;
+use App\Http\Requests\SeanceRequest;
 
 class SeanceController extends Controller
 {
@@ -37,7 +40,9 @@ class SeanceController extends Controller
 	 */
 	public function create()
 	{
-		return view('teacherSpace/seances/create');
+		$salles = Salle::all();
+		$groupes = Groupe::all();
+		return view('teacherSpace/seances/create', compact('salles', 'groupes'));
 	}
 
 	/**
@@ -46,9 +51,23 @@ class SeanceController extends Controller
 	 * @param  \Illuminate\Http\Request  $request
 	 * @return \Illuminate\Http\Response
 	 */
-	public function store(Request $request)
+	public function store(SeanceRequest $request)
 	{
-		//
+		$seance = new Seance();
+		$seance->type = $request->type;
+		$seance->module = $request->module;
+		$seance->jour = $request->jour;
+		$seance->heur_debut = $request->heur_debut;
+		$seance->heur_fin = $request->heur_fin;
+		$seance->salle_id = $request->salle_id;
+		if($request->input('once_two_week'))
+			$seance->once_two_week = true;
+		$seance->enseignant_id = Auth::guard('enseignant')->user()->id;
+		$seance->save();
+		$seance->groupes()->attach($request->groupes_ids);
+
+		flashy('La séance (' . $seance->type . ' | ' . $seance->module . ') a été ajoutée !');
+		return redirect()->route('seances.index');
 	}
 
 	/**
@@ -70,7 +89,9 @@ class SeanceController extends Controller
 	 */
 	public function edit(Seance $seance)
 	{
-		//
+		$salles = Salle::all();
+		$groupes = Groupe::all();
+		return view('teacherSpace/seances/edit', compact('seance', 'salles', 'groupes'));
 	}
 
 	/**
@@ -80,9 +101,23 @@ class SeanceController extends Controller
 	 * @param  \App\Models\Seance  $seance
 	 * @return \Illuminate\Http\Response
 	 */
-	public function update(Request $request, Seance $seance)
+	public function update(SeanceRequest $request, Seance $seance)
 	{
-		//
+		$seance->type = $request->type;
+		$seance->module = $request->module;
+		$seance->jour = $request->jour;
+		$seance->heur_debut = $request->heur_debut;
+		$seance->heur_fin = $request->heur_fin;
+		$seance->salle_id = $request->salle_id;
+		if($request->input('once_two_week'))
+			$seance->once_two_week = true;
+		$seance->enseignant_id = Auth::guard('enseignant')->user()->id;
+		$seance->save();
+		$seance->groupes()->detach();
+		$seance->groupes()->attach($request->groupes_ids);
+
+		flashy('La séance (' . $seance->type . ' | ' . $seance->module . ') a été modifié !');
+		return redirect()->route('seances.index');
 	}
 
 	/**
@@ -94,7 +129,7 @@ class SeanceController extends Controller
 	public function destroy(Seance $seance)
 	{
 		$seance->delete();
-		flashy('La séance a été supprimée !');
+		flashy('La séance (' . $seance->type . ' | ' . $seance->module . ') a été supprimée !');
 		return redirect()->route('seances.index');
 	}
 }

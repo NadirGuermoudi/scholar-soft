@@ -1,6 +1,13 @@
+@push('styles')
+<link href="{{asset('monster/assets/plugins/datatables-responsive/css/responsive.dataTables.css')}}" rel="stylesheet">
+@endpush
+
 @push('scripts')		
 <!-- This is data table -->
 <script src="{{asset('monster/assets/plugins/datatables/jquery.dataTables.min.js')}}"></script>
+
+<!-- responsive data table -->
+<script src="{{asset('monster/assets/plugins/datatables-responsive/js/dataTables.responsive.js')}}"></script>
 <!-- start - This is for export functionality only -->
 <script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
@@ -12,7 +19,9 @@
 
 <script>
 	$(document).ready(function() {
-		$('#myTable').DataTable();
+		$('#myTable').DataTable({
+				responsive: true
+		});
 		$(document).ready(function() {
 			var table = $('#example').DataTable({
 					"columnDefs": [{
@@ -51,6 +60,7 @@
 		});
 	});
 	$('#example23').DataTable({
+		responsive: true,
 		dom: 'Bfrtip',
 		buttons: [
 		'copy', 'csv', 'excel', 'pdf', 'print'

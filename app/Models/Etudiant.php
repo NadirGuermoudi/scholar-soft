@@ -25,4 +25,8 @@ class Etudiant extends Authenticatable
 	{
 		return $this->belongsToMany('App\Models\Seance', 'absences');
 	}
+
+	public function getFullNameAttribute() {
+		return strtoupper($this->nom) . ' ' . ucfirst($this->prenom);
+	}
 }

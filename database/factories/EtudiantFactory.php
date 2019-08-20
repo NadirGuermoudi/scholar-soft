@@ -7,7 +7,7 @@ $factory->define(App\Models\Etudiant::class, function (Faker $faker) {
 		'matricule' => $faker->numerify('##########'),		
 		'nom' => $faker->firstName,
 		'prenom' => $faker->lastName,
-		'date-naissance' => $faker->date,
+		'date_naissance' => $faker->date,
 		'email' => $faker->email,
 		'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', //password
 		'remember_token' => Str::random(10),
