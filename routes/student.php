@@ -22,7 +22,7 @@ Route::get('/emploiDuTemps', [
 				]
 		  );
 
-Route::get('/parametres','StudentSpace\ParametresController@index')->name('student.parametres');
+Route::get('/parametres_etudiant','StudentSpace\ParametresController@index')->name('student.parametres');
 
 route::resource('etudiant','StudentSpace\StudentController');
 

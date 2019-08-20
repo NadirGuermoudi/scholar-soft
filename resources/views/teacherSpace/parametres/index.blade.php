@@ -42,7 +42,7 @@
 
 										<form class="well form-horizontal" 
 											  method="POST" 
-											  action="{{route('etudiant.update', Auth::guard('etudiant')->user()->id )}}" 
+											  action="{{route('enseignantENS.update', Auth::guard('enseignant')->user()->id )}}" 
 											  id="contact_form" 
 											  enctype="multipart/form-data">
 										
@@ -68,7 +68,7 @@
 											    			type="text" 
 											    			class="form-control col-md-3"
 											    			name="nom" 
-											    			value="{{Auth::guard('etudiant')->user()->nom}}"
+											    			value="{{Auth::guard('enseignant')->user()->nom}}"
 											    		/>
 											    	</div>
 
@@ -90,7 +90,7 @@
 											    			type="text" 
 											    			class="form-control col-md-3"
 											    			name="prenom" 
-											    			value="{{Auth::guard('etudiant')->user()->prenom}}"
+											    			value="{{Auth::guard('enseignant')->user()->prenom}}"
 											    		/>
 											    	</div>
 
@@ -112,7 +112,7 @@
 											    			type="text" 
 											    			class="form-control col-md-3"
 											    			name="matricule" 
-											    			value="{{Auth::guard('etudiant')->user()->matricule}}"
+											    			value="{{Auth::guard('enseignant')->user()->matricule}}"
 											    		/>
 											    	</div>
 
@@ -136,7 +136,7 @@
 											    			type="text" 
 											    			class="form-control col-md-3"
 											    			name="date_naissance" 
-											    			value="{{Auth::guard('etudiant')->user()->date_naissance}}"
+											    			value="{{Auth::guard('enseignant')->user()->date_naissance}}"
 											    		/>
 											    	</div>
 
@@ -157,6 +157,67 @@
 
 												<br>
 
+
+
+												<div class="row">
+
+											    	<div class="col-md-3">
+											     		<strong>Admin:</strong>
+											    	</div>
+											    
+											    	<div class="col-md-9">
+											    		<input
+											    			readonly 
+											    			type="text" 
+											    			class="form-control col-md-3"
+											    			name="email" 
+											    				@if(
+											    				Auth::guard('enseignant')
+											    				->user()
+											    				->admin ==0)
+											    				{
+											    					value="non"
+											    				}
+											    				@else
+																{
+																 value="oui"
+																}
+											    				@endif
+											    				
+											    		/>
+											    	</div>
+
+												</div>
+
+
+
+												<br>
+
+
+												<div class="row">
+
+											    	<div class="col-md-3">
+											     		<strong>Grade:</strong>
+											    	</div>
+											    
+											    	<div class="col-md-9">
+											    		<input 
+											    			readonly
+											    			type="text" 
+											    			class="form-control col-md-3"
+											    			name="email" 
+											    			value="{{Auth::guard('enseignant')->user()->grade}}"
+											    		/>
+											    	</div>
+
+												</div>
+
+
+
+												<br>
+
+
+
 												<div class="row">
 
 											    	<div class="col-md-3">
@@ -168,7 +229,7 @@
 											    			type="text" 
 											    			class="form-control col-md-3"
 											    			name="email" 
-											    			value="{{Auth::guard('etudiant')->user()->email}}"
+											    			value="{{Auth::guard('enseignant')->user()->email}}"
 											    		/>
 											    	</div>
 

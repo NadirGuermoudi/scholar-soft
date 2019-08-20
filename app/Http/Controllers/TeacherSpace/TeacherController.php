@@ -1,15 +1,16 @@
 <?php
 
-namespace App\Http\Controllers\StudentSpace;
+namespace App\Http\Controllers\TeacherSpace;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Etudiant;
+
+use App\Models\Enseignant;
 
 use Illuminate\Support\Facades\Hash;
 use Auth;
 
-class StudentController extends Controller
+class TeacherController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -73,47 +74,42 @@ class StudentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
-        if( $id == Auth::guard('etudiant')->user()->id )
+
+        if( $id == Auth::guard('enseignant')->user()->id )
         {
+           
             $request->validate([
+                            'email' => 'required',
+                            'password_old' => 'required'
+            ]); 
 
-                        'email' => 'required',
-                        'password_old' => 'required'
-                            ]); 
-
-            $etudiant = Etudiant::findOrFail($id)->first();
-
-            if( Hash::check($request->password_old, $etudiant->password) )
+            $enseignant = Enseignant::findOrFail($id)->first();
+          
+            if( Hash::check($request->password_old, $enseignant->password) )
             {
-                $etudiant->update
+                $enseignant->update
                 ([
                     'email' => $request->email,
                     'password' => bcrypt($request->get('password'))
                 ]);
             
-                $etudiant->save();
-                flashy()->success('Votre profile est mis à jour');
+                $enseignant->save();
+                flashy('Votre profile est mis à jour');
             
             }
             
             else
             {
-                flashy()->error('Ancien mot de passe incorrecte');
+                flashy('Ancien mot de passe incorrecte');
             }
-        }
 
+        }
         else
         {
-                flashy()->error('Votre profile est mis à jour');
+            flashy()->error('Accès non autorisé');
         }
 
-        
-
-        return redirect(route('student.parametres'));
-
-
-
+        return redirect(route('teacher.parametres'));
     }
 
     /**
