@@ -20,7 +20,6 @@ class SalleController extends Controller
         $this->middleware('admin');
     }
 
-
     
     public function index()
     {

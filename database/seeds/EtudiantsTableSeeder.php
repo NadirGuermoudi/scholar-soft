@@ -29,7 +29,7 @@ class EtudiantsTableSeeder extends Seeder
 	// $table->string('matricule');
 	// $table->string('nom');
 	// $table->string('prenom');
-	// $table->date('date-naissance')->nullable();
+	// $table->date('date_naissance')->nullable();
 	// $table->string('email')->unique();
 	// $table->string('password');
 	// $table->rememberToken();
