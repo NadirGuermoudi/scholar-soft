@@ -26,26 +26,49 @@
 				<li class="nav-small-cap">PERSONNEL</li>
 				<li>
 					<a href="{{route('seances.index')}}" aria-expanded="false">
-						<i class="fa fa-leanpub fa-lg"></i><span class="hide-menu"> Séances </span>
+						<i class="fa fa-leanpub fa-lg"></i>
+						<span class="hide-menu">
+							Séances
+						</span>
 					</a>
 				</li>
 				
 				<li>
-					<a href="#" aria-expanded="false"><i class="fa fa-users fa-lg"></i><span class="hide-menu"> Etudiants </span></a>
+					<a href="#" aria-expanded="false">
+						<i class="fas fa-glasses fa-lg"></i>
+						<span class="hide-menu">
+							Etudiants 
+						</span>
+					</a>
 				</li>
 
 				<li>
-					<a href="#" aria-expanded="false"><i class="fa fa-users fa-lg"></i><span class="hide-menu"> Chiffreurs </span></a>
+					<a href="#" aria-expanded="false">
+						<i class="fa fa-users fa-lg"></i>
+						<span class="hide-menu">
+							Chiffreurs 
+						</span>
+					</a>
 				</li>
 
 				<li class="nav-devider"></li>
 
 				<li>
-					<a href="#" aria-expanded="false"><i class="mdi mdi-chair-school"></i><span class="hide-menu">Salles </span></a>
+					<a href="#" aria-expanded="false">
+						<i class="fas fa-door-open fa-lg"></i>
+						<span class="hide-menu">
+							Salles 
+						</span>
+					</a>
 				</li>
 
 				<li>
-					<a href="#" aria-expanded="false"><i class="ti-settings"></i><span class="hide-menu">Paramètres </span></a>
+					<a href="{{route('teacher.parametres')}}" aria-expanded="false">
+						<i class="fas fa-cog fa-lg"></i>
+						<span class="hide-menu">
+							Paramètres
+						</span>
+					</a>
 				</li>
 
 			</ul>

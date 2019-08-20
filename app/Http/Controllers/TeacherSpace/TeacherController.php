@@ -1,37 +1,25 @@
 <?php
 
-namespace App\Http\Controllers\StudentSpace;
+namespace App\Http\Controllers\TeacherSpace;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Absence;
-use app\Models\Seance;
-use app\Models\Etudiant;
 
+use App\Models\Enseignant;
+
+use Illuminate\Support\Facades\Hash;
 use Auth;
 
-class AbsenceController extends Controller
+class TeacherController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-
-    public function __construct()
-    {
-        $this->middleware('etudiant');
-    }
-
-    
     public function index()
     {
-        /* The next query is supposed to get related absences and also get the seance related to each absence */
-
-        $absences = Absence::where('etudiant_id', '=' , Auth::guard('etudiant')->user()->id )->with('Seance')->get();
-        return view('studentSpace/voirAbsences/index', compact('absences'));
-
-
+        //
     }
 
     /**
@@ -63,7 +51,6 @@ class AbsenceController extends Controller
      */
     public function show($id)
     {
-        
         //
     }
 
@@ -87,7 +74,42 @@ class AbsenceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        if( $id == Auth::guard('enseignant')->user()->id )
+        {
+           
+            $request->validate([
+                            'email' => 'required',
+                            'password_old' => 'required'
+            ]); 
+
+            $enseignant = Enseignant::findOrFail($id)->first();
+          
+            if( Hash::check($request->password_old, $enseignant->password) )
+            {
+                $enseignant->update
+                ([
+                    'email' => $request->email,
+                    'password' => bcrypt($request->get('password'))
+                ]);
+            
+                $enseignant->save();
+                flashy('Votre profile est mis à jour');
+            
+            }
+            
+            else
+            {
+                flashy('Ancien mot de passe incorrecte');
+            }
+
+        }
+        else
+        {
+            flashy()->error('Accès non autorisé');
+        }
+
+        return redirect(route('teacher.parametres'));
     }
 
     /**

@@ -12,7 +12,13 @@
 	<link rel="icon" type="image/png" sizes="16x16" href="{{asset('images/monster/favicon.png')}}">
 	 
 		<title>{{ page_title($title ?? '') }}</title> 
-	
+
+	<style type="text/css">
+		{{-- ce style est pour agrandir les icones de FA --}}
+		.fa,.far,.fas {
+		  font-size: 20px;
+		}
+	</style>
 
 	<!-- Bootstrap Core CSS -->
 	{{-- <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet"> --}}
