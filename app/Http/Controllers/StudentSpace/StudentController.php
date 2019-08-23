@@ -1,29 +1,24 @@
 <?php
 
-namespace App\Http\Controllers\AdminSpace;
+namespace App\Http\Controllers\StudentSpace;
 
 use Illuminate\Http\Request;
-use App\Models\Salle;
 use App\Http\Controllers\Controller;
+use App\Models\Etudiant;
 
+use Illuminate\Support\Facades\Hash;
+use Auth;
 
-class SalleController extends Controller
+class StudentController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-
-    public function __construct()
-    {
-        $this->middleware('admin');
-    }
-
     public function index()
     {
-        $salles = Salle::all();
-        return view('adminSpace/salles/index', compact('salles'));
+        //
     }
 
     /**
@@ -33,7 +28,7 @@ class SalleController extends Controller
      */
     public function create()
     {
-        // return view('adminSpace/salles/create');
+        //
     }
 
     /**
@@ -44,16 +39,7 @@ class SalleController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-                        'nom' => 'required',
-                        'capacite' => 'required'
-        ]); 
-
-        Salle::create($request->except(['_token']));
-
-        flashy('la salle est crée');
-        return redirect()->route('salles.index')->with('success','la salle est ajoutée avec succès');
-
+        //
     }
 
     /**
@@ -75,7 +61,7 @@ class SalleController extends Controller
      */
     public function edit($id)
     {
-        
+        //
     }
 
     /**
@@ -88,20 +74,43 @@ class SalleController extends Controller
     public function update(Request $request, $id)
     {
         
+        if( $id == Auth::guard('etudiant')->user()->id )
+        {
+            $request->validate([
 
-        $request->validate([
-                        'nom' => 'required',
-                        'capacite' => 'required'
-        ]); 
+                        'email' => 'required',
+                        'password_old' => 'required'
+                            ]); 
 
-        $salle = Salle::findOrFail($id)->first();
-        $salle->update([
-            'nom' => $request->nom,
-            'capacite' => $request->capacite
-        ]);
+            $etudiant = Etudiant::findOrFail($id)->first();
 
-        flashy('mise à jour de salle effectuée');
-        return redirect(route('salles.index'));
+            if( Hash::check($request->password_old, $etudiant->password) )
+            {
+                $etudiant->update
+                ([
+                    'email' => $request->email,
+                    'password' => bcrypt($request->get('password'))
+                ]);
+            
+                $etudiant->save();
+                flashy()->success('Votre profile est mis à jour');
+            
+            }
+            
+            else
+            {
+                flashy()->error('Ancien mot de passe incorrecte');
+            }
+        }
+
+        else
+        {
+                flashy()->error('Votre profile est mis à jour');
+        }
+
+        
+
+        return redirect(route('student.parametres'));
 
 
 
@@ -115,11 +124,6 @@ class SalleController extends Controller
      */
     public function destroy($id)
     {
-    
-        Salle::destroy($id);
-        flashy('vous avez supprimée une salle');
-        return redirect()->route('salles.index')->with('success',
-                         'Vous avez supprimé une salle');
-
+        //
     }
 }

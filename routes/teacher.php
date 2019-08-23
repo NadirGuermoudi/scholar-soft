@@ -23,3 +23,7 @@ Route::group(['middleware'=>'enseignant'], function() {
 // Teacher routes here ...
 
 route::resource('seances','TeacherSpace\SeanceController');
+
+Route::get('/parametres_enseignant','TeacherSpace\ParametresController@index')->name('teacher.parametres');
+
+route::resource('enseignantENS','TeacherSpace\TeacherController');

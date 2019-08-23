@@ -13,7 +13,20 @@ Route::post('/logout', 'Auth\LoginStudentController@logout')->name('student.logo
 Route::get('/', 'StudentSpace\HomeController@index');
 Route::get('/home', 'StudentSpace\HomeController@index');
 
-// Student routes here ...
+
+route::resource('absence','StudentSpace\AbsenceController');
+
+Route::get('/emploiDuTemps', [
+					'as' => 'emploiDuTemps'  ,
+					'uses' => 'StudentSpace\EmploiDuTempsController@index'					
+				]
+		  );
+
+Route::get('/parametres_etudiant','StudentSpace\ParametresController@index')->name('student.parametres');
+
+route::resource('etudiant','StudentSpace\StudentController');
+
+
 
 /*
  _  Student profile routes
@@ -21,4 +34,7 @@ Route::get('/home', 'StudentSpace\HomeController@index');
 Route::group(['middleware'=>'etudiant'], function() {
 });
 
-route::resource('absence','StudentSpace\AbsenceController');
+
+
+
+
