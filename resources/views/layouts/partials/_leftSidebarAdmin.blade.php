@@ -30,32 +30,54 @@
         <!-- Sidebar navigation-->
         <nav class="sidebar-nav">
             <ul id="sidebarnav">
+                
                 <li class="nav-small-cap">PERSONNEL</li>
+                
                 <li>
-                   <a href="{{route('teachers.index')}}" aria-expanded="false"><i class="fa fa-users"></i><span
-                    class="hide-menu">Enseignants </span></a>
+                    <a href="{{route('teachers.index')}}" aria-expanded="false">
+                        <i class="fas fa-chalkboard-teacher fa-lg"></i>
+                        <span class="hide-menu">
+                            Enseignants 
+                        </span>
+                    </a>
                 </li>
 
                 <li>
-                   <a href="{{route('encryptors.index')}}" aria-expanded="false"><i class="fa fa-users"></i><span
-                    class="hide-menu">Chiffreurs </span></a>
+                   <a href="{{route('encryptors.index')}}" aria-expanded="false">
+                        <i class="fa fa-users fa-lg"></i>
+                        <span class="hide-menu">
+                            Chiffreurs 
+                        </span>
+                    </a>
                 </li>
 
                 <li>
-                    <a href="{{ route('etudiants.index') }}" aria-expanded="false"><i class="fa fa-users"></i><span
-                        class="hide-menu">Etudiants </span></a>
+                    <a href="{{ route('etudiants.index') }}" aria-expanded="false">
+                        <i class="{{-- fa fa-users --}} fas fa-glasses fa-lg"></i>
+                        <span class="hide-menu">
+                            Etudiants 
+                        </span>
+                    </a>
                 </li>
 
                 <li class="nav-devider"></li>
 
                 <li>
-                    <a href="{{route('salles.index')}}" aria-expanded="false"><i class="mdi mdi-chair-school"></i><span
-                                class="hide-menu">Salles </span></a>
+                    <a href="{{route('salles.index')}}" aria-expanded="false">
+                        <i class="fas fa-door-open fa-lg"></i>
+                        <span class="hide-menu">
+                            Salles 
+                        </span>
+                    </a>
                 </li>
 
                 <li>
-                    <a href="#" aria-expanded="false"><i class="ti-settings"></i><span
-                                class="hide-menu">Paramètres </span></a>
+                    <a href="#" aria-expanded="false">
+                        <i class="fas fa-cog fa-lg"></i>
+                        <span class="hide-menu">
+                            Paramètres 
+                        </span>
+                    </a>
                 </li>
 
             </ul>
