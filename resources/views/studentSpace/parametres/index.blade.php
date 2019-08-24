@@ -216,6 +216,7 @@
 											    	<div class="col-md-9">
 											    		<input 
 											    			type="password" 
+											    			id="password"
 											    			class="form-control col-md-3"
 											    			name="password" 
 											    		/>
@@ -239,6 +240,7 @@
 											    	<div class="col-md-9">
 											    		<input 
 											    			type="password" 
+											    			id="confirm_password"
 											    			class="form-control col-md-3"
 											    			name="password_check" 
 											    		/>
@@ -294,6 +296,27 @@
 			</div>
 
 		</div>
+
+
+
+		@push('scripts')
+		<script type="text/javascript">
+			var password = document.getElementById("password"), 
+					confirm_password = document.getElementById("confirm_password");
+
+			function validatePassword(){
+			  if(password.value != confirm_password.value) {
+			    confirm_password.setCustomValidity("Passwords Don't Match");
+			  } else {
+			    confirm_password.setCustomValidity('');
+			  }
+			}
+
+			password.onchange = validatePassword;
+			confirm_password.onkeyup = validatePassword;
+		</script>
+		@endpush
+
 
 
 

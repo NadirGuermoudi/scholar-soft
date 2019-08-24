@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers\StudentSpace;
 
+use App\Models\Etudiant;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Etudiant;
-
 use Illuminate\Support\Facades\Hash;
 use Auth;
 
@@ -45,10 +44,10 @@ class StudentController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Etudiant  $etudiant
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Etudiant $etudiant)
     {
         //
     }
@@ -56,10 +55,10 @@ class StudentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Etudiant  $etudiant
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Etudiant $etudiant)
     {
         //
     }
@@ -68,13 +67,15 @@ class StudentController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Etudiant  $etudiant
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Etudiant $etudiant)
     {
         
-        if( $id == Auth::guard('etudiant')->user()->id )
+
+
+        if( $etudiant->id == Auth::guard('etudiant')->user()->id )
         {
             $request->validate([
 
@@ -82,17 +83,17 @@ class StudentController extends Controller
                         'password_old' => 'required'
                             ]); 
 
-            $etudiant = Etudiant::findOrFail($id)->first();
+            $etudiantBDD = Etudiant::findOrFail($etudiant->id)->first();
 
-            if( Hash::check($request->password_old, $etudiant->password) )
+            if( Hash::check($request->password_old, $etudiantBDD->password) )
             {
-                $etudiant->update
+                $etudiantBDD->update
                 ([
                     'email' => $request->email,
                     'password' => bcrypt($request->get('password'))
                 ]);
             
-                $etudiant->save();
+                $etudiantBDD->save();
                 flashy()->success('Votre profile est mis à jour');
             
             }
@@ -119,10 +120,10 @@ class StudentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Etudiant  $etudiant
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Etudiant $etudiant)
     {
         //
     }

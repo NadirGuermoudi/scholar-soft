@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\TeacherSpace;
+namespace App\Http\Controllers\StudentSpace;
 
-use App\Models\Enseignant;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Etudiant;
+
 use Illuminate\Support\Facades\Hash;
 use Auth;
 
-class TeacherController extends Controller
+class StudentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -44,10 +45,10 @@ class TeacherController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Enseignant  $enseignant
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Enseignant $enseignant)
+    public function show($id)
     {
         //
     }
@@ -55,10 +56,10 @@ class TeacherController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Enseignant  $enseignant
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Enseignant $enseignant)
+    public function edit($id)
     {
         //
     }
@@ -67,34 +68,32 @@ class TeacherController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Enseignant  $enseignant
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Enseignant $enseignant)
+    public function update(Request $request, $id)
     {
-
-
-
-        if( $enseignant->id == Auth::guard('enseignant')->user()->id )
+        
+        if( $id == Auth::guard('etudiant')->user()->id )
         {
-           
             $request->validate([
-                            'email' => 'required',
-                            'password_old' => 'required'
-            ]); 
 
-            $enseignantBDD = Enseignant::findOrFail($enseignant->id)->first();
-          
-            if( Hash::check($request->password_old, $enseignantBDD->password) )
+                        'email' => 'required',
+                        'password_old' => 'required'
+                            ]); 
+
+            $etudiant = Etudiant::findOrFail($id)->first();
+
+            if( Hash::check($request->password_old, $etudiant->password) )
             {
-                $enseignantBDD->update
+                $etudiant->update
                 ([
                     'email' => $request->email,
                     'password' => bcrypt($request->get('password'))
                 ]);
             
-                $enseignantBDD->save();
-                flashy('Votre profile est mis à jour');
+                $etudiant->save();
+                flashy()->success('Votre profile est mis à jour');
             
             }
             
@@ -102,26 +101,28 @@ class TeacherController extends Controller
             {
                 flashy()->error('Ancien mot de passe incorrecte');
             }
-
         }
+
         else
         {
-            flashy()->error('Accès non autorisé');
+                flashy()->error('Votre profile est mis à jour');
         }
 
-        return redirect(route('teacher.parametres'));
-
-
         
+
+        return redirect(route('student.parametres'));
+
+
+
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Enseignant  $enseignant
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Enseignant $enseignant)
+    public function destroy($id)
     {
         //
     }
