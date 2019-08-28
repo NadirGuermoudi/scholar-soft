@@ -13,13 +13,6 @@
 	 
 		<title>{{ page_title($title ?? '') }}</title> 
 
-	<style type="text/css">
-		{{-- ce style est pour agrandir les icones de FA --}}
-		.fa,.far,.fas {
-		  font-size: 20px;
-		}
-	</style>
-
 	<!-- Bootstrap Core CSS -->
 	{{-- <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet"> --}}
 	<link href="{{asset('monster/assets/plugins/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
@@ -50,7 +43,7 @@
 	<!-- Main wrapper - style you can find in pages.scss -->
 	<!-- ============================================================== -->
 	<div id="main-wrapper">
-		@if(Auth::guard('admin')->check())
+		@auth('admin')
 			{{-- Logout form --}}
 			<form id="logout-form" action="{{ route('admin.logout') }}" method="POST" style="display: none;"> @csrf </form>
 			<!-- ============================================================== -->
@@ -61,26 +54,26 @@
 			<!-- Left Sidebar - style you can find in sidebar.scss  -->
 			<!-- ============================================================== -->
 			@include('layouts/partials/_leftSidebarAdmin')
-		@endif
+		@endauth
 
-		@if(Auth::guard('encryptor')->check())
+		@auth('encryptor')
 			<form id="logout-form" action="{{ route('encryptor.logout') }}" method="POST" style="display: none;"> @csrf </form>
 			@include('layouts/partials/_topToolbarEncryptor')
 			@include('layouts/partials/_leftSidebarEncryptor')
-		@endif
+		@endauth
 
-		@if(Auth::guard('enseignant')->check())
+		@auth('enseignant')
 			<form id="logout-form" action="{{ route('teacher.logout') }}" method="POST" style="display: none;"> @csrf </form>
 			@include('layouts/partials/_topToolbarTeacher')
 			@include('layouts/partials/_leftSidebarTeacher')
-		@endif
+		@endauth
 
 
-		@if(Auth::guard('etudiant')->check())
+		@auth('etudiant')
 			<form id="logout-form" action="{{ route('student.logout') }}" method="POST" style="display: none;"> @csrf </form>
 			@include('layouts/partials/_topToolbarStudent')
 			@include('layouts/partials/_leftSidebarStudent')
-		@endif
+		@endauth
 		<!-- Page wrapper  -->
 		<div class="page-wrapper">
 
