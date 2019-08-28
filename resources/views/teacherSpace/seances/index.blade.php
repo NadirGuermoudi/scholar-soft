@@ -50,8 +50,8 @@
 							@foreach($seances as $seance)
 							<tr>
 								<td>{{ $seance->jour }}</td>
-								<td><center>{{ substr ($seance->heur_debut, 0, 5) }}</center></td>
-								<td><center>{{ substr ($seance->heur_fin, 0, 5) }}</center></td>
+								<td><center>{{ substr($seance->heur_debut, 0, 5) }}</center></td>
+								<td><center>{{ substr($seance->heur_fin, 0, 5) }}</center></td>
 								<td>{{ $seance->salle->nom }}</td>
 								<td>{{ $seance->type }}</td>
 								<td>{{ $seance->module }}</td>

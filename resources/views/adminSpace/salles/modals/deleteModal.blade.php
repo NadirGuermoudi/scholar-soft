@@ -27,7 +27,7 @@ we don't need a delete page, the modal is enough
 					@method('DELETE')
 					@csrf
 
-					<button type="submit" class="btn btn-default waves-effect">
+					<button type="submit" class="btn btn-danger waves-effect">
 						Oui 
 					</button>
 						&nbsp;

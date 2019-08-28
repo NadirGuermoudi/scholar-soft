@@ -26,3 +26,9 @@ Route::resource('teachers','AdminSpace\TeachersController');
 Route::resource('encryptors', 'AdminSpace\EncryptorsController');
 
 Route::resource('etudiants', 'AdminSpace\StudentsController');
+
+Route::resource('groupes', 'AdminSpace\GroupeController');
+Route::delete('groupes/{groupe}/{etudiant}', 'AdminSpace\GroupeController@detach')->name('groupes.detach');
+Route::get('groupes/{groupe}/addStudents', 'AdminSpace\GroupeController@showAddStudents')->name('groupes.showAddStudents');
+Route::get('groupes/{groupe}/addStudents/{etudiant}', 'AdminSpace\GroupeController@addStudent')->name('groupes.addStudent');
+Route::post('groupes/{groupe}/addStudents', 'AdminSpace\GroupeController@addStudents')->name('groupes.addStudents');

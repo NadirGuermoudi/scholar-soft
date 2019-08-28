@@ -2,6 +2,6 @@
 
 @section('content')
 
-	<p> &nbsp; welcome back {{Auth::guard('enseignant	')->user()->nom}} </p>
+	<p> &nbsp; welcome back {{Auth::guard('enseignant')->user()->nom}} </p>
 
 @endsection
