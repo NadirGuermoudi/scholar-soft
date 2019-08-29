@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use App\Models\Groupe;
 
 class GroupesTableSeeder extends Seeder
 {
@@ -12,76 +13,145 @@ class GroupesTableSeeder extends Seeder
 	 */
 	public function run()
 	{
-		DB::table('groupes')->insert([
-			'specialite' => 'L2 INFO',
-			'numero' => 1,
-			'annee' => '2018/2019',
-		]);
+		$groupe = new Groupe();
+		$groupe->specialite = 'L1 MI';
+		$groupe->numero = 1;
+		$groupe->annee = '2018/2019';
+		$groupe->save();
+		$groupe->etudiants()->attach(range(2, 30));
 
-		DB::table('groupes')->insert([
-			'specialite' => 'L2 INFO',
-			'numero' => 2,
-			'annee' => '2018/2019',
-		]);
+		$groupe = new Groupe();
+		$groupe->specialite = 'L1 MI';
+		$groupe->numero = 2;
+		$groupe->annee = '2018/2019';
+		$groupe->save();
+		$groupe->etudiants()->attach(range(31, 60));
 
-		DB::table('groupes')->insert([
-			'specialite' => 'L2 INFO',
-			'numero' => 3,
-			'annee' => '2018/2019',
-		]);
+		$groupe = new Groupe();
+		$groupe->specialite = 'L1 MI';
+		$groupe->numero = 3;
+		$groupe->annee = '2018/2019';
+		$groupe->save();
+		$groupe->etudiants()->attach(range(61, 90));
 
-		DB::table('groupes')->insert([
-			'specialite' => 'L2 INFO',
-			'numero' => 4,
-			'annee' => '2018/2019',
-		]);
+		$groupe = new Groupe();
+		$groupe->specialite = 'L1 MI';
+		$groupe->numero = 4;
+		$groupe->annee = '2018/2019';
+		$groupe->save();
+		$groupe->etudiants()->attach(range(91, 120));
 
-		DB::table('groupes')->insert([
-			'specialite' => 'L3 INFO',
-			'numero' => 1,
-			'annee' => '2018/2019',
-		]);
+		$groupe = new Groupe();
+		$groupe->specialite = 'L1 MI';
+		$groupe->numero = 5;
+		$groupe->annee = '2018/2019';
+		$groupe->save();
+		$groupe->etudiants()->attach(range(121, 150));
 
-		DB::table('groupes')->insert([
-			'specialite' => 'L3 INFO',
-			'numero' => 2,
-			'annee' => '2018/2019',
-		]);
+		$groupe = new Groupe();
+		$groupe->specialite = 'L1 MI';
+		$groupe->numero = 6;
+		$groupe->annee = '2018/2019';
+		$groupe->save();
+		$groupe->etudiants()->attach(range(151, 180));
 
-		DB::table('groupes')->insert([
-			'specialite' => 'L3 INFO',
-			'numero' => 3,
-			'annee' => '2018/2019',
-		]);
+		$groupe = new Groupe();
+		$groupe->specialite = 'L1 MI';
+		$groupe->numero = 7;
+		$groupe->annee = '2018/2019';
+		$groupe->save();
+		$groupe->etudiants()->attach(range(181, 210));
 
-		DB::table('groupes')->insert([
-			'specialite' => 'L3 INFO',
-			'numero' => 4,
-			'annee' => '2018/2019',
-		]);
+		$groupe = new Groupe();
+		$groupe->specialite = 'L1 MI';
+		$groupe->numero = 8;
+		$groupe->annee = '2018/2019';
+		$groupe->save();
+		$groupe->etudiants()->attach(range(211, 240));
 
-		DB::table('groupes')->insert([
-			'specialite' => 'M1 RSD',
-			'numero' => 1,
-			'annee' => '2018/2019',
-		]);
+		$groupe = new Groupe();
+		$groupe->specialite = 'L2 INFO';
+		$groupe->numero = 1;
+		$groupe->annee = '2018/2019';
+		$groupe->save();
+		$groupe->etudiants()->attach(range(241, 270));
 
-		DB::table('groupes')->insert([
-			'specialite' => 'M1 MID',
-			'numero' => 1,
-			'annee' => '2018/2019',
-		]);
+		$groupe = new Groupe();
+		$groupe->specialite = 'L2 INFO';
+		$groupe->numero = 2;
+		$groupe->annee = '2018/2019';
+		$groupe->save();
+		$groupe->etudiants()->attach(range(271, 300));
 
-		DB::table('groupes')->insert([
-			'specialite' => 'M1 SIC',
-			'numero' => 1,
-			'annee' => '2018/2019',
-		]);
+		$groupe = new Groupe();
+		$groupe->specialite = 'L2 INFO';
+		$groupe->numero = 3;
+		$groupe->annee = '2018/2019';
+		$groupe->save();
+		$groupe->etudiants()->attach(range(301, 330));
 
-		DB::table('groupes')->insert([
-			'specialite' => 'M1 GL',
-			'numero' => 1,
-			'annee' => '2018/2019',
-		]);
+		$groupe = new Groupe();
+		$groupe->specialite = 'L2 INFO';
+		$groupe->numero = 4;
+		$groupe->annee = '2018/2019';
+		$groupe->save();
+		$groupe->etudiants()->attach(range(331, 360));
+
+		$groupe = new Groupe();
+		$groupe->specialite = 'L3 INFO';
+		$groupe->numero = 1;
+		$groupe->annee = '2018/2019';
+		$groupe->save();
+		$groupe->etudiants()->attach(range(361, 390));
+
+		$groupe = new Groupe();
+		$groupe->specialite = 'L3 INFO';
+		$groupe->numero = 2;
+		$groupe->annee = '2018/2019';
+		$groupe->save();
+		$groupe->etudiants()->attach(range(391, 420));
+
+		$groupe = new Groupe();
+		$groupe->specialite = 'L3 INFO';
+		$groupe->numero = 3;
+		$groupe->annee = '2018/2019';
+		$groupe->save();
+		$groupe->etudiants()->attach(range(421, 450));
+
+		$groupe = new Groupe();
+		$groupe->specialite = 'L3 INFO';
+		$groupe->numero = 4;
+		$groupe->annee = '2018/2019';
+		$groupe->save();
+		$groupe->etudiants()->attach(range(451, 480));
+
+		$groupe = new Groupe();
+		$groupe->specialite = 'M1 RSD';
+		$groupe->numero = 1;
+		$groupe->annee = '2018/2019';
+		$groupe->save();
+		$groupe->etudiants()->attach(range(481, 510));
+
+		$groupe = new Groupe();
+		$groupe->specialite = 'M1 MID';
+		$groupe->numero = 1;
+		$groupe->annee = '2018/2019';
+		$groupe->save();
+		$groupe->etudiants()->attach(range(511, 540));
+
+		$groupe = new Groupe();
+		$groupe->specialite = 'M1 SIC';
+		$groupe->numero = 1;
+		$groupe->annee = '2018/2019';
+		$groupe->save();
+		$groupe->etudiants()->attach(range(541, 570));
+
+		$groupe = new Groupe();
+		$groupe->specialite = 'M1 GL';
+		$groupe->numero = 1;
+		$groupe->annee = '2018/2019';
+		$groupe->save();
+		$groupe->etudiants()->attach(1);
+		$groupe->etudiants()->attach(range(571, 600));
 	}
 }

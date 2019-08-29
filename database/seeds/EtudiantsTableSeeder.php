@@ -17,12 +17,13 @@ class EtudiantsTableSeeder extends Seeder
 			'matricule' => Str::random(10),
 			'nom' => 'GUERMOUDI',
 			'prenom' => 'Nadir',
+			'date_naissance' => '1996-06-09',
 			'email' => 'nadir.guermoudi@gmail.com',
 			'password' => bcrypt('password'),
 			'remember_token' => Str::random(10),
 		]);
 
-		factory('App\Models\Etudiant', 200)->create();
+		factory('App\Models\Etudiant', 600)->create();
 	}
 
 	// $table->bigIncrements('id');
