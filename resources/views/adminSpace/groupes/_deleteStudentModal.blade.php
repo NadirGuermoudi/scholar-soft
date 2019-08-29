@@ -9,12 +9,12 @@
 
 
 				<p style="color:white;">
-					Êtes-vous sûre de vouloir supprimer l'étudiant {{ $etudiant->fullName }} ?
+					Êtes-vous sûre de vouloir supprimer l'étudiant <b>{{ $etudiant->fullName }}</b> du groupe ?
 				</p>
 
 			</div>
 			<div class="modal-footer">
-				<form class="form-inline" action="{{ route('etudiants.destroy', $etudiant->id) }}"  method="POST">					
+				<form class="form-inline" action="{{ route('groupes.detach',compact('groupe', 'etudiant')) }}"  method="POST">					
 					@method('DELETE')
 					@csrf
 					<button type="submit" class="btn btn-danger waves-effect">
