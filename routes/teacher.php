@@ -27,4 +27,3 @@ route::resource('seances','TeacherSpace\SeanceController');
 Route::get('/parametres','TeacherSpace\ParametresController@index')->name('teacher.parametres');
 
 route::resource('enseignant','TeacherSpace\TeacherController');
-

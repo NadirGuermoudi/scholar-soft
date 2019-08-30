@@ -139,8 +139,6 @@ class TeacherController extends Controller
 
         return redirect(route('teacher.parametres'));
 
-    }
-
     /**
      * Remove the specified resource from storage.
      *
