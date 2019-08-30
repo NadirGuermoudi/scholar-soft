@@ -83,7 +83,7 @@ class StudentController extends Controller
 
             // $etudiant = Etudiant::findOrFail($etudiant->id)->first();
 
-            if( Hash::check($request->password_old, $etudiantBDD->password) )
+            if( Hash::check($request->password_old, $etudiant->password) )
             {
                 
 
