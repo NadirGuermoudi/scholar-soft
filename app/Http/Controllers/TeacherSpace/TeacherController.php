@@ -139,7 +139,6 @@ class TeacherController extends Controller
 
         return redirect(route('teacher.parametres'));
 
-        
     }
 
     /**
