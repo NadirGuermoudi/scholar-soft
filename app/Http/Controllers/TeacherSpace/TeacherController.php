@@ -73,7 +73,6 @@ class TeacherController extends Controller
     public function update(Request $request, Enseignant $enseignant)
     {
 
-
         if( $enseignant->id == Auth::guard('enseignant')->user()->id )
         {
             $request->validate([
@@ -138,7 +137,6 @@ class TeacherController extends Controller
         
 
         return redirect(route('teacher.parametres'));
-
         
     }
 

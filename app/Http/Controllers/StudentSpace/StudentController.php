@@ -73,7 +73,6 @@ class StudentController extends Controller
     public function update(Request $request, Etudiant $etudiant)
     {
         
-
         if( $etudiant->id == Auth::guard('etudiant')->user()->id )
         {
             $request->validate([
@@ -84,7 +83,7 @@ class StudentController extends Controller
 
             // $etudiant = Etudiant::findOrFail($etudiant->id)->first();
 
-            if( Hash::check($request->password_old, $etudiant->password) )
+            if( Hash::check($request->password_old, $etudiantBDD->password) )
             {
                 
 
