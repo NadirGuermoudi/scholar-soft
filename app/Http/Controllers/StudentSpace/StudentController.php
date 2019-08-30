@@ -73,8 +73,6 @@ class StudentController extends Controller
     public function update(Request $request, Etudiant $etudiant)
     {
         
-
-
         if( $etudiant->id == Auth::guard('etudiant')->user()->id )
         {
             $request->validate([
@@ -83,19 +81,47 @@ class StudentController extends Controller
                         'password_old' => 'required'
                             ]); 
 
-            $etudiantBDD = Etudiant::findOrFail($etudiant->id)->first();
+            // $etudiant = Etudiant::findOrFail($etudiant->id)->first();
 
             if( Hash::check($request->password_old, $etudiantBDD->password) )
             {
-                $etudiantBDD->update
-                ([
-                    'email' => $request->email,
-                    'password' => bcrypt($request->get('password'))
-                ]);
+                
+
+                if($request->email!= $etudiant->email)
+                {
+                    $etudiant->update
+                    ([
+                            'email' => $request->email,
+                    ]);
+                    $etudiant->save();  
+                    flashy()->success('Votre profile est mis à jour');                  
+                }
+
+
+                if( ($request->password != "") || ($request->email!= $etudiant->email) )
+                {
+                    if( strlen($request->password)>=8  )
+                    {
+                        $etudiant->update
+                        ([
+                            'password' => bcrypt($request->get('password'))
+                        ]);
+                        $etudiant->save(); 
+                        flashy()->success('Votre profile est mis à jour');
+                        return redirect(route('student.parametres'));
+                  
+                    }
+                    else
+                    {
+                        flashy()->error('Mot de passe doit avoir au moins 8 caractères');
+                        return redirect(route('student.parametres'));
+                    }
+                    
+                }
+
+                flashy()->error('Aucune modification n\' été effectuée');
             
-                $etudiantBDD->save();
-                flashy()->success('Votre profile est mis à jour');
-            
+                
             }
             
             else
@@ -106,13 +132,12 @@ class StudentController extends Controller
 
         else
         {
-                flashy()->error('Votre profile est mis à jour');
+                flashy()->error('Page non autorisée');
         }
 
         
 
         return redirect(route('student.parametres'));
-
 
 
     }
