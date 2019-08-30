@@ -44,8 +44,7 @@
 
                 <li>
                    <a href="{{route('encryptors.index')}}" aria-expanded="false">
-                        <i class="fa fa-users fa-lg"></i>
-
+                        <i class="fa fa-user-tie fa-lg"></i>
                         <span class="hide-menu">
                             Chiffreurs 
                         </span>
@@ -64,7 +63,6 @@
                 <li class="nav-devider"></li>
 
                 <li>
-
                     <a href="{{ route('groupes.index') }}" aria-expanded="false">
                         <i class="{{-- fa fa-users --}} fa fa-users fa-lg"></i>
                         <span class="hide-menu">
