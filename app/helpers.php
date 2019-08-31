@@ -18,3 +18,24 @@ if(! function_exists('set_active_route')) {
 		return Route::is($route) ? 'active' : '';
 	}
 }
+
+if(! function_exists('no_repeat')){
+	function no_repeat($min,$max,$count) {
+
+		if($max - $min < $count) {
+			return false;
+		}
+
+		$nonrepeatarray = array();
+		for($i = 0; $i < $count; $i++) {
+			$rand = rand($min,$max);
+
+			while(in_array($rand,$nonrepeatarray)) {
+				$rand = rand($min,$max);
+			}
+
+			$nonrepeatarray[$i] = $rand;
+		}
+		return $nonrepeatarray;
+	}
+}
