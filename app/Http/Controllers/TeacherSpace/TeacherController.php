@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers\TeacherSpace;
 
+use App\Models\Enseignant;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
-use App\Models\Enseignant;
-
 use Illuminate\Support\Facades\Hash;
 use Auth;
 
@@ -46,10 +44,10 @@ class TeacherController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Enseignant  $enseignant
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Enseignant $enseignant)
     {
         //
     }
@@ -57,10 +55,10 @@ class TeacherController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Enseignant  $enseignant
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Enseignant $enseignant)
     {
         //
     }
@@ -69,56 +67,86 @@ class TeacherController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Enseignant  $enseignant
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Enseignant $enseignant)
     {
 
-        if( $id == Auth::guard('enseignant')->user()->id )
+        if( $enseignant->id == Auth::guard('enseignant')->user()->id )
         {
-           
             $request->validate([
-                            'email' => 'required',
-                            'password_old' => 'required'
-            ]); 
 
-            $enseignant = Enseignant::findOrFail($id)->first();
-          
+                        'email' => 'required',
+                        'password_old' => 'required'
+                            ]); 
+
+            // $enseignant = Enseignant::findOrFail($enseignant->id)->first();
+
             if( Hash::check($request->password_old, $enseignant->password) )
             {
-                $enseignant->update
-                ([
-                    'email' => $request->email,
-                    'password' => bcrypt($request->get('password'))
-                ]);
+                
+
+                if($request->email!= $enseignant->email)
+                {
+                    $enseignant->update
+                    ([
+                            'email' => $request->email,
+                    ]);
+                    $enseignant->save();  
+                    flashy()->success('Votre profile est mis à jour');                  
+                }
+
+
+                if( ($request->password != "") || ($request->email!= $enseignant->email) )
+                {
+                    if( strlen($request->password)>=8  )
+                    {
+                        $enseignant->update
+                        ([
+                            'password' => bcrypt($request->get('password'))
+                        ]);
+                        $enseignant->save(); 
+                        flashy()->success('Votre profile est mis à jour');
+                        return redirect(route('teacher.parametres'));
+                    }
+                    else
+                    {
+                        flashy()->error('Mot de passe doit avoir au moins 8 caractères');
+                        return redirect(route('teacher.parametres'));
+                    }
+                    
+                }
+
+                flashy()->error('Aucune modification n\' été effectuée');
             
-                $enseignant->save();
-                flashy('Votre profile est mis à jour');
-            
+                
             }
             
             else
             {
-                flashy('Ancien mot de passe incorrecte');
+                flashy()->error('Ancien mot de passe incorrecte');
             }
-
         }
+
         else
         {
-            flashy()->error('Accès non autorisé');
+                flashy()->error('Page non autorisée');
         }
 
+        
+
         return redirect(route('teacher.parametres'));
+        
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Enseignant  $enseignant
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Enseignant $enseignant)
     {
         //
     }

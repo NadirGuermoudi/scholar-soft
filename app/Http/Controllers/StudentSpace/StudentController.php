@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers\StudentSpace;
 
+use App\Models\Etudiant;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Etudiant;
-
 use Illuminate\Support\Facades\Hash;
 use Auth;
 
@@ -45,10 +44,10 @@ class StudentController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Etudiant  $etudiant
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Etudiant $etudiant)
     {
         //
     }
@@ -56,10 +55,10 @@ class StudentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Etudiant  $etudiant
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Etudiant $etudiant)
     {
         //
     }
@@ -68,13 +67,13 @@ class StudentController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Etudiant  $etudiant
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Etudiant $etudiant)
     {
         
-        if( $id == Auth::guard('etudiant')->user()->id )
+        if( $etudiant->id == Auth::guard('etudiant')->user()->id )
         {
             $request->validate([
 
@@ -82,19 +81,47 @@ class StudentController extends Controller
                         'password_old' => 'required'
                             ]); 
 
-            $etudiant = Etudiant::findOrFail($id)->first();
+            // $etudiant = Etudiant::findOrFail($etudiant->id)->first();
 
-            if( Hash::check($request->password_old, $etudiant->password) )
+            if( Hash::check($request->password_old, $etudiantBDD->password) )
             {
-                $etudiant->update
-                ([
-                    'email' => $request->email,
-                    'password' => bcrypt($request->get('password'))
-                ]);
+                
+
+                if($request->email!= $etudiant->email)
+                {
+                    $etudiant->update
+                    ([
+                            'email' => $request->email,
+                    ]);
+                    $etudiant->save();  
+                    flashy()->success('Votre profile est mis à jour');                  
+                }
+
+
+                if( ($request->password != "") || ($request->email!= $etudiant->email) )
+                {
+                    if( strlen($request->password)>=8  )
+                    {
+                        $etudiant->update
+                        ([
+                            'password' => bcrypt($request->get('password'))
+                        ]);
+                        $etudiant->save(); 
+                        flashy()->success('Votre profile est mis à jour');
+                        return redirect(route('student.parametres'));
+                  
+                    }
+                    else
+                    {
+                        flashy()->error('Mot de passe doit avoir au moins 8 caractères');
+                        return redirect(route('student.parametres'));
+                    }
+                    
+                }
+
+                flashy()->error('Aucune modification n\' été effectuée');
             
-                $etudiant->save();
-                flashy()->success('Votre profile est mis à jour');
-            
+                
             }
             
             else
@@ -105,7 +132,7 @@ class StudentController extends Controller
 
         else
         {
-                flashy()->error('Votre profile est mis à jour');
+                flashy()->error('Page non autorisée');
         }
 
         
@@ -113,16 +140,15 @@ class StudentController extends Controller
         return redirect(route('student.parametres'));
 
 
-
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Etudiant  $etudiant
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Etudiant $etudiant)
     {
         //
     }

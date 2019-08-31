@@ -81,7 +81,7 @@
                 </li>
 
                 <li>
-                    <a href="#" aria-expanded="false">
+                    <a href="{{route('admin.parametres')}}" aria-expanded="false">
                         <i class="fas fa-cog fa-lg"></i>
                         <span class="hide-menu">
                             Paramètres 
