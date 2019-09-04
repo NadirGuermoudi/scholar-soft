@@ -42,7 +42,7 @@
 
 										<form class="well form-horizontal" 
 											  method="POST" 
-											  action="{{route('etudiant.update', Auth::guard('etudiant')->user()->id )}}" 
+											  action="{{route('admin.update', Auth::guard('admin')->user()->id )}}" 
 											  id="contact_form" 
 											  enctype="multipart/form-data">
 										
@@ -68,7 +68,7 @@
 											    			type="text" 
 											    			class="form-control col-md-3"
 											    			name="nom" 
-											    			value="{{Auth::guard('etudiant')->user()->nom}}"
+											    			value="{{Auth::guard('admin')->user()->nom}}"
 											    		/>
 											    	</div>
 
@@ -90,7 +90,7 @@
 											    			type="text" 
 											    			class="form-control col-md-3"
 											    			name="prenom" 
-											    			value="{{Auth::guard('etudiant')->user()->prenom}}"
+											    			value="{{Auth::guard('admin')->user()->prenom}}"
 											    		/>
 											    	</div>
 
@@ -100,62 +100,7 @@
 
 												<br>
 
-												<div class="row">
 
-											    	<div class="col-md-3">
-											     		<strong>Matricule:</strong>
-											    	</div>
-											    
-											    	<div class="col-md-9">
-											    		<input 
-											    			readonly
-											    			type="text" 
-											    			class="form-control col-md-3"
-											    			name="matricule" 
-											    			value="{{Auth::guard('etudiant')->user()->matricule}}"
-											    		/>
-											    	</div>
-
-												</div>
-
-
-
-												<br>
-
-												<div class="row">
-
-											    	<div class="col-md-3">
-											     		<strong>
-											     			Date de naissance:
-											     		</strong>
-											    	</div>
-											    
-											    	<div class="col-md-9">
-											    		<input 
-											    			readonly
-											    			type="text" 
-											    			class="form-control col-md-3"
-											    			name="date_naissance" 
-											    			value="{{Auth::guard('etudiant')->user()->date_naissance}}"
-											    		/>
-											    	</div>
-
-												</div>
-
-												<br>
-
-
-
-
-												<strong>
-													<i class="margin-r-5"></i>
-												</strong>
-												            
-												<hr>
-
-
-
-												<br>
 
 												<div class="row">
 
@@ -165,10 +110,12 @@
 											    
 											    	<div class="col-md-9">
 											    		<input 
-											    			type="text" 
+											    			type="email" 
 											    			class="form-control col-md-3"
 											    			name="email" 
-											    			value="{{Auth::guard('etudiant')->user()->email}}"
+											    			value="{{Auth::guard('admin')->user()->email}}"
+											    			minlength="5"
+											    			maxlength="35" 
 											    		/>
 											    	</div>
 
@@ -192,6 +139,8 @@
 											    			type="password" 
 											    			class="form-control col-md-3"
 											    			name="password_old" 
+											    			minlength="8"
+											    			maxlength="15" 
 											    		/>
 											    		{{-- <label class="col-md-6 text-info">
 											    			Saissez mot de passe actuelle pour validation
@@ -218,7 +167,9 @@
 											    			type="password" 
 											    			id="password"
 											    			class="form-control col-md-3"
-											    			name="password" 
+											    			name="password"
+											    			minlength="0"
+											    			maxlength="15" 
 											    		/>
 											    	</div>
 
@@ -242,7 +193,9 @@
 											    			type="password" 
 											    			id="confirm_password"
 											    			class="form-control col-md-3"
-											    			name="password_check" 
+											    			name="password_check"
+											    			minlength="0"
+											    			maxlength="15" 
 											    		/>
 											    	</div>
 
