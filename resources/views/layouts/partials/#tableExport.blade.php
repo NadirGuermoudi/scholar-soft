@@ -66,6 +66,16 @@
 		'copy', 'csv', 'excel', 'pdf', 'print'
 		]
 	});
+	$('#datatable_desc').DataTable({
+		responsive: true,
+		"order": [
+			[0, 'desc']
+		],
+		dom: 'Bfrtip',
+		buttons: [
+		'copy', 'csv', 'excel', 'pdf', 'print'
+		]
+	});
 </script>
 
 @endpush

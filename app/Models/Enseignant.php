@@ -25,18 +25,18 @@ class Enseignant extends Authenticatable
 	}
 
 	public function mesPaquets(){
-		return $this->hasMany('App\models\Paquet', 'responsable');
+		return $this->hasMany('App\models\Paquet', 'responsable_id');
 	}
 
 	public function mesPaquetsCorrecteur1(){
-		return $this->hasMany('App\models\Paquet', 'correcteur1');
+		return $this->hasMany('App\models\Paquet', 'correcteur1_id');
 	}
 
 	public function mesPaquetsCorrecteur2(){
-		return $this->hasMany('App\models\Paquet', 'correcteur2');
+		return $this->hasMany('App\models\Paquet', 'correcteur2_id');
 	}
 
 	public function mesPaquetsCorrecteur3(){
-		return $this->hasMany('App\models\Paquet', 'correcteur3');
+		return $this->hasMany('App\models\Paquet', 'correcteur3_id');
 	}
 }

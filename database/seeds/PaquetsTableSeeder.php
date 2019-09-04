@@ -29,15 +29,17 @@ class PaquetsTableSeeder extends Seeder
 		$paquet->correcteur1_rendu = true;
 		$paquet->correcteur2_rendu = true;
 		$paquet->correcteur3_rendu = true;
-		$paquet->responsable = 1;
-		$paquet->correcteur1 = 2;
-		$paquet->correcteur2 = 3;
-		$paquet->correcteur3 = 4;
+		$paquet->responsable_id = 1;
+		$paquet->correcteur1_id = 2;
+		$paquet->correcteur2_id = 3;
+		$paquet->correcteur3_id = 4;
 		$paquet->encryptor_id = 1;
 		$paquet->save();
 		foreach ($etudiants as $key => $etudiant) {
 			$paquet->etudiants()->attach($etudiant, ['code' => $randomCodes[$key], 'note' => $randomCodes[$key]%20+2, 'note1' => $randomCodes[$key]%20, 'note2' => $randomCodes[$key]%20]);
 		}
+
+		sleep(1);
 
 		$etudiants = Groupe::where('specialite', 'L1 MI')->where('numero', 1)->first()->etudiants()->get();
 		$randomCodes = no_repeat(1, 999, $etudiants->count());
@@ -55,15 +57,17 @@ class PaquetsTableSeeder extends Seeder
 		// $paquet->correcteur1_rendu = true;
 		// $paquet->correcteur2_rendu = true;
 		// $paquet->correcteur3_rendu = true;
-		$paquet->responsable = 1;
-		$paquet->correcteur1 = 2;
-		$paquet->correcteur2 = 3;
-		$paquet->correcteur3 = 4;
+		$paquet->responsable_id = 1;
+		$paquet->correcteur1_id = 2;
+		$paquet->correcteur2_id = 3;
+		$paquet->correcteur3_id = 4;
 		// $paquet->encryptor_id = 1;
 		$paquet->save();
 		foreach ($etudiants as $key => $etudiant) {
 			$paquet->etudiants()->attach($etudiant, ['code' => $randomCodes[$key]]);
 		}
+
+		sleep(1);
 
 		$etudiants = Groupe::where('specialite', 'M1 GL')->first()->etudiants()->get();
 		$randomCodes = no_repeat(1, 999, $etudiants->count());
@@ -81,15 +85,17 @@ class PaquetsTableSeeder extends Seeder
 		$paquet->correcteur1_rendu = true;
 		// $paquet->correcteur2_rendu = true;
 		// $paquet->correcteur3_rendu = true;
-		$paquet->responsable = 1;
-		$paquet->correcteur1 = 1;
-		// $paquet->correcteur2 = 3;
-		// $paquet->correcteur3 = 4;
+		$paquet->responsable_id = 1;
+		$paquet->correcteur1_id = 1;
+		// $paquet->correcteur2_id = 3;
+		// $paquet->correcteur3_id = 4;
 		$paquet->encryptor_id = 1;
 		$paquet->save();
 		foreach ($etudiants as $key => $etudiant) {
 			$paquet->etudiants()->attach($etudiant, ['code' => $randomCodes[$key], 'note' => $randomCodes[$key]%20, 'note1' => $randomCodes[$key]%20]);
 		}
+
+		sleep(1);
 
 		$etudiants = Groupe::where('specialite', 'M1 GL')->first()->etudiants()->get();
 		$randomCodes = no_repeat(1, 999, $etudiants->count());
@@ -107,10 +113,10 @@ class PaquetsTableSeeder extends Seeder
 		// $paquet->correcteur1_rendu = true;
 		// $paquet->correcteur2_rendu = true;
 		// $paquet->correcteur3_rendu = true;
-		$paquet->responsable = 1;
-		$paquet->correcteur1 = 1;
-		// $paquet->correcteur2 = 3;
-		// $paquet->correcteur3 = 4;
+		$paquet->responsable_id = 1;
+		$paquet->correcteur1_id = 1;
+		// $paquet->correcteur2_id = 3;
+		// $paquet->correcteur3_id = 4;
 		// $paquet->encryptor_id = 1;
 		$paquet->save();
 		foreach ($etudiants as $key => $etudiant) {
