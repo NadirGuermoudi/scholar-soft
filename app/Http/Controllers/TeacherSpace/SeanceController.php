@@ -116,7 +116,7 @@ class SeanceController extends Controller
 		$seance->groupes()->detach();
 		$seance->groupes()->attach($request->groupes_ids);
 
-		flashy('La séance (' . $seance->type . ' | ' . $seance->module . ') a été modifié !');
+		flashy('La séance (' . $seance->type . ' | ' . $seance->module . ') a été modifiée !');
 		return redirect()->route('seances.index');
 	}
 

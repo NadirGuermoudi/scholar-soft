@@ -23,7 +23,26 @@
 		<!-- Sidebar navigation-->
 		<nav class="sidebar-nav">
 			<ul id="sidebarnav">
-				<li class="nav-small-cap">PERSONNEL</li>
+				<li class="nav-small-cap">Correction</li>
+				<li>
+					<a href="{{ route('paquets.index') }}" aria-expanded="false">
+						<i class="fas fa-folder fa-lg"></i>
+						<span class="hide-menu">
+							Mes paquets 
+						</span>
+					</a>
+				</li>
+
+				<li>
+					<a href="#" aria-expanded="false">
+						<i class="fa fa-pen fa-lg"></i>
+						<span class="hide-menu">
+							Paquets à corriger  
+						</span>
+					</a>
+				</li>
+
+				<li class="nav-devider"></li>
 				<li>
 					<a href="{{route('seances.index')}}" aria-expanded="false">
 						<i class="fa fa-leanpub fa-lg"></i>
@@ -32,26 +51,6 @@
 						</span>
 					</a>
 				</li>
-				
-				<li>
-					<a href="#" aria-expanded="false">
-						<i class="fas fa-glasses fa-lg"></i>
-						<span class="hide-menu">
-							Etudiants 
-						</span>
-					</a>
-				</li>
-
-				<li>
-					<a href="#" aria-expanded="false">
-						<i class="fa fa-users fa-lg"></i>
-						<span class="hide-menu">
-							Chiffreurs 
-						</span>
-					</a>
-				</li>
-
-				<li class="nav-devider"></li>
 
 				<li>
 					<a href="#" aria-expanded="false">

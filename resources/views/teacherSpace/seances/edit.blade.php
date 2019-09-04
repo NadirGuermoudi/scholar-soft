@@ -12,8 +12,8 @@
 	<h4 class="card-title">Modifier la séance ( {{ $seance->type . ' - ' . $seance->module }} )</h4>
 	
 	<form action="{{ route('seances.update', $seance) }}" method="POST">
-		@csrf
 		@method('PUT')
+		@csrf
 
 		<div class="form-group {{ $errors->has('type') ? 'has-danger' : '' }}">
 			<label for="type" class="control-label">Type</label>

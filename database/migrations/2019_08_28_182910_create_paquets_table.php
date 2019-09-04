@@ -29,16 +29,16 @@ class CreatePaquetsTable extends Migration
             $table->boolean('correcteur2_rendu')->default(false);
             $table->boolean('correcteur3_rendu')->default(false);
 
-            $table->unsignedBigInteger('responsable')->nullable();
-            $table->unsignedBigInteger('correcteur1')->nullable();
-            $table->unsignedBigInteger('correcteur2')->nullable();
-            $table->unsignedBigInteger('correcteur3')->nullable();
+            $table->unsignedBigInteger('responsable_id')->nullable();
+            $table->unsignedBigInteger('correcteur1_id')->nullable();
+            $table->unsignedBigInteger('correcteur2_id')->nullable();
+            $table->unsignedBigInteger('correcteur3_id')->nullable();
             $table->unsignedBigInteger('encryptor_id')->nullable();
             
-            $table->foreign('responsable')->references('id')->on('enseignants')->onDelete('cascade');
-            $table->foreign('correcteur1')->references('id')->on('enseignants')->onDelete('set null');
-            $table->foreign('correcteur2')->references('id')->on('enseignants')->onDelete('set null');
-            $table->foreign('correcteur3')->references('id')->on('enseignants')->onDelete('set null');
+            $table->foreign('responsable_id')->references('id')->on('enseignants')->onDelete('cascade');
+            $table->foreign('correcteur1_id')->references('id')->on('enseignants')->onDelete('set null');
+            $table->foreign('correcteur2_id')->references('id')->on('enseignants')->onDelete('set null');
+            $table->foreign('correcteur3_id')->references('id')->on('enseignants')->onDelete('set null');
             $table->foreign('encryptor_id')->references('id')->on('encryptors')->onDelete('set null');
 
             $table->timestamps();

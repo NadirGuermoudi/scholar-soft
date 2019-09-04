@@ -18,5 +18,3 @@ class ParametresController extends Controller
     	return view('teacherSpace/parametres/index');
     }
 }
-
-?>
