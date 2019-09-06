@@ -20,8 +20,6 @@ class SalleController extends Controller
         $this->middleware('admin');
     }
 
-
-    
     public function index()
     {
         $salles = Salle::all();

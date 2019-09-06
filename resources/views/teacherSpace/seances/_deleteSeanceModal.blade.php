@@ -17,7 +17,7 @@
 				<form class="form-inline" action="{{ route('seances.destroy', $seance->id) }}"  method="POST">					
 					@method('DELETE')
 					@csrf
-					<button type="submit" class="btn btn-default waves-effect">
+					<button type="submit" class="btn btn-danger waves-effect">
 						Oui 
 					</button>
 					&nbsp;

@@ -15,4 +15,9 @@ class Admin extends Authenticatable
 	protected $fillable = ['nom', 'prenom', 'email',  'password'];
 
 	protected $hidden = ['password',  'remember_token'];
+
+	public function getFullNameAttribute()
+	{
+		return strtoupper($this->nom) . ' ' . ucfirst($this->prenom);
+	}
 }

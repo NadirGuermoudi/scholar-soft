@@ -15,7 +15,7 @@ class RedirectIfNotEncryptor
 	public function handle($request, Closure $next, $guard="encryptor")
 	{
 		if(!auth()->guard($guard)->check()) {
-			return redirect(route('admin.login'));
+			return redirect(route('encryptor.login'));
 		}
 		return $next($request);
 	}

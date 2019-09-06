@@ -8,6 +8,7 @@ use App\Models\Absence;
 use app\Models\Seance;
 use app\Models\Etudiant;
 
+use Auth;
 
 class AbsenceController extends Controller
 {
@@ -22,10 +23,15 @@ class AbsenceController extends Controller
         $this->middleware('etudiant');
     }
 
-    
+
     public function index()
     {
-        //
+			/* The next query is supposed to get related absences and also get the seance related to each absence */
+
+			$absences = Absence::where('etudiant_id', '=', Auth::guard('etudiant')->user()->id)->with('Seance')->get();
+			return view('studentSpace/voirAbsences/index', compact('absences'));
+
+
     }
 
     /**
@@ -57,13 +63,8 @@ class AbsenceController extends Controller
      */
     public function show($id)
     {
-        
-        /* The next query is supposed to get related absences and also get the seance related to each absence */
 
-        $absences = Absence::where('etudiant_id', '=' , $id)->with('Seance')->get();
-        return view('studentSpace/voirAbsences/index', compact('absences'));
-
-
+			//
     }
 
     /**

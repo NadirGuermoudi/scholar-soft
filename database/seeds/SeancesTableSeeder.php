@@ -2,6 +2,8 @@
 
 use Illuminate\Database\Seeder;
 use App\Models\Seance;
+use App\Models\Salle;
+use App\Models\Groupe;
 
 class SeancesTableSeeder extends Seeder
 {
@@ -12,6 +14,11 @@ class SeancesTableSeeder extends Seeder
 	*/
 	public function run()
 	{
+		$salle = Salle::where('nom', 'N107')->first()->id;
+		$groupeGL = Groupe::where('specialite', 'M1 GL')->first()->id;
+		$groupeSIC = Groupe::where('specialite', 'M1 SIC')->first()->id;
+		$groupeMID = Groupe::where('specialite', 'M1 MID')->first()->id;
+		$groupeRSD = Groupe::where('specialite', 'M1 RSD')->first()->id;
 		//DIMANCHE
 		$seance = new Seance();
 		$seance->type = "Cours";
@@ -19,9 +26,10 @@ class SeancesTableSeeder extends Seeder
 		$seance->jour = "DIMANCHE";
 		$seance->heur_debut = "10:00";
 		$seance->heur_fin = "11:30";
-		$seance->salle_id = 56;
-		$seance->enseignant_id = 1;
+		$seance->salle_id = $salle;
+		$seance->enseignant_id = 4;
 		$seance->save();
+		$seance->groupes()->attach([$groupeGL]);
 
 		$seance = new Seance();
 		$seance->type = "Cours";
@@ -29,9 +37,10 @@ class SeancesTableSeeder extends Seeder
 		$seance->jour = "DIMANCHE";
 		$seance->heur_debut = "11:30";
 		$seance->heur_fin = "13:00";
-		$seance->salle_id = 56;
-		$seance->enseignant_id = 1;
+		$seance->salle_id = $salle;
+		$seance->enseignant_id = 5;
 		$seance->save();
+		$seance->groupes()->attach([$groupeGL, $groupeSIC]);
 
 		$seance = new Seance();
 		$seance->type = "TP";
@@ -39,10 +48,11 @@ class SeancesTableSeeder extends Seeder
 		$seance->jour = "DIMANCHE";
 		$seance->heur_debut = "13:30";
 		$seance->heur_fin = "16:30";
-		$seance->salle_id = 56;
-		$seance->enseignant_id = 1;
+		$seance->salle_id = $salle;
+		$seance->enseignant_id = 4;
 		$seance->once_two_week = true;
 		$seance->save();
+		$seance->groupes()->attach([$groupeGL]);
 
 		$seance = new Seance();
 		$seance->type = "TP";
@@ -50,10 +60,11 @@ class SeancesTableSeeder extends Seeder
 		$seance->jour = "DIMANCHE";
 		$seance->heur_debut = "13:30";
 		$seance->heur_fin = "16:30";
-		$seance->salle_id = 56;
-		$seance->enseignant_id = 1;
+		$seance->salle_id = $salle;
+		$seance->enseignant_id = 6;
 		$seance->once_two_week = true;
 		$seance->save();
+		$seance->groupes()->attach([$groupeGL]);
 
 		//LUNDI
 		$seance = new Seance();
@@ -62,9 +73,10 @@ class SeancesTableSeeder extends Seeder
 		$seance->jour = "LUNDI";
 		$seance->heur_debut = "08:30";
 		$seance->heur_fin = "10:00";
-		$seance->salle_id = 56;
-		$seance->enseignant_id = 1;
+		$seance->salle_id = $salle;
+		$seance->enseignant_id = 7;
 		$seance->save();
+		$seance->groupes()->attach([$groupeGL, $groupeRSD]);
 
 		$seance = new Seance();
 		$seance->type = "Cours";
@@ -72,9 +84,10 @@ class SeancesTableSeeder extends Seeder
 		$seance->jour = "LUNDI";
 		$seance->heur_debut = "10:00";
 		$seance->heur_fin = "11:30";
-		$seance->salle_id = 56;
-		$seance->enseignant_id = 1;
+		$seance->salle_id = $salle;
+		$seance->enseignant_id = 3;
 		$seance->save();
+		$seance->groupes()->attach([$groupeGL]);
 
 		$seance = new Seance();
 		$seance->type = "TD";
@@ -82,9 +95,10 @@ class SeancesTableSeeder extends Seeder
 		$seance->jour = "LUNDI";
 		$seance->heur_debut = "11:30";
 		$seance->heur_fin = "13:00";
-		$seance->salle_id = 56;
-		$seance->enseignant_id = 1;
+		$seance->salle_id = $salle;
+		$seance->enseignant_id = 3;
 		$seance->save();
+		$seance->groupes()->attach([$groupeGL]);
 
 		$seance = new Seance();
 		$seance->type = "TP";
@@ -92,10 +106,11 @@ class SeancesTableSeeder extends Seeder
 		$seance->jour = "LUNDI";
 		$seance->heur_debut = "13:30";
 		$seance->heur_fin = "16:30";
-		$seance->salle_id = 56;
-		$seance->enseignant_id = 1;
+		$seance->salle_id = $salle;
+		$seance->enseignant_id = 3;
 		$seance->once_two_week = true;
 		$seance->save();
+		$seance->groupes()->attach([$groupeGL]);
 
 		$seance = new Seance();
 		$seance->type = "TP";
@@ -103,10 +118,11 @@ class SeancesTableSeeder extends Seeder
 		$seance->jour = "LUNDI";
 		$seance->heur_debut = "13:30";
 		$seance->heur_fin = "16:30";
-		$seance->salle_id = 56;
-		$seance->enseignant_id = 1;
+		$seance->salle_id = $salle;
+		$seance->enseignant_id = 7;
 		$seance->once_two_week = true;
 		$seance->save();
+		$seance->groupes()->attach([$groupeGL]);
 
 		//MARDI
 		$seance = new Seance();
@@ -115,9 +131,10 @@ class SeancesTableSeeder extends Seeder
 		$seance->jour = "MARDI";
 		$seance->heur_debut = "08:30";
 		$seance->heur_fin = "10:00";
-		$seance->salle_id = 56;
-		$seance->enseignant_id = 1;
+		$seance->salle_id = $salle;
+		$seance->enseignant_id = 7;
 		$seance->save();
+		$seance->groupes()->attach([$groupeGL]);
 
 		$seance = new Seance();
 		$seance->type = "Cours";
@@ -125,9 +142,10 @@ class SeancesTableSeeder extends Seeder
 		$seance->jour = "MARDI";
 		$seance->heur_debut = "10:00";
 		$seance->heur_fin = "11:30";
-		$seance->salle_id = 56;
+		$seance->salle_id = $salle;
 		$seance->enseignant_id = 1;
 		$seance->save();
+		$seance->groupes()->attach([$groupeGL]);
 
 		$seance = new Seance();
 		$seance->type = "TP";
@@ -135,9 +153,10 @@ class SeancesTableSeeder extends Seeder
 		$seance->jour = "MARDI";
 		$seance->heur_debut = "11:30";
 		$seance->heur_fin = "13:00";
-		$seance->salle_id = 56;
+		$seance->salle_id = $salle;
 		$seance->enseignant_id = 1;
 		$seance->save();
+		$seance->groupes()->attach([$groupeGL]);
 
 		//MERCREDI
 		$seance = new Seance();
@@ -146,9 +165,10 @@ class SeancesTableSeeder extends Seeder
 		$seance->jour = "MERCREDI";
 		$seance->heur_debut = "08:30";
 		$seance->heur_fin = "10:00";
-		$seance->salle_id = 56;
-		$seance->enseignant_id = 1;
+		$seance->salle_id = $salle;
+		$seance->enseignant_id = 8;
 		$seance->save();
+		$seance->groupes()->attach([$groupeGL]);
 
 		$seance = new Seance();
 		$seance->type = "Cours";
@@ -156,9 +176,10 @@ class SeancesTableSeeder extends Seeder
 		$seance->jour = "MERCREDI";
 		$seance->heur_debut = "10:00";
 		$seance->heur_fin = "11:30";
-		$seance->salle_id = 56;
-		$seance->enseignant_id = 1;
+		$seance->salle_id = $salle;
+		$seance->enseignant_id = 8;
 		$seance->save();
+		$seance->groupes()->attach([$groupeGL, $groupeMID]);
 
 		$seance = new Seance();
 		$seance->type = "Cours";
@@ -166,9 +187,10 @@ class SeancesTableSeeder extends Seeder
 		$seance->jour = "MERCREDI";
 		$seance->heur_debut = "11:30";
 		$seance->heur_fin = "13:00";
-		$seance->salle_id = 56;
-		$seance->enseignant_id = 1;
+		$seance->salle_id = $salle;
+		$seance->enseignant_id = 9;
 		$seance->save();
+		$seance->groupes()->attach([$groupeGL]);
 
 		$seance = new Seance();
 		$seance->type = "TP";
@@ -176,9 +198,10 @@ class SeancesTableSeeder extends Seeder
 		$seance->jour = "MERCREDI";
 		$seance->heur_debut = "13:30";
 		$seance->heur_fin = "16:30";
-		$seance->salle_id = 56;
-		$seance->enseignant_id = 1;
+		$seance->salle_id = $salle;
+		$seance->enseignant_id = 2;
 		$seance->save();
+		$seance->groupes()->attach([$groupeGL]);
 	}
 
 	// $table->bigIncrements('id');

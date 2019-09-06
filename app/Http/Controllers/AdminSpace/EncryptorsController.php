@@ -9,6 +9,16 @@ use App\Http\Controllers\Controller;
 class EncryptorsController extends Controller
 {
 	/**
+	 * Create a new controller instance.
+	 *
+	 * @return void
+	 */
+	public function __construct()
+	{
+		$this->middleware('admin');
+	}
+	
+	/**
 	 * Display a listing of the resource.
 	 *
 	 * @return \Illuminate\Http\Response
@@ -53,8 +63,8 @@ class EncryptorsController extends Controller
 		$encryptor->password = bcrypt($request->input('password'));
 		$encryptor->save();
 
-		flashy()->success('Chiffreur creer avec succès ', 'http://your-awesome-link.com');
-		return redirect()->route('encryptors.index');
+		flashy()->success('Chiffreur creer avec succès !');
+		return redirect()->route('encryptors.create');
 	}
 
 	/**
@@ -106,7 +116,7 @@ class EncryptorsController extends Controller
 
 		$encryptor->save();
 
-		flashy()->success('Chiffreur modifier avec succès ', 'http://your-awesome-link.com');
+		flashy()->success('Chiffreur modifier avec succès !');
 		return redirect()->route('encryptors.index');
 	}
 
@@ -120,7 +130,7 @@ class EncryptorsController extends Controller
 	{
 		Encryptor::destroy($id);
 
-		flashy()->success('Chiffreur supprimer avec succès ', 'http://your-awesome-link.com');
+		flashy()->success('Chiffreur supprimer avec succès !');
 		return redirect()->route('encryptors.index');
 	}
 }

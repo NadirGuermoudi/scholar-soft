@@ -7,14 +7,17 @@
 			{{-- <div class="profile-img"> <img src="{{asset('images/monster/users/1.jpg')}}" alt="user" /> </div> --}}
 			<div class="profile-img"> <span class="round round-danger">{{ strtoupper(substr( Auth::guard('etudiant')->user()->prenom, 0, 1)) }}</span> </div>
 			<!-- User profile text-->
-			<div class="profile-text"> <a href="#" class="dropdown-toggle link u-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">{{strtoupper(Auth::guard('etudiant')->user()->nom) . ' ' . ucfirst(Auth::guard('etudiant')->user()->prenom) }} <span class="caret"></span></a>
+			<div class="profile-text"><a href="#" class="dropdown-toggle link u-dropdown" data-toggle="dropdown" role="button"
+																	 aria-haspopup="true"
+																	 aria-expanded="true">{{ Auth::guard('etudiant')->user()->fullName }} <span
+						class="caret"></span></a>
 				<div class="dropdown-menu animated flipInY">
 					<a href="#" class="dropdown-item"><i class="ti-user"></i> My Profile</a>
 					<a href="#" class="dropdown-item"><i class="ti-wallet"></i> My Balance</a>
 					<a href="#" class="dropdown-item"><i class="ti-email"></i> Inbox</a>
-					<div class="dropdown-divider"></div> 
+					<div class="dropdown-divider"></div>
 					<a href="#" class="dropdown-item"><i class="ti-settings"></i> Account Setting</a>
-					<div class="dropdown-divider"></div> 
+					<div class="dropdown-divider"></div>
 					<a href="{{ route('student.logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="dropdown-item"><i class="fa fa-power-off"></i> Logout</a>
 				</div>
 			</div>
@@ -25,32 +28,59 @@
 			<ul id="sidebarnav">
 				<li class="nav-small-cap">PERSONNEL</li>
 				<li>
-					<a href="/" aria-expanded="false"><i class="fas fa-home"></i><span class="hide-menu">Accueil </span></a>
-				</li>
-				
-				<li>
-					<a href="{{route( 'absence.show' , Auth::guard('etudiant')->user()->id    )}}" aria-expanded="false"><i class="fa fa-calendar-times"></i>
-						<span class="hide-menu">Voir mes absences </span>
+					<a href="/" aria-expanded="false">
+						<i class="fas fa-home fa-lg"></i>
+						<span class="hide-menu">
+							Accueil
+						</span>
 					</a>
 				</li>
 
 				<li>
-			<a href="#" aria-expanded="false"><i class="fa fa-sticky-note-o"></i>
-						<span class="hide-menu">Voir mes notes </span>
+					<a href="{{route('emploiDuTemps')}}" aria-expanded="false">
+						<i class="far fa-calendar-alt fa-lg"></i>
+						<span class="hide-menu">
+							Emploi du temps
+						</span>
+					</a>
+				</li>
+
+				<li>
+
+					<a href="{{route( 'absence.index' )}}" aria-expanded="false">
+						<i class="fa fa-calendar-times fa-lg"></i>
+						<span class="hide-menu">
+							Voir mes absences
+						</span>
+					</a>
+				</li>
+
+				<li>
+					<a href="#" aria-expanded="false">
+						<i class="far fa-clipboard fa-lg"></i>
+						<span class="hide-menu">
+							Voir mes notes
+						</span>
 					</a>
 				</li>
 
 				<li class="nav-devider"></li>
 
 				<li>
-					<a href="#" aria-expanded="false"><i class="mdi mdi-chair-school"></i>
-						<span class="hide-menu">Salles </span>
+					<a href="#" aria-expanded="false">
+						<i class="fas fa-door-open fa-lg"></i>
+						<span class="hide-menu">
+							Salles
+						</span>
 					</a>
 				</li>
 
 				<li>
-					<a href="#" aria-expanded="false"><i class="ti-settings"></i>
-						<span class="hide-menu">Paramètres </span>
+					<a href="{{route('student.parametres')}}" aria-expanded="false">
+						<i class="fas fa-cog fa-lg"></i>
+						<span class="hide-menu">
+							Paramètres
+						</span>
 					</a>
 				</li>
 
