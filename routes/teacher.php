@@ -29,4 +29,9 @@ Route::get('/parametres','TeacherSpace\ParametresController@index')->name('teach
 route::resource('enseignant','TeacherSpace\TeacherController');
 
 route::resource('paquets','TeacherSpace\PaquetController');
-route::put('paquets/rendre/{paquet}','TeacherSpace\PaquetController@return')->name('paquets.return');
+route::put('paquets/rendre/{paquet}/{correcteur}','TeacherSpace\PaquetController@return')->name('paquets.return');
+route::get('correct','TeacherSpace\PaquetController@correctList')->name('paquets.correct');
+route::get('correct/{paquet}/{correcteur}','TeacherSpace\PaquetController@correctOneView')->name('paquets.correct.one');
+route::post('correct','TeacherSpace\PaquetController@correctOne')->name('paquets.correct.one.copy');
+route::get('corrected','TeacherSpace\PaquetController@corrected')->name('paquets.corrected');
+route::get('corrected/{paquet}','TeacherSpace\PaquetController@show')->name('paquets.marks');

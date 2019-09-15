@@ -112,6 +112,28 @@ class EnseignantsTableSeeder extends Seeder
 		$enseignant->email = 'anas.boubris@gmail.com';
 		$enseignant->password = bcrypt('password');
 		$enseignant->save();
+
+		$enseignant = new Enseignant();
+		$enseignant->matricule = '897654330';
+		$enseignant->nom = 'BRIXI';
+		$enseignant->prenom = 'Nigasa';
+		$enseignant->date_naissance = '1988-01-01';
+		$enseignant->grade = 'MCB';
+		$enseignant->admin = false;
+		$enseignant->email = 'brixi.nigasa@gmail.com';
+		$enseignant->password = bcrypt('password');
+		$enseignant->save();
+
+		$enseignant = new Enseignant();
+		$enseignant->matricule = '897654331';
+		$enseignant->nom = 'ZIANI';
+		$enseignant->prenom = 'Cherif';
+		$enseignant->date_naissance = '1988-01-01';
+		$enseignant->grade = 'MCB';
+		$enseignant->admin = false;
+		$enseignant->email = 'ziani.cherif@gmail.com';
+		$enseignant->password = bcrypt('password');
+		$enseignant->save();
 	}
 
 	// $table->bigIncrements('id');

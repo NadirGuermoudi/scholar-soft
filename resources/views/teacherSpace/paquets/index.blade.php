@@ -27,7 +27,7 @@
 				<th>Correcteur 1</th>
 				<th>Correcteur 2</th>
 				<th>Correcteur 3</th>
-				<th data-class-name="priority">Actions</th>
+				<th>Actions</th>
 			</tr>
 		</thead>
 
@@ -79,7 +79,7 @@
 							<i class="fas fa-sign-language"></i>
 						</button>
 						{{-- including the return Modal --}}
-						@include('teacherSpace/paquets/_returnPaquetModal')
+						@include('teacherSpace/paquets/_returnPaquetModal', ['correcteur' => 0])
 					@endif
 
 					<a href="{{ route('paquets.edit', $paquet) }}" class="btn btn-outline-info"><i class="fa fa-edit"></i></a>
