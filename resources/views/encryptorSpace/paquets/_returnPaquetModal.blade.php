@@ -9,12 +9,12 @@
 
 
 				<p style="color:white;">
-					Êtes-vous sûre que vous avez déposé le paquet {{ $paquet->type }} | {{ $paquet->module }} ?
+					Êtes-vous sûre que vous avez codée et déposé le paquet {{ $paquet->type }} | {{ $paquet->module }} ?
 				</p>
 
 			</div>
 			<div class="modal-footer">
-				<form class="form-inline" action="{{ route('paquets.return', ['paquet' => $paquet->id, 'correcteur' => $correcteur]) }}"  method="POST">
+				<form class="form-inline" action="{{ route('encrypt-paquet.return', $paquet->id) }}"  method="POST">
 					@method('PUT')
 					@csrf
 					<button type="submit" class="btn btn-success waves-effect">
