@@ -23,24 +23,35 @@
 		<!-- Sidebar navigation-->
 		<nav class="sidebar-nav">
 			<ul id="sidebarnav">
-				<li class="nav-small-cap">PERSONNEL</li>
+				<li class="nav-small-cap">PAQUETS</li>
 				<li>
-					<a href="#" aria-expanded="false"><i class="fa fa-users"></i><span class="hide-menu">Enseignants </span></a>
-				</li>
-				
-				<li>
-					<a href="#" aria-expanded="false"><i class="fa fa-users"></i><span class="hide-menu">Etudiants </span></a>
+					<a href="{{ route('codeur-paquets.index') }}" aria-expanded="false">
+						<i class="fas fa-folder fa-lg"></i>
+						<span class="hide-menu">
+							Paquets non pris 
+						</span>
+					</a>
 				</li>
 
 				<li>
-					<a href="#" aria-expanded="false"><i class="fa fa-users"></i><span class="hide-menu">Chiffreurs </span></a>
+					<a href="{{ route('codeur-paquets.not.encrypted') }}" aria-expanded="false">
+						<i class="fas fa-sync-alt fa-lg"></i>
+						<span class="hide-menu">
+							Mes paquets non codée 
+						</span>
+					</a>
+				</li>
+
+				<li>
+					<a href="{{ route('codeur-paquets.encrypted') }}" aria-expanded="false">
+						<i class="fas fa-clipboard-check fa-lg"></i>
+						<span class="hide-menu">
+							Mes paquets codée  
+						</span>
+					</a>
 				</li>
 
 				<li class="nav-devider"></li>
-
-				<li>
-					<a href="#" aria-expanded="false"><i class="mdi mdi-chair-school"></i><span class="hide-menu">Salles </span></a>
-				</li>
 
 				<li>
 					<a href="#" aria-expanded="false"><i class="ti-settings"></i><span class="hide-menu">Paramètres </span></a>
