@@ -53,7 +53,7 @@
 				<td>{{ $etudiant->matricule }}</td>
 				<td>{{ $etudiant->fullName }}</td>
 				<td>{{ $etudiant->date_naissance }}</td>
-				<td><center>{{ $etudiant->pivot->code }}</center></td>
+				<td><center>{{ str_pad($etudiant->pivot->code, 3, '0', STR_PAD_LEFT) }}</center></td>
 			</tr>
 			@endforeach
 		</tbody>

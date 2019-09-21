@@ -7,7 +7,7 @@
 <div class="col-12">
 <div class="card">
 <div class="card-block">
-	<h4 class="card-title">Mes paquets corrigée</h4>
+	<h4 class="card-title">Mes paquets corrigées</h4>
 
 	<table id="datatable_desc" class="display nowrap table table-hover table-striped table-bordered" style="width: 100%;">
 		<thead>
