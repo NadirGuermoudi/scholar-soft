@@ -19,56 +19,51 @@ class PaquetController extends Controller
 		$this->middleware('encryptor');
 	}
 
-	public function notEncrypted()
-	{
+	public function notEncrypted(){
 		$paquets = Paquet::where('encryptor_id', Auth::guard('encryptor')->user()->id)
-			->where('encrypted', false)->get();
+											->where('encrypted', false)->get();
 		return view('encryptorSpace/paquets/encrypted', compact('paquets'));
 	}
 
-	public function encrypted()
-	{
+	public function encrypted(){
 		$paquets = Paquet::where('encryptor_id', Auth::guard('encryptor')->user()->id)
-			->where('encrypted', true)->get();
+											->where('encrypted', true)->get();
 		return view('encryptorSpace/paquets/encrypted', compact('paquets'));
 	}
 
-	public function hold(Paquet $paquet)
-	{
-		if ($paquet->encryptor_id == null) {
+	public function hold(Paquet $paquet){
+		if($paquet->encryptor_id == null){
 			$paquet->encryptor_id = Auth::guard('encryptor')->user()->id;
 			$paquet->save();
 			flashy('Le paquet (' . $paquet->type . ' | ' . $paquet->module . ') a été ajoutée a votre liste !');
 			return redirect()->route('codeur-paquets.not.encrypted');
-		} else {
+		}else{
 			flashy()->warning('Vous n\'avez pas le droit ce paquet est deja pris !');
 			return redirect()->back();
 		}
 	}
 
-	public function encrypt(Paquet $paquet)
-	{
-		if ($paquet->encryptor_id == null) {
+	public function encrypt(Paquet $paquet){
+		if($paquet->encryptor_id == null){
 			$paquet->encryptor_id = Auth::guard('encryptor')->user()->id;
 			$paquet->save();
 			flashy('Le paquet (' . $paquet->type . ' | ' . $paquet->module . ') a été ajoutée a votre liste !');
 			return redirect()->route('codeur-paquets.show', compact('paquet'));
-		} else if ($paquet->encryptor_id == Auth::guard('encryptor')->user()->id) {
+		}else if($paquet->encryptor_id == Auth::guard('encryptor')->user()->id){
 			return redirect()->route('codeur-paquets.show', compact('paquet'));
-		} else {
+		}else {
 			flashy()->warning('Vous n\'avez pas le droit ce paquet est deja pris !');
 			return redirect()->back();
 		}
 	}
 
-	public function return(Paquet $paquet)
-	{
-		if ($paquet->encryptor_id == Auth::guard('encryptor')->user()->id) {
+	public function return(Paquet $paquet){
+		if($paquet->encryptor_id == Auth::guard('encryptor')->user()->id){
 			$paquet->encrypted = true;
 			$paquet->save();
 			flashy('Le paquet (' . $paquet->type . ' | ' . $paquet->module . ') a été déposée !');
 			return redirect()->route('codeur-paquets.index');
-		} else {
+		}else {
 			flashy()->warning('Le paquet (' . $paquet->type . ' | ' . $paquet->module . ') n\'est pas le votre !');
 			return redirect()->back();
 		}
@@ -98,7 +93,7 @@ class PaquetController extends Controller
 	/**
 	 * Store a newly created resource in storage.
 	 *
-	 * @param \Illuminate\Http\Request $request
+	 * @param  \Illuminate\Http\Request  $request
 	 * @return \Illuminate\Http\Response
 	 */
 	public function store(Request $request)
@@ -109,7 +104,7 @@ class PaquetController extends Controller
 	/**
 	 * Display the specified resource.
 	 *
-	 * @param \App\Models\Paquet $paquet
+	 * @param  \App\Models\Paquet  $paquet
 	 * @return \Illuminate\Http\Response
 	 */
 	public function show($paquet)
@@ -121,7 +116,7 @@ class PaquetController extends Controller
 	/**
 	 * Show the form for editing the specified resource.
 	 *
-	 * @param \App\Models\Paquet $paquet
+	 * @param  \App\Models\Paquet  $paquet
 	 * @return \Illuminate\Http\Response
 	 */
 	public function edit(Paquet $paquet)
@@ -132,8 +127,8 @@ class PaquetController extends Controller
 	/**
 	 * Update the specified resource in storage.
 	 *
-	 * @param \Illuminate\Http\Request $request
-	 * @param \App\Models\Paquet $paquet
+	 * @param  \Illuminate\Http\Request  $request
+	 * @param  \App\Models\Paquet  $paquet
 	 * @return \Illuminate\Http\Response
 	 */
 	public function update(Request $request, Paquet $paquet)
@@ -144,7 +139,7 @@ class PaquetController extends Controller
 	/**
 	 * Remove the specified resource from storage.
 	 *
-	 * @param \App\Models\Paquet $paquet
+	 * @param  \App\Models\Paquet  $paquet
 	 * @return \Illuminate\Http\Response
 	 */
 	public function destroy(Paquet $paquet)

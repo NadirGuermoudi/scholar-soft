@@ -21,26 +21,26 @@ class EtudiantsImport implements ToModel
 	}
 
 	/**
-	 * @param array $row
-	 *
-	 * @return \Illuminate\Database\Eloquent\Model|null
-	 */
+	* @param array $row
+	*
+	* @return \Illuminate\Database\Eloquent\Model|null
+	*/
 	public function model(array $row)
 	{
-		if ($row[0] == null) return null;
+		if($row[0] == null) return null;
 		$etudiant = Etudiant::where('matricule', $row[0])->first();
 
-		if ($etudiant) {
-			if (!$this->groupe->etudiants()->get()->contains($etudiant))
+		if($etudiant){
+			if(!$this->groupe->etudiants()->get()->contains($etudiant))
 				$this->groupe->etudiants()->attach($etudiant);
-		} else {
+		}else{
 			$etudiant = new Etudiant();
 			$etudiant->matricule = $row[0];
 			$etudiant->nom = $row[1];
 			$etudiant->prenom = $row[2];
-			if ($row[3] != "")
-				$etudiant->date_naissance = date('Y-m-d', mktime(0, 0, 0, 1, $row[3] - 1, 1900));
-			if ($row[4])
+			if($row[3] != "")
+				$etudiant->date_naissance = date('Y-m-d', mktime(0, 0, 0, 1, $row[3] -1, 1900));
+			if($row[4])
 				$etudiant->email = $row[4];
 			else
 				$etudiant->email = $row[0] . '@scholar-soft.com';
