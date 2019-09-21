@@ -9,7 +9,7 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 	<!-- Favicon icon -->
-	<link rel="icon" type="image/png" sizes="16x16" href="{{asset('images/monster/favicon.png')}}">
+	<link rel="icon" type="image/ico" sizes="16x16" href="{{asset('favicon.ico')}}">
 	 
 		<title>{{ page_title($title ?? '') }}</title>
 		

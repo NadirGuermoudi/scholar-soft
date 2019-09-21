@@ -23,6 +23,17 @@
 		<!-- Sidebar navigation-->
 		<nav class="sidebar-nav">
 			<ul id="sidebarnav">
+				<li>
+					<a href="{{ route('encryptor.home') }}" class="{{ Route::is(route('codeur-paquets.not.encrypted')) ? 'active' : '' }}" aria-expanded="false">
+						<i class="fas fa-home"></i>
+						<span class="hide-menu">
+							Accueil 
+						</span>
+					</a>
+				</li>
+
+				<li class="nav-devider"></li>
+
 				<li class="nav-small-cap">PAQUETS</li>
 				<li>
 					<a href="{{ route('codeur-paquets.index') }}" aria-expanded="false">
@@ -37,7 +48,7 @@
 					<a href="{{ route('codeur-paquets.not.encrypted') }}" aria-expanded="false">
 						<i class="fas fa-sync-alt fa-lg"></i>
 						<span class="hide-menu">
-							Mes paquets non codée 
+							Mes paquets non codées 
 						</span>
 					</a>
 				</li>
@@ -46,12 +57,21 @@
 					<a href="{{ route('codeur-paquets.encrypted') }}" aria-expanded="false">
 						<i class="fas fa-clipboard-check fa-lg"></i>
 						<span class="hide-menu">
-							Mes paquets codée  
+							Mes paquets codées  
 						</span>
 					</a>
 				</li>
 
 				<li class="nav-devider"></li>
+
+				<li>
+					<a href="{{ route('encryptor.mails') }}" aria-expanded="false">
+						<i class="fas fa-envelope fa-lg"></i>
+						<span class="hide-menu">
+							Mails 
+						</span>
+					</a>
+				</li>
 
 				<li>
 					<a href="#" aria-expanded="false"><i class="ti-settings"></i><span class="hide-menu">Paramètres </span></a>
@@ -67,7 +87,7 @@
 		<!-- item-->
 		<a href="" class="link" data-toggle="tooltip" title="Settings"><i class="ti-settings"></i></a>
 		<!-- item-->
-		<a href="" class="link" data-toggle="tooltip" title="Email"><i class="mdi mdi-gmail"></i></a>
+		<a href="{{ route('encryptor.mails') }}" class="link" data-toggle="tooltip" title="Email"><i class="mdi mdi-gmail"></i></a>
 		<!-- item-->
 		<a href="{{ route('encryptor.logout') }}" class="link" data-toggle="tooltip" title="Logout" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="mdi mdi-power"></i></a>
 	</div>
