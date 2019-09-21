@@ -28,7 +28,7 @@ class Etudiant extends Authenticatable
 
 	public function absences()
 	{
-		return $this->belongsToMany('App\Models\Seance', 'absences');
+		return $this->belongsToMany('App\Models\Seance', 'absences')->withPivot(['date', 'presence', 'justified', 'justification']);
 	}
 
 	public function paquets()

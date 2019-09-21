@@ -28,5 +28,10 @@ Route::get('/parametres', 'TeacherSpace\ParametresController@index')->name('teac
 
 route::resource('enseignant', 'TeacherSpace\TeacherController');
 
+Route::post('fairelappel/ajax', 'TeacherSpace\AbsenceController@ajaxRequestPost')->name('fairelappel.ajax');
+Route::post('fairelappel/absence', 'TeacherSpace\AbsenceController@fairlappel')->name('fairelappel.abs');
+Route::post('fairelappel/afficher', 'TeacherSpace\AbsenceController@afficher')->name('fairelappel.afficher');
+route::resource('fairelappel', 'TeacherSpace\AbsenceController');
+
 route::resource('paquets', 'TeacherSpace\PaquetController');
 route::put('paquets/rendre/{paquet}', 'TeacherSpace\PaquetController@return')->name('paquets.return');
