@@ -14,17 +14,17 @@ Route::get('/', 'StudentSpace\HomeController@index');
 Route::get('/home', 'StudentSpace\HomeController@index');
 
 
-route::resource('absence','StudentSpace\AbsenceController');
+route::resource('absence', 'StudentSpace\AbsenceController');
 
 Route::get('/emploiDuTemps', [
-					'as' => 'emploiDuTemps'  ,
-					'uses' => 'StudentSpace\EmploiDuTempsController@index'					
-				]
-		  );
+		'as' => 'emploiDuTemps',
+		'uses' => 'StudentSpace\EmploiDuTempsController@index'
+	]
+);
 
-Route::get('/parametres','StudentSpace\ParametresController@index')->name('student.parametres');
+Route::get('/parametres', 'StudentSpace\ParametresController@index')->name('student.parametres');
 
-route::resource('etudiant','StudentSpace\StudentController');
+route::resource('etudiant', 'StudentSpace\StudentController');
 
 
 

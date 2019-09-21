@@ -9,15 +9,15 @@ use mysql_xdevapi\Exception;
 
 class TeachersController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('admin');
-    }
+	/**
+	 * Create a new controller instance.
+	 *
+	 * @return void
+	 */
+	public function __construct()
+	{
+		$this->middleware('admin');
+	}
 
     /**
      * Display a listing of the resource.
@@ -73,8 +73,8 @@ class TeachersController extends Controller
         $enseignant->password = bcrypt($request->input('password'));
         $enseignant->save();
 
-        flashy()->success('Enseignant creer avec succès !');
-        return redirect()->route('teachers.create');
+			flashy()->success('Enseignant creer avec succès !');
+			return redirect()->route('teachers.create');
     }
 
     /**
@@ -150,7 +150,7 @@ class TeachersController extends Controller
     {
         Enseignant::destroy($id);
 
-        flashy()->success('Enseignant supprimer avec succès !');
-        return redirect()->route('teachers.index');
+			flashy()->success('Enseignant supprimer avec succès !');
+			return redirect()->route('teachers.index');
     }
 }

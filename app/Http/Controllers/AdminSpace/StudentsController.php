@@ -18,7 +18,7 @@ class StudentsController extends Controller
 	{
 		$this->middleware('admin');
 	}
-	
+
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -30,7 +30,7 @@ class StudentsController extends Controller
 		return view('adminSpace/students/index', compact('etudiants'));
 	}
 
-  /**
+	/**
 	 * Show the form for creating a new resource.
 	 *
 	 * @return \Illuminate\Http\Response
@@ -43,7 +43,7 @@ class StudentsController extends Controller
 	/**
 	 * Store a newly created resource in storage.
 	 *
-	 * @param  \Illuminate\Http\Request  $request
+	 * @param \Illuminate\Http\Request $request
 	 * @return \Illuminate\Http\Response
 	 */
 	public function store(EtudiantRequest $request)
@@ -64,7 +64,7 @@ class StudentsController extends Controller
 	/**
 	 * Display the specified resource.
 	 *
-	 * @param  \App\Models\Etudiant  $etudiant
+	 * @param \App\Models\Etudiant $etudiant
 	 * @return \Illuminate\Http\Response
 	 */
 	public function show(Etudiant $etudiant)
@@ -75,7 +75,7 @@ class StudentsController extends Controller
 	/**
 	 * Show the form for editing the specified resource.
 	 *
-	 * @param  \App\Models\Etudiant  $etudiant
+	 * @param \App\Models\Etudiant $etudiant
 	 * @return \Illuminate\Http\Response
 	 */
 	public function edit(Etudiant $etudiant)
@@ -86,8 +86,8 @@ class StudentsController extends Controller
 	/**
 	 * Update the specified resource in storage.
 	 *
-	 * @param  \Illuminate\Http\Request  $request
-	 * @param  \App\Models\Etudiant  $etudiant
+	 * @param \Illuminate\Http\Request $request
+	 * @param \App\Models\Etudiant $etudiant
 	 * @return \Illuminate\Http\Response
 	 */
 	public function update(EtudiantRequest $request, Etudiant $etudiant)
@@ -107,7 +107,7 @@ class StudentsController extends Controller
 	/**
 	 * Remove the specified resource from storage.
 	 *
-	 * @param  \App\Models\Etudiant  $etudiant
+	 * @param \App\Models\Etudiant $etudiant
 	 * @return \Illuminate\Http\Response
 	 */
 	public function destroy(Etudiant $etudiant)

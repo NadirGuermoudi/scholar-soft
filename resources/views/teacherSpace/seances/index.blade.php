@@ -19,7 +19,8 @@
 					</div>
 					{{-- end add seance --}}
 
-					<table id="example23" class="display nowrap table table-hover table-striped table-bordered" style="width: 100%;">
+					<table id="example23" class="display nowrap table table-hover table-striped table-bordered"
+								 style="width: 100%;">
 						<thead>
 							<tr>
 								<th>Jour</th>
@@ -50,12 +51,19 @@
 							@foreach($seances as $seance)
 							<tr>
 								<td>{{ $seance->jour }}</td>
-								<td><center>{{ substr($seance->heur_debut, 0, 5) }}</center></td>
-								<td><center>{{ substr($seance->heur_fin, 0, 5) }}</center></td>
+								<td>
+									<center>{{ substr($seance->heur_debut, 0, 5) }}</center>
+								</td>
+								<td>
+									<center>{{ substr($seance->heur_fin, 0, 5) }}</center>
+								</td>
 								<td>{{ $seance->salle->nom }}</td>
 								<td>{{ $seance->type }}</td>
 								<td>{{ $seance->module }}</td>
-								<td><ul>@foreach($seance->groupes as $groupe)<li>{{ $groupe->specialite }} G{{ $groupe->numero }}</li>@endforeach</ul></td>
+								<td>
+									<ul>@foreach($seance->groupes as $groupe)
+											<li>{{ $groupe->specialite }} G{{ $groupe->numero }}</li>@endforeach</ul>
+								</td>
 								<td>
 									<a href="{{ route('seances.edit', $seance) }}" class="btn btn-outline-info"><i class="fa fa-edit"></i></a>
 

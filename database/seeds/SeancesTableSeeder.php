@@ -15,10 +15,10 @@ class SeancesTableSeeder extends Seeder
 	public function run()
 	{
 		$salle = Salle::where('nom', 'N107')->first()->id;
-		$groupeGL = Groupe::where('specialite' , 'M1 GL')->first()->id;
-		$groupeSIC = Groupe::where('specialite' , 'M1 SIC')->first()->id;
-		$groupeMID = Groupe::where('specialite' , 'M1 MID')->first()->id;
-		$groupeRSD = Groupe::where('specialite' , 'M1 RSD')->first()->id;
+		$groupeGL = Groupe::where('specialite', 'M1 GL')->first()->id;
+		$groupeSIC = Groupe::where('specialite', 'M1 SIC')->first()->id;
+		$groupeMID = Groupe::where('specialite', 'M1 MID')->first()->id;
+		$groupeRSD = Groupe::where('specialite', 'M1 RSD')->first()->id;
 		//DIMANCHE
 		$seance = new Seance();
 		$seance->type = "Cours";

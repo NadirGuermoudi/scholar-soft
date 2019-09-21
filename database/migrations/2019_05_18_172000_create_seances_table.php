@@ -24,11 +24,11 @@ class CreateSeancesTable extends Migration
 
             $table->unsignedBigInteger('salle_id')->nullable();
             $table->unsignedBigInteger('enseignant_id')->nullable();
-            
+
             $table->timestamps();
 
             $table->foreign('salle_id')->references('id')->on('salles')->onDelete('set null');
-            $table->foreign('enseignant_id')->references('id')->on('enseignants')->onDelete('cascade');
+					$table->foreign('enseignant_id')->references('id')->on('enseignants')->onDelete('cascade');
         });
     }
 

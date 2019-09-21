@@ -45,16 +45,16 @@ class GroupeController extends Controller
 	/**
 	 * Store a newly created resource in storage.
 	 *
-	 * @param  \Illuminate\Http\Request  $request
+	 * @param \Illuminate\Http\Request $request
 	 * @return \Illuminate\Http\Response
 	 */
 	public function store(Request $request)
 	{
 		$request->validate([
-			'specialite'  => 'required|min:2|max:190',
-			'numero'  => 'required|numeric',
-			'annee'  => 'required|min:8|max:10|regex:#^[0-9]{4}/[0-9]{4}$#',
-			'etudiants'  => 'required|file|mimes:xls,xlsx'
+			'specialite' => 'required|min:2|max:190',
+			'numero' => 'required|numeric',
+			'annee' => 'required|min:8|max:10|regex:#^[0-9]{4}/[0-9]{4}$#',
+			'etudiants' => 'required|file|mimes:xls,xlsx'
 		]);
 
 		$groupe = new Groupe();
@@ -74,19 +74,19 @@ class GroupeController extends Controller
 	/**
 	 * Display the specified resource.
 	 *
-	 * @param  \App\Models\Groupe  $groupe
+	 * @param \App\Models\Groupe $groupe
 	 * @return \Illuminate\Http\Response
 	 */
 	public function show(Groupe $groupe)
 	{
-		
+
 		return view('adminSpace/groupes/show', compact('groupe'));
 	}
 
 	/**
 	 * Show the form for editing the specified resource.
 	 *
-	 * @param  \App\Models\Groupe  $groupe
+	 * @param \App\Models\Groupe $groupe
 	 * @return \Illuminate\Http\Response
 	 */
 	public function edit(Groupe $groupe)
@@ -97,8 +97,8 @@ class GroupeController extends Controller
 	/**
 	 * Update the specified resource in storage.
 	 *
-	 * @param  \Illuminate\Http\Request  $request
-	 * @param  \App\Models\Groupe  $groupe
+	 * @param \Illuminate\Http\Request $request
+	 * @param \App\Models\Groupe $groupe
 	 * @return \Illuminate\Http\Response
 	 */
 	public function update(Request $request, Groupe $groupe)
@@ -109,7 +109,7 @@ class GroupeController extends Controller
 	/**
 	 * Remove the specified resource from storage.
 	 *
-	 * @param  \App\Models\Groupe  $groupe
+	 * @param \App\Models\Groupe $groupe
 	 * @return \Illuminate\Http\Response
 	 */
 	public function destroy(Groupe $groupe)
@@ -122,36 +122,40 @@ class GroupeController extends Controller
 	/**
 	 * Remove the student from groupe.
 	 *
-	 * @param  \App\Models\Groupe  $groupe
-	 * @param  \App\Models\Etudiant  $etudiant
+	 * @param \App\Models\Groupe $groupe
+	 * @param \App\Models\Etudiant $etudiant
 	 * @return \Illuminate\Http\Response
 	 */
-	public function detach(Groupe $groupe, Etudiant $etudiant){
+	public function detach(Groupe $groupe, Etudiant $etudiant)
+	{
 		$groupe->etudiants()->detach($etudiant);
 		flashy("l'etudiant " . $etudiant->fullName . "a été détaché du groupe " . $groupe->fullName);
 		return back();
 	}
 
-	public function showAddStudents(Groupe $groupe){
+	public function showAddStudents(Groupe $groupe)
+	{
 		$etudiants = Etudiant::all();
 		// $etudiants = Etudiant::all()->diff($groupe->etudiants());
 		return view('adminSpace/groupes/addStudents', compact('groupe', 'etudiants'));
 	}
 
-	public function addStudent(Groupe $groupe, Etudiant $etudiant){
-		if (! $groupe->etudiants->contains($etudiant)){
+	public function addStudent(Groupe $groupe, Etudiant $etudiant)
+	{
+		if (!$groupe->etudiants->contains($etudiant)) {
 			$groupe->etudiants()->attach($etudiant);
 			flashy("l'etudiant " . $etudiant->fullName . " a été attaché au groupe " . $groupe->fullName);
 			return back();
-		}else {
+		} else {
 			flashy()->warning("l'etudiant " . $etudiant->fullName . " est deja attaché au groupe " . $groupe->fullName);
 			return back();
 		}
 	}
 
-	public function addStudents(Groupe $groupe, Request $request){
+	public function addStudents(Groupe $groupe, Request $request)
+	{
 		$request->validate([
-			'etudiants'  => 'required|file|mimes:xls,xlsx'
+			'etudiants' => 'required|file|mimes:xls,xlsx'
 		]);
 		Excel::import(new EtudiantsImport($groupe), $request->file('etudiants'));
 		flashy('Le fichier excel a été importé.');

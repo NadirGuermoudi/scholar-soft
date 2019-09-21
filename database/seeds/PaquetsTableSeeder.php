@@ -37,7 +37,7 @@ class PaquetsTableSeeder extends Seeder
 		$paquet->encryptor_id = 1;
 		$paquet->save();
 		foreach ($etudiants as $key => $etudiant) {
-			$paquet->etudiants()->attach($etudiant, ['code' => $randomCodes[$key], 'note' => $randomCodes[$key]%20, 'note1' => $randomCodes[$key]%20+2, 'note2' => $randomCodes[$key]%20]);
+			$paquet->etudiants()->attach($etudiant, ['code' => $randomCodes[$key], 'note' => $randomCodes[$key] % 20, 'note1' => $randomCodes[$key] % 20 + 2, 'note2' => $randomCodes[$key] % 20]);
 		}
 
 		sleep(1);
@@ -93,7 +93,7 @@ class PaquetsTableSeeder extends Seeder
 		$paquet->encryptor_id = 1;
 		$paquet->save();
 		foreach ($etudiants as $key => $etudiant) {
-			$paquet->etudiants()->attach($etudiant, ['code' => $randomCodes[$key], 'note' => $randomCodes[$key]%20, 'note1' => $randomCodes[$key]%20]);
+			$paquet->etudiants()->attach($etudiant, ['code' => $randomCodes[$key], 'note' => $randomCodes[$key] % 20, 'note1' => $randomCodes[$key] % 20]);
 		}
 
 		sleep(1);

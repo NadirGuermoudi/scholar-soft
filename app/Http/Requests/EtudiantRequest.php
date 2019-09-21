@@ -24,7 +24,7 @@ class EtudiantRequest extends FormRequest
 	public function rules()
 	{
 		$etudiantID = 0;
-		if($this->etudiant)
+		if ($this->etudiant)
 			$etudiantID = $this->etudiant->id;
 		return [
 			'matricule' => 'required|min:5',

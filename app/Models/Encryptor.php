@@ -16,11 +16,13 @@ class Encryptor extends Authenticatable
 
 	protected $hidden = ['password',  'remember_token'];
 
-	public function getFullNameAttribute() {
+	public function getFullNameAttribute()
+	{
 		return strtoupper($this->nom) . ' ' . ucfirst($this->prenom);
 	}
 
-	public function paquets(){
+	public function paquets()
+	{
 		return $this->hasMany('App\Models\Paquet');
 	}
 }

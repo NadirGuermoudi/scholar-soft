@@ -13,9 +13,9 @@ Route::post('/logout', 'Auth\LoginAdminController@logout')->name('admin.logout')
 Route::get('/', 'AdminSpace\HomeController@index');
 Route::get('/home', 'AdminSpace\HomeController@index');
 
-Route::get('/parametres','AdminSpace\ParametresController@index')->name('admin.parametres');
+Route::get('/parametres', 'AdminSpace\ParametresController@index')->name('admin.parametres');
 
-route::resource('admin','AdminSpace\AdminsController');
+route::resource('admin', 'AdminSpace\AdminsController');
 
 
 

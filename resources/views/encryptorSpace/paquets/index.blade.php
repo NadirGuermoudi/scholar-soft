@@ -2,72 +2,75 @@
 @include('layouts/partials/#tableExport')
 
 @section('content')
-<div class="container-fluid">
-<div class="row">
-<div class="col-12">
-<div class="card">
-<div class="card-block">
-	<h4 class="card-title">Paquets non pris</h4>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-12">
+				<div class="card">
+					<div class="card-block">
+						<h4 class="card-title">Paquets non pris</h4>
 
-	<table id="example23" class="display nowrap table table-hover table-striped table-bordered" style="width: 100%;">
-		<thead>
-			<tr>
-				<th>Date | Type | Module</th>
-				<th>date-limite</th>
-				<th>Responsable</th>
-				<th>Correcteurs</th>
-				<th>Copies</th>
-				<th>Actions</th>
-			</tr>
-		</thead>
+						<table id="example23" class="display nowrap table table-hover table-striped table-bordered"
+									 style="width: 100%;">
+							<thead>
+							<tr>
+								<th>Date | Type | Module</th>
+								<th>date-limite</th>
+								<th>Responsable</th>
+								<th>Correcteurs</th>
+								<th>Copies</th>
+								<th>Actions</th>
+							</tr>
+							</thead>
 
-		<tfoot>
-			<tr>
-				<th>Date | Type | Module</th>
-				<th>date-limite</th>
-				<th>Responsable</th>
-				<th>Correcteurs</th>
-				<th>Copies</th>
-				<th>Actions</th>
-			</tr>
-		</tfoot>
+							<tfoot>
+							<tr>
+								<th>Date | Type | Module</th>
+								<th>date-limite</th>
+								<th>Responsable</th>
+								<th>Correcteurs</th>
+								<th>Copies</th>
+								<th>Actions</th>
+							</tr>
+							</tfoot>
 
-		<tbody>
-			@foreach($paquets as $paquet)
-			<tr>
-				<td>{{ $paquet->created_at }} <br> {{ $paquet->type }} | {{ $paquet->module }}</td>
-				<td>{{ $paquet->date_limite_encryptor }}</td>
-				<td>{{ $paquet->responsable->fullName }}</td>
-				<td>
-					@if($paquet->correcteur1 != null) (1) {{ $paquet->correcteur1->fullName }} <br> @endif
-					@if($paquet->correcteur2 != null) (2) {{ $paquet->correcteur2->fullName }} <br> @endif
-					@if($paquet->correcteur3 != null) (3) {{ $paquet->correcteur3->fullName }} <br> @endif
-				</td>
-				<td>{{ $paquet->etudiants()->count() }}</td>
+							<tbody>
+							@foreach($paquets as $paquet)
+								<tr>
+									<td>{{ $paquet->created_at }} <br> {{ $paquet->type }} | {{ $paquet->module }}</td>
+									<td>{{ $paquet->date_limite_encryptor }}</td>
+									<td>{{ $paquet->responsable->fullName }}</td>
+									<td>
+										@if($paquet->correcteur1 != null) (1) {{ $paquet->correcteur1->fullName }} <br> @endif
+										@if($paquet->correcteur2 != null) (2) {{ $paquet->correcteur2->fullName }} <br> @endif
+										@if($paquet->correcteur3 != null) (3) {{ $paquet->correcteur3->fullName }} <br> @endif
+									</td>
+									<td>{{ $paquet->etudiants()->count() }}</td>
 
-				<td>
-					<button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#hold-paquet{{$paquet->id}}">
-						<i class="fas fa-hand-holding"></i>
-					</button>
-					{{-- including the hold paquet Modal --}}
-					@include('encryptorSpace/paquets/_holdPaquetModal')
+									<td>
+										<button type="button" class="btn btn-outline-info" data-toggle="modal"
+														data-target="#hold-paquet{{$paquet->id}}">
+											<i class="fas fa-hand-holding"></i>
+										</button>
+										{{-- including the hold paquet Modal --}}
+										@include('encryptorSpace/paquets/_holdPaquetModal')
 
-					<button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#encrypt-paquet{{$paquet->id}}">
-						<i class="fa fa-lock"></i>
-					</button>
-					{{-- including the encrypt paquet Modal --}}
-					@include('encryptorSpace/paquets/_encryptPaquetModal')
-				</td>
-			</tr>
-			@endforeach
-		</tbody>
+										<button type="button" class="btn btn-outline-info" data-toggle="modal"
+														data-target="#encrypt-paquet{{$paquet->id}}">
+											<i class="fa fa-lock"></i>
+										</button>
+										{{-- including the encrypt paquet Modal --}}
+										@include('encryptorSpace/paquets/_encryptPaquetModal')
+									</td>
+								</tr>
+							@endforeach
+							</tbody>
 
-	</table>
+						</table>
 
-</div>
-</div>
-</div>
-</div>
-</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
 @endsection

@@ -10,9 +10,9 @@
 	<meta name="author" content="">
 	<!-- Favicon icon -->
 	<link rel="icon" type="image/png" sizes="16x16" href="{{asset('images/monster/favicon.png')}}">
-	 
-		<title>{{ page_title($title ?? '') }}</title>
-		
+
+	<title>{{ page_title($title ?? '') }}</title>
+
 	<!-- Bootstrap Core CSS -->
 	{{-- <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet"> --}}
 	<link href="{{asset('monster/assets/plugins/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
@@ -38,7 +38,7 @@
 	<!-- ============================================================== -->
 	<div class="preloader">
 		<svg class="circular" viewBox="25 25 50 50">
-			<circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /> 
+			<circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
 		</svg>
 	</div>
 
@@ -76,7 +76,7 @@
 			<form id="logout-form" action="{{ route('student.logout') }}" method="POST" style="display: none;"> @csrf </form>
 			@include('layouts/partials/_topToolbarStudent')
 			@include('layouts/partials/_leftSidebarStudent')
-		@endauth
+	@endauth
 		<!-- Page wrapper  -->
 		<div class="page-wrapper">
 
@@ -86,7 +86,7 @@
 			<footer class="footer">
 				© 2019 Scolar-soft
 			</footer>
-			
+
 		</div>
 		<!-- End Page wrapper  -->
 	</div>
