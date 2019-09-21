@@ -9,9 +9,9 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 	<!-- Favicon icon -->
-	<link rel="icon" type="image/png" sizes="16x16" href="{{asset('images/monster/favicon.png')}}">
+	<link rel="icon" type="image/ico" sizes="16x16" href="{{asset('favicon.ico')}}">
 
-	<title>{{ page_title($title ?? '') }}</title>
+		<title>{{ page_title($title ?? '') }}</title>
 
 	<!-- Bootstrap Core CSS -->
 	{{-- <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet"> --}}
@@ -20,6 +20,9 @@
 	<link href="{{asset('monster/dark/css/style.css')}}" rel="stylesheet">
 	<!-- You can change the theme colors from here -->
 	<link href="{{asset('monster/dark/css/colors/megna-dark.css')}}" id="theme" rel="stylesheet">
+
+	<!-- FontAwesome -->
+	<link href="{{asset('fontawesome-5.10.2/css/all.min.css')}}" id="theme" rel="stylesheet">
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 	<!--[if lt IE 9]>
@@ -35,7 +38,7 @@
 	<!-- ============================================================== -->
 	<div class="preloader">
 		<svg class="circular" viewBox="25 25 50 50">
-			<circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+			<circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
 		</svg>
 	</div>
 
@@ -73,7 +76,7 @@
 			<form id="logout-form" action="{{ route('student.logout') }}" method="POST" style="display: none;"> @csrf </form>
 			@include('layouts/partials/_topToolbarStudent')
 			@include('layouts/partials/_leftSidebarStudent')
-	@endauth
+		@endauth
 		<!-- Page wrapper  -->
 		<div class="page-wrapper">
 
@@ -115,7 +118,8 @@
 	@include('flashy::message')
 
 	<!-- FontAwesome -->
-	<script src="https://kit.fontawesome.com/360b1a6ac0.js"></script>
+	<script src="{{asset('fontawesome-5.10.2/js/all.min.js')}}"></script>
+	{{-- <script src="https://kit.fontawesome.com/360b1a6ac0.js"></script> --}}
 
 	@stack('scripts') {{-- @push('scripts') @endpush --}}
 </body>

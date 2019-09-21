@@ -16,23 +16,19 @@ class Etudiant extends Authenticatable
 
 	protected $hidden = ['password', 'remember_token'];
 
-	public function getFullNameAttribute()
-	{
+	public function getFullNameAttribute(){
 		return strtoupper($this->nom) . ' ' . ucfirst($this->prenom);
 	}
 
-	public function groupes()
-	{
+	public function groupes(){
 		return $this->belongsToMany('App\Models\Groupe');
 	}
 
-	public function absences()
-	{
-		return $this->belongsToMany('App\Models\Seance', 'absences')->withPivot(['date', 'presence', 'justified', 'justification']);
+	public function absences(){
+		return $this->belongsToMany('App\Models\Seance', 'absences');
 	}
 
-	public function paquets()
-	{
-		return $this->belongsToMany('App\Models\Paquet', 'notes');
+	public function paquets(){
+		return $this->belongsToMany('App\Models\Paquet', 'notes')->withPivot(['code', 'note', 'note1', 'note2', 'note3']);
 	}
 }

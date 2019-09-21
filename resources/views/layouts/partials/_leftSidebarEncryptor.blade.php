@@ -7,10 +7,7 @@
 			{{-- <div class="profile-img"> <img src="{{asset('images/monster/users/1.jpg')}}" alt="user" /> </div> --}}
 			<div class="profile-img"> <span class="round round-danger">{{ strtoupper(substr( Auth::guard('encryptor')->user()->prenom, 0, 1)) }}</span> </div>
 			<!-- User profile text-->
-			<div class="profile-text"><a href="#" class="dropdown-toggle link u-dropdown" data-toggle="dropdown" role="button"
-																	 aria-haspopup="true"
-																	 aria-expanded="true">{{ Auth::guard('encryptor')->user()->fullName }} <span
-						class="caret"></span></a>
+			<div class="profile-text"> <a href="#" class="dropdown-toggle link u-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">{{ Auth::guard('encryptor')->user()->fullName }} <span class="caret"></span></a>
 				<div class="dropdown-menu animated flipInY">
 					<a href="#" class="dropdown-item"><i class="ti-user"></i> My Profile</a>
 					<a href="#" class="dropdown-item"><i class="ti-wallet"></i> My Balance</a>
@@ -26,23 +23,54 @@
 		<!-- Sidebar navigation-->
 		<nav class="sidebar-nav">
 			<ul id="sidebarnav">
-				<li class="nav-small-cap">PERSONNEL</li>
 				<li>
-					<a href="#" aria-expanded="false"><i class="fa fa-users"></i><span class="hide-menu">Enseignants </span></a>
+					<a href="{{ route('encryptor.home') }}" class="{{ Route::is(route('codeur-paquets.not.encrypted')) ? 'active' : '' }}" aria-expanded="false">
+						<i class="fas fa-home"></i>
+						<span class="hide-menu">
+							Accueil
+						</span>
+					</a>
+				</li>
+
+				<li class="nav-devider"></li>
+
+				<li class="nav-small-cap">PAQUETS</li>
+				<li>
+					<a href="{{ route('codeur-paquets.index') }}" aria-expanded="false">
+						<i class="fas fa-folder fa-lg"></i>
+						<span class="hide-menu">
+							Paquets non pris
+						</span>
+					</a>
 				</li>
 
 				<li>
-					<a href="#" aria-expanded="false"><i class="fa fa-users"></i><span class="hide-menu">Etudiants </span></a>
+					<a href="{{ route('codeur-paquets.not.encrypted') }}" aria-expanded="false">
+						<i class="fas fa-sync-alt fa-lg"></i>
+						<span class="hide-menu">
+							Mes paquets non codées
+						</span>
+					</a>
 				</li>
 
 				<li>
-					<a href="#" aria-expanded="false"><i class="fa fa-users"></i><span class="hide-menu">Chiffreurs </span></a>
+					<a href="{{ route('codeur-paquets.encrypted') }}" aria-expanded="false">
+						<i class="fas fa-clipboard-check fa-lg"></i>
+						<span class="hide-menu">
+							Mes paquets codées
+						</span>
+					</a>
 				</li>
 
 				<li class="nav-devider"></li>
 
 				<li>
-					<a href="#" aria-expanded="false"><i class="mdi mdi-chair-school"></i><span class="hide-menu">Salles </span></a>
+					<a href="{{ route('encryptor.mails') }}" aria-expanded="false">
+						<i class="fas fa-envelope fa-lg"></i>
+						<span class="hide-menu">
+							Mails
+						</span>
+					</a>
 				</li>
 
 				<li>
@@ -59,7 +87,7 @@
 		<!-- item-->
 		<a href="" class="link" data-toggle="tooltip" title="Settings"><i class="ti-settings"></i></a>
 		<!-- item-->
-		<a href="" class="link" data-toggle="tooltip" title="Email"><i class="mdi mdi-gmail"></i></a>
+		<a href="{{ route('encryptor.mails') }}" class="link" data-toggle="tooltip" title="Email"><i class="mdi mdi-gmail"></i></a>
 		<!-- item-->
 		<a href="{{ route('encryptor.logout') }}" class="link" data-toggle="tooltip" title="Logout" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="mdi mdi-power"></i></a>
 	</div>
