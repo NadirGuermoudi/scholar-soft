@@ -30,6 +30,16 @@
 		<!-- Sidebar navigation-->
 		<nav class="sidebar-nav">
 			<ul id="sidebarnav">
+				<li class="nav-small-cap">Absence</li>
+				<li>
+					<a href="{{ route('fairelappel.index') }}" aria-expanded="false">
+						<i class="fas fa-bell fa-lg"></i>
+						<span class="hide-menu">
+							Faire l'appel
+						</span>
+					</a>
+				</li>
+
 				<li class="nav-small-cap">Correction</li>
 				<li>
 					<a href="{{ route('paquets.index') }}" aria-expanded="false">
