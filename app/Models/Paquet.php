@@ -33,6 +33,6 @@ class Paquet extends Model
 
 	public function etudiants()
 	{
-		return $this->belongsToMany('App\Models\Etudiant', 'notes');
+		return $this->belongsToMany('App\Models\Etudiant', 'notes')->withPivot(['code', 'note', 'note1', 'note2', 'note3']);
 	}
 }

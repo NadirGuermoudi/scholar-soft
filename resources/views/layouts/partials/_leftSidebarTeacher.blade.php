@@ -31,16 +31,6 @@
 		<nav class="sidebar-nav">
 			<ul id="sidebarnav">
 				<li class="nav-small-cap">Correction</li>
-
-				<li>
-					<a href="{{route('fairelappel.index')}}" aria-expanded="false">
-						<i class="fas fa-bell fa-lg"></i>
-						<span class="hide-menu">
-							Faire l'appel
-						</span>
-					</a>
-				</li>
-
 				<li>
 					<a href="{{ route('paquets.index') }}" aria-expanded="false">
 						<i class="fas fa-folder fa-lg"></i>
@@ -51,10 +41,19 @@
 				</li>
 
 				<li>
-					<a href="#" aria-expanded="false">
+					<a href="{{ route('paquets.correct') }}" aria-expanded="false">
 						<i class="fa fa-pen fa-lg"></i>
 						<span class="hide-menu">
 							Paquets à corriger
+						</span>
+					</a>
+				</li>
+
+				<li>
+					<a href="{{ route('paquets.corrected') }}" aria-expanded="false">
+						<i class="fas fa-clipboard-check fa-lg"></i>
+						<span class="hide-menu">
+							Mes paquets corrigée
 						</span>
 					</a>
 				</li>
@@ -65,15 +64,6 @@
 						<i class="fa fa-leanpub fa-lg"></i>
 						<span class="hide-menu">
 							Séances
-						</span>
-					</a>
-				</li>
-
-				<li>
-					<a href="#" aria-expanded="false">
-						<i class="fas fa-door-open fa-lg"></i>
-						<span class="hide-menu">
-							Salles
 						</span>
 					</a>
 				</li>

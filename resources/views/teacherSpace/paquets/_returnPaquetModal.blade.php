@@ -15,7 +15,9 @@
 
 			</div>
 			<div class="modal-footer">
-				<form class="form-inline" action="{{ route('paquets.return', $paquet->id) }}" method="POST">
+				<form class="form-inline"
+							action="{{ route('paquets.return', ['paquet' => $paquet->id, 'correcteur' => $correcteur]) }}"
+							method="POST">
 					@method('PUT')
 					@csrf
 					<button type="submit" class="btn btn-success waves-effect">
