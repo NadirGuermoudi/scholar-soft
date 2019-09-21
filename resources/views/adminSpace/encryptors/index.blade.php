@@ -36,7 +36,9 @@
 									<div>
 										<button type="button" class="btn  btn-success btn-block btn-md"
 														data-toggle="modal" data-target="#add-encryptor">
-											<i class="fa fa-plus"></i>Ajouter un chiffreur
+											<i class="fa fa-plus">
+												Ajouter un chiffreur
+											</i>
 										</button>
 
 										{{-- including the add Modal --}}

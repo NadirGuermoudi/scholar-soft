@@ -24,7 +24,7 @@ class Seance extends Model
 
 	public function absents()
 	{
-		return $this->belongsToMany('App\Models\Etudiant', 'absences')->withPivot(['date', 'presence', 'justified', 'justification']);
+		return $this->belongsToMany('App\Models\Etudiant', 'absences');
 		// return $this->belongsToMany('App\Models\Groupe', 'seance_groupe', 'user_id', 'role_id');
 	}
 

@@ -19,20 +19,19 @@ if(! function_exists('set_active_route')) {
 	}
 }
 
-if (!function_exists('no_repeat')) {
-	function no_repeat($min, $max, $count)
-	{
+if(! function_exists('no_repeat')){
+	function no_repeat($min,$max,$count) {
 
-		if ($max - $min < $count) {
+		if($max - $min < $count) {
 			return false;
 		}
 
 		$nonrepeatarray = array();
-		for ($i = 0; $i < $count; $i++) {
-			$rand = rand($min, $max);
+		for($i = 0; $i < $count; $i++) {
+			$rand = rand($min,$max);
 
-			while (in_array($rand, $nonrepeatarray)) {
-				$rand = rand($min, $max);
+			while(in_array($rand,$nonrepeatarray)) {
+				$rand = rand($min,$max);
 			}
 
 			$nonrepeatarray[$i] = $rand;

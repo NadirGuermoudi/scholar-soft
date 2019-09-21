@@ -19,8 +19,7 @@ class Groupe extends Model
 		return $this->belongsToMany('App\Models\Etudiant', 'groupe_etudiant');
 	}
 
-	public function getFullNameAttribute()
-	{
+	public function getFullNameAttribute() {
 		return $this->specialite . ' ' . $this->annee . ' G' . $this->numero;
 	}
 }

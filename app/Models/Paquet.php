@@ -6,33 +6,27 @@ use Illuminate\Database\Eloquent\Model;
 
 class Paquet extends Model
 {
-	public function responsable()
-	{
+	public function responsable(){
 		return $this->belongsTo('App\Models\Enseignant', 'responsable_id');
 	}
 
-	public function correcteur1()
-	{
+	public function correcteur1(){
 		return $this->belongsTo('App\Models\Enseignant', 'correcteur1_id');
 	}
 
-	public function correcteur2()
-	{
+	public function correcteur2(){
 		return $this->belongsTo('App\Models\Enseignant', 'correcteur2_id');
 	}
 
-	public function correcteur3()
-	{
+	public function correcteur3(){
 		return $this->belongsTo('App\Models\Enseignant', 'correcteur3_id');
 	}
 
-	public function encryptor()
-	{
+	public function encryptor(){
 		return $this->belongsTo('App\Models\Encryptor');
 	}
 
-	public function etudiants()
-	{
+	public function etudiants(){
 		return $this->belongsToMany('App\Models\Etudiant', 'notes')->withPivot(['code', 'note', 'note1', 'note2', 'note3']);
 	}
 }

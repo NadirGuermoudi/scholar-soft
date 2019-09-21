@@ -60,7 +60,7 @@ class SeanceController extends Controller
 		$seance->heur_debut = $request->heur_debut;
 		$seance->heur_fin = $request->heur_fin;
 		$seance->salle_id = $request->salle_id;
-		if ($request->input('once_two_week'))
+		if($request->input('once_two_week'))
 			$seance->once_two_week = true;
 		$seance->enseignant_id = Auth::guard('enseignant')->user()->id;
 		$seance->save();
@@ -109,7 +109,7 @@ class SeanceController extends Controller
 		$seance->heur_debut = $request->heur_debut;
 		$seance->heur_fin = $request->heur_fin;
 		$seance->salle_id = $request->salle_id;
-		if ($request->input('once_two_week'))
+		if($request->input('once_two_week'))
 			$seance->once_two_week = true;
 		$seance->enseignant_id = Auth::guard('enseignant')->user()->id;
 		$seance->save();
