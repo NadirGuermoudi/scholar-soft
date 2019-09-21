@@ -40,9 +40,7 @@
 									<div>
 										<button type="button" class="btn  btn-success btn-block btn-md"
 														data-toggle="modal" data-target="#add-teacher">
-											<i class="fa fa-plus">
-												Ajouter un enseignant
-											</i>
+											<i class="fa fa-plus"></i>Ajouter un enseignant
 										</button>
 
 										{{-- including the add Modal --}}
