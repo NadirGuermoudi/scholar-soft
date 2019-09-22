@@ -84,7 +84,6 @@ class AbsenceController extends Controller
 		$abs = $seance->absents()->find($etudiant->id);
 		if (!empty($abs->pivot->date)) {
 			if ($abs->pivot->date == $date) {
-
 				if ($request->presence == 1) {
 					$abs->pivot->presence = 1;
 					$abs->pivot->save();

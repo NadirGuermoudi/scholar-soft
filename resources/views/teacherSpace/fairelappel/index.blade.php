@@ -58,6 +58,7 @@
 								<option disabled selected>Selectionner seance</option>
 
 							</select>
+
 							<input style="margin-top: 5px;display:none;" name="date" id="date" class="form-control col-12" type="date" value="{{$today}}">
 
 							<div id="button" style="margin: 5px;display:none;">
@@ -94,7 +95,7 @@
 
           var jour = e.value;
           var id = {{$eId}}
-
+          
           $.ajax({
 
               type: 'POST',
