@@ -1,4 +1,4 @@
-@extends('layouts.master', ['title' => "Listes des etudiants"])
+@extends('layouts.master', ['title' => "Faire l'appel"])
 @include('layouts/partials/#tableExport')
 
 
@@ -58,6 +58,7 @@
 								<option disabled selected>Selectionner seance</option>
 
 							</select>
+							<input style="margin-top: 5px;display:none;" name="date" id="date" class="form-control col-12" type="date" value="{{$today}}">
 
 							<div id="button" style="margin: 5px;display:none;">
 								<!-- Button trigger modal -->
@@ -92,6 +93,7 @@
       function groupe(e) {
 
           var jour = e.value;
+          var id = {{$eId}}
 
           $.ajax({
 
@@ -99,7 +101,7 @@
 
               url: '/fairelappel/ajax',
 
-              data: {jour: jour},
+              data: {jour: jour,id:id},
 
               success: function (data) {
                   // $('#example23').preventDefault();
@@ -109,7 +111,7 @@
                   ele.append('<option disabled selected>Selectionner seance </option>');
                   for (var i = 0; i < e.length; i++) {
                       // POPULATE SELECT ELEMENT WITH JSON.
-                      ele.append('<option value="' + e[i]['id'] + '">' + e[i]['type'] + ' : ' + e[i]['heur_debut'] + '</option>');
+                      ele.append('<option value="' + e[i]['id'] + '">' + e[i]['type'] +'('+ e[i]['module']+')' + ' : ' + e[i]['heur_debut'].slice(0,5) +'h'+ '</option>');
 
                   }
                   show('seance');
@@ -124,6 +126,7 @@
 
       function button() {
           show('button');
+          show('date');
       }
 
       function show(id) {

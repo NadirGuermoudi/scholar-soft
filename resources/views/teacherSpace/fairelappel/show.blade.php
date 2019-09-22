@@ -15,8 +15,6 @@
 						<h4 class="card-title">
 							Faire l'appel
 						</h4>
-						<h6>Selection la date voulu</h6>
-						<input id="date" class="form-control col-12" type="date" value="{{$today}}">
 
 						<div class="table-responsive m-t-40">
 
@@ -97,7 +95,8 @@
           var presence;
 
           var idSeance = {{$id}};
-          var date = {{$today}};
+
+          var date = "{{$today}}";
           if ($(e).attr('id') == 'present') {
               presence = 1;
           } else {
