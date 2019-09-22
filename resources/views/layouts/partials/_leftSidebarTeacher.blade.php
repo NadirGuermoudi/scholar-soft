@@ -12,9 +12,9 @@
 					<a href="#" class="dropdown-item"><i class="ti-user"></i> My Profile</a>
 					<a href="#" class="dropdown-item"><i class="ti-wallet"></i> My Balance</a>
 					<a href="#" class="dropdown-item"><i class="ti-email"></i> Inbox</a>
-					<div class="dropdown-divider"></div> 
+					<div class="dropdown-divider"></div>
 					<a href="#" class="dropdown-item"><i class="ti-settings"></i> Account Setting</a>
-					<div class="dropdown-divider"></div> 
+					<div class="dropdown-divider"></div>
 					<a href="{{ route('teacher.logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="dropdown-item"><i class="fa fa-power-off"></i> Logout</a>
 				</div>
 			</div>
@@ -23,12 +23,21 @@
 		<!-- Sidebar navigation-->
 		<nav class="sidebar-nav">
 			<ul id="sidebarnav">
+				<li class="nav-small-cap">Absence</li>
+				<li>
+					<a href="{{ route('fairelappel.index') }}" aria-expanded="false">
+						<i class="fas fa-bell fa-lg"></i>
+						<span class="hide-menu">
+							Faire l'appel
+						</span>
+					</a>
+				</li>
 				<li class="nav-small-cap">Correction</li>
 				<li>
 					<a href="{{ route('paquets.index') }}" aria-expanded="false">
 						<i class="fas fa-folder fa-lg"></i>
 						<span class="hide-menu">
-							Mes paquets 
+							Mes paquets
 						</span>
 					</a>
 				</li>
@@ -37,7 +46,7 @@
 					<a href="{{ route('paquets.correct') }}" aria-expanded="false">
 						<i class="fa fa-pen fa-lg"></i>
 						<span class="hide-menu">
-							Paquets à corriger  
+							Paquets à corriger
 						</span>
 					</a>
 				</li>
@@ -46,7 +55,7 @@
 					<a href="{{ route('paquets.corrected') }}" aria-expanded="false">
 						<i class="fas fa-clipboard-check fa-lg"></i>
 						<span class="hide-menu">
-							Mes paquets corrigée  
+							Mes paquets corrigée
 						</span>
 					</a>
 				</li>
