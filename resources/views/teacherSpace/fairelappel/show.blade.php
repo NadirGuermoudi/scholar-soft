@@ -15,7 +15,6 @@
 						<h4 class="card-title">
 							Faire l'appel
 						</h4>
-
 						<div class="table-responsive m-t-40">
 
 							<table id="example23" class="myclass display nowrap table table-hover table-striped table-bordered"
