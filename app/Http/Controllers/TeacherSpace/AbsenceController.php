@@ -143,6 +143,7 @@ class AbsenceController extends Controller
 		$today = $request->input('date');
 
 
+
 		return view('teacherSpace/fairelappel/show', compact('groupe', 'id', 'today'));
 	}
 
