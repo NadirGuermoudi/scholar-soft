@@ -40,4 +40,7 @@ route::get('corrected/{paquet}','TeacherSpace\PaquetController@show')->name('paq
 Route::post('fairelappel/ajax', 'TeacherSpace\AbsenceController@ajaxRequestPost')->name('fairelappel.ajax');
 Route::post('fairelappel/absence', 'TeacherSpace\AbsenceController@fairlappel')->name('fairelappel.abs');
 Route::post('fairelappel/afficher', 'TeacherSpace\AbsenceController@afficher')->name('fairelappel.afficher');
+Route::post('consulterabs/afficher', 'TeacherSpace\AbsenceController@afficherAbs')->name('consultersabs.afficher');
+Route::get('consulterabs', 'TeacherSpace\AbsenceController@consulteraAbs')->name('consultersabs');
+
 route::resource('fairelappel', 'TeacherSpace\AbsenceController');
