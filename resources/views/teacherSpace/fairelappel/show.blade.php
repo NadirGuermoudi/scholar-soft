@@ -85,8 +85,12 @@
 														<span id="danger{{ $e->id }}" class="text-danger" style="display: none;">absent</span>
 														<i id="error{{ $e->id }}" class="fa fa-times text-danger" style="display: none;"></i>
 													@endif
-
 												@endforeach
+												<span id="success{{ $e->id }}" class="text-success" style="display: none;">present</span>
+												<i id="warning{{ $e->id}}" class="fas fa-sync-alt text-warning"
+													 style="display: none;"></i>
+												<span id="danger{{ $e->id }}" class="text-danger" style="display: none;">absent</span>
+												<i id="error{{ $e->id }}" class="fa fa-times text-danger" style="display: none;"></i>
 											</td>
 
 										</tr>
@@ -116,8 +120,8 @@
           var idEtudiant = $(e).attr('id-etu');
           $('#success' + idEtudiant).hide();
           $('#danger' + idEtudiant).hide();
-          $('#success' + idEtudiant+'p').hide();
-          $('#danger' + idEtudiant+ 'p').hide();
+          $('#success' + idEtudiant + 'p').hide();
+          $('#danger' + idEtudiant + 'p').hide();
           $('#error' + idEtudiant).hide();
           $('#warning' + idEtudiant).show();
 

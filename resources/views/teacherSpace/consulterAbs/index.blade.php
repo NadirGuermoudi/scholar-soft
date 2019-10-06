@@ -104,7 +104,7 @@
                   ele.append('<option disabled selected>Selectionner seance </option>');
                   for (var i = 0; i < e.length; i++) {
                       // POPULATE SELECT ELEMENT WITH JSON.
-                      ele.append('<option value="' + e[i]['id'] + '">' + e[i]['type'] + '(' + e[i]['module'] + ')' + ' : ' + '</option>');
+                      ele.append('<option value="' + e[i]['id'] + '">' + e[i]['type'] + '(' + e[i]['module'] + ')' + '</option>');
                   }
                   show('seance');
 
