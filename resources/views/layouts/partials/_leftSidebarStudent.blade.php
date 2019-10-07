@@ -34,7 +34,7 @@
 				</li>
 
 				<li>
-					<a href="{{route('emploiDuTemps')}}" aria-expanded="false">
+					<a href="{{route('emploiDuTemps')}}" class="{{ set_active_route('emploiDuTemps') }}" aria-expanded="false">
 						<i class="far fa-calendar-alt fa-lg"></i>
 						<span class="hide-menu">
 							Emploi du temps 
@@ -44,7 +44,7 @@
 				
 				<li>
 
-					<a href="{{route( 'absence.index' )}}" aria-expanded="false">
+					<a href="{{route( 'absence.index' )}}" class="{{ set_active_route('absence.index') }}" aria-expanded="false">
 						<i class="fa fa-calendar-times fa-lg"></i>
 						<span class="hide-menu">
 							Voir mes absences 
@@ -73,7 +73,7 @@
 				</li>
 
 				<li>
-					<a href="{{route('student.parametres')}}" aria-expanded="false">
+					<a href="{{route('student.parametres')}}" class="{{ set_active_route('student.parametres') }}" aria-expanded="false">
 						<i class="fas fa-cog fa-lg"></i>
 						<span class="hide-menu">
 							Paramètres
