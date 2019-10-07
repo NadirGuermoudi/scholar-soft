@@ -3,12 +3,16 @@
 namespace App\Http\Controllers\TeacherSpace;
 
 use App\Models\Absence;
+use App\Models\Etudiant;
 use App\Models\Seance;
 use App\Traits\UploadTrait;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
+use Symfony\Component\HttpFoundation\Session\Storage\Handler\AbstractSessionHandler;
 
 class ConsulterAbsController extends Controller
 {
@@ -45,6 +49,8 @@ class ConsulterAbsController extends Controller
 		$id = (int)$request->seance;
 		$seance = Absence::where('seance_id', $id)->get();
 		$groupes = Seance::where('id', $id)->first()->groupes;
+		$g = Seance::where('id', $id)->first();
+
 		$abs = Absence::where('seance_id', $id)->get();
 		$exclusJ = [];
 		$exclusNj = [];
@@ -65,7 +71,7 @@ class ConsulterAbsController extends Controller
 
 		$type = Seance::where('id', $id)->first()->type;
 
-		return view('teacherSpace/consulterExclus/show',compact('groupes','exclusJ','exclusNj','type'))	;
+		return view('teacherSpace/consulterExclus/show', compact('g','groupes', 'exclusJ', 'exclusNj', 'type'));
 	}
 
 	public function afficherAbs(Request $request)
@@ -91,14 +97,14 @@ class ConsulterAbsController extends Controller
 		$date = $request->input('date');
 
 		$seance = Seance::where('id', $idS)->first();
-		$abss = $seance->absents()->where('date', $date)
+		$abss = Absence::where('date', $date)
 			->where('etudiant_id', $idE)
 			->where('seance_id', $idS)
 			->first();
-		Storage::delete($abss->pivot->justification);
-		$abss->pivot->justification = null;
-		$abss->pivot->justified = 0;
-		$abss->pivot->save();
+		File::delete($abss->justification);
+		$abss->justification = null;
+		$abss->justified = 0;
+		$abss->save();
 
 
 		$abs = Absence::where('seance_id', $idS)
@@ -116,22 +122,26 @@ class ConsulterAbsController extends Controller
 	{
 		$idS = (int)$request->input('idS');
 
-
 		$idE = (int)$request->input('idE');
 		$date = $request->input('date');
 
 		$seance = Seance::where('id', $idS)->first();
-		$abss = $seance->absents()->where('date', $date)
-			->where('etudiant_id', $idE)
-			->where('seance_id', $idS)
-			->first();
+
 		if ($request->hasFile('img')) {
+			$abss = Absence::where('date', $date)
+				->where('etudiant_id', $idE)
+				->where('seance_id', $idS)
+				->first();
+
+
 			$file = $request->file('img');
 			$file_name = time() . '.' . $file->getClientOriginalExtension();
+			$abss->justification = 'uploads/photo/' . $file_name;
+			$abss->justified = 1;
+			$abss->save();
+
 			$file->move(public_path('/uploads/photo'), $file_name);
-			$abss->pivot->justification = 'uploads/photo/' . $file_name;
-			$abss->pivot->justified = 1;
-			$abss->pivot->save();
+
 		}
 
 
@@ -159,18 +169,17 @@ class ConsulterAbsController extends Controller
 			->where('seance_id', $idS)
 			->first();
 		$seance = Seance::where('id', $idS)->first();
-		$abs = $seance->absents()->where('date', $date)
+		$abs = Absence::where('date', $date)
 			->where('etudiant_id', $idE)
 			->where('seance_id', $idS)
 			->first();
-
 		if ($j == 1) {
-			$abs->pivot->justified = 1;
-			$abs->pivot->save();
+			$abs->justified = 1;
+			$abs->save();
 			return response()->json(['success' => 'justifier']);
 		} else {
-			$abs->pivot->justified = 0;
-			$abs->pivot->save();
+			$abs->justified = 0;
+			$abs->save();
 			return response()->json(['success' => 'non justifier']);
 		}
 
