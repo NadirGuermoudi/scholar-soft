@@ -8,6 +8,7 @@ use App\Traits\UploadTrait;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ConsulterAbsController extends Controller
 {
@@ -31,6 +32,42 @@ class ConsulterAbsController extends Controller
 		return view('teacherSpace/consulterAbs/index', compact('eId', 'data'));
 	}
 
+	public function indexExclus()
+	{
+		$data = Auth::guard('enseignant')->user()->seances;
+		$eId = Auth::guard('enseignant')->user()->id;
+
+		return view('teacherSpace/consulterExclus/index', compact('eId', 'data'));
+	}
+
+	public function afficherExclus(Request $request)
+	{
+		$id = (int)$request->seance;
+		$seance = Absence::where('seance_id', $id)->get();
+		$groupes = Seance::where('id', $id)->first()->groupes;
+		$abs = Absence::where('seance_id', $id)->get();
+		$exclusJ = [];
+		$exclusNj = [];
+
+		foreach ($abs as $a) {
+			$i = $a->etudiant->id;
+			$absJ = Absence::where('etudiant_id', $i)->where('justified', 1)->count();
+			$absNj = Absence::where('etudiant_id', $i)->where('justified', 0)->count();
+			if ($absJ >= 5) {
+				if (!in_array($a->etudiant, $exclusJ))
+					array_push($exclusJ, $a->etudiant);
+			}
+			if ($absNj >= 3) {
+				if (!in_array($a->etudiant, $exclusNj))
+					array_push($exclusNj, $a->etudiant);
+			}
+		}
+
+		$type = Seance::where('id', $id)->first()->type;
+
+		return view('teacherSpace/consulterExclus/show',compact('groupes','exclusJ','exclusNj','type'))	;
+	}
+
 	public function afficherAbs(Request $request)
 	{
 		$id = (int)$request->seance;
@@ -45,7 +82,8 @@ class ConsulterAbsController extends Controller
 		return view('teacherSpace/consulterAbs/show', compact('groupes', 'abs', 'type'));
 	}
 
-	public function suppJus(Request $request){
+	public function suppJus(Request $request)
+	{
 		$idS = (int)$request->input('idS');
 
 
@@ -57,10 +95,10 @@ class ConsulterAbsController extends Controller
 			->where('etudiant_id', $idE)
 			->where('seance_id', $idS)
 			->first();
-
-			$abss->pivot->justification = null;
-			$abss->pivot->justified = 0;
-			$abss->pivot->save();
+		Storage::delete($abss->pivot->justification);
+		$abss->pivot->justification = null;
+		$abss->pivot->justified = 0;
+		$abss->pivot->save();
 
 
 		$abs = Absence::where('seance_id', $idS)

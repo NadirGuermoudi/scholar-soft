@@ -41,9 +41,17 @@
 				</li>
 				<li>
 					<a href="{{ route('consultersabs') }}" aria-expanded="false">
-						<i class="fas fa-bell fa-lg"></i>
+						<i class="fas fa-clipboard-list fa-lg"></i>
 						<span class="hide-menu">
 							Consulter les absences
+						</span>
+					</a>
+				</li>
+				<li>
+					<a href="{{ route('consulterexclus') }}" aria-expanded="false">
+						<i class="fas fa-list fa-lg"></i>
+						<span class="hide-menu">
+							Consulter list des Exclus
 						</span>
 					</a>
 				</li>

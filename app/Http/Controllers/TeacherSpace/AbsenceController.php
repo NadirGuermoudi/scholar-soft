@@ -53,7 +53,6 @@ class AbsenceController extends Controller
 	{
 		$id = (int)$request->seance;
 		$abs = Absence::where('seance_id', $id)->where('presence',0)->get();
-		dd($abs->first()->date);
 		$type = Seance::where('id', $id)->first()->type;
 		$groupes = Seance::where('id', $id)->first()->groupes;
 
