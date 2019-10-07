@@ -11,7 +11,7 @@ class Groupe extends Model
 
 	public function seances()
 	{
-		return $this->belongsToMany('App\Models\Seance');
+		return $this->belongsToMany('App\Models\Seance', 'groupe_seance');
 	}
 
 	public function etudiants()
