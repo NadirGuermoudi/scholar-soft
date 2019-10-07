@@ -6,38 +6,39 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateAbsencesTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
-    {
-        Schema::create('absences', function (Blueprint $table) {
-            $table->date('date');
-            $table->boolean('presence')->default(false);
-            $table->boolean('justified')->default(false);
-            $table->string('justification')->nullable();
-            
-            $table->unsignedBigInteger('seance_id');
-            $table->unsignedBigInteger('etudiant_id');
+	/**
+	 * Run the migrations.
+	 *
+	 * @return void
+	 */
+	public function up()
+	{
+		Schema::create('absences', function (Blueprint $table) {
+			$table->bigIncrements('id');
+			$table->date('date');
+			$table->boolean('presence')->default(false);
+			$table->boolean('justified')->default(false);
+			$table->string('justification')->nullable();
 
-            $table->foreign('seance_id')->references('id')->on('seances')->onDelete('cascade');
-            $table->foreign('etudiant_id')->references('id')->on('etudiants')->onDelete('cascade');
+			$table->unsignedBigInteger('seance_id');
+			$table->unsignedBigInteger('etudiant_id');
 
-            $table->primary(['date', 'seance_id', 'etudiant_id']);
+			$table->foreign('seance_id')->references('id')->on('seances')->onDelete('cascade');
+			$table->foreign('etudiant_id')->references('id')->on('etudiants')->onDelete('cascade');
 
-            $table->timestamps();
-        });
-    }
+//			$table->primary(['date', 'seance_id', 'etudiant_id']);
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('absences');
-    }
+			$table->timestamps();
+		});
+	}
+
+	/**
+	 * Reverse the migrations.
+	 *
+	 * @return void
+	 */
+	public function down()
+	{
+		Schema::dropIfExists('absences');
+	}
 }

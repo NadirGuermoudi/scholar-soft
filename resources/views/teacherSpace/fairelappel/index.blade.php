@@ -44,7 +44,7 @@
 								@if($j->jour == "JEUDI" and $cptJ ==0)
 									{{$cptJ = 1}}
 									<option value="{{$j->jour}}">{{$j->jour}}</option>
-								@endif
+								@endifx
 							@endforeach
 						</select>
 
