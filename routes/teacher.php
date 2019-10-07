@@ -47,6 +47,8 @@ Route::post('consulterabs/AjoutJus', 'TeacherSpace\ConsulterAbsController@ajoutJ
 Route::post('consulterabs/SuppJus', 'TeacherSpace\ConsulterAbsController@suppJus')->name('consultersabs.suppJust');
 Route::get('consulterabs', 'TeacherSpace\ConsulterAbsController@index')->name('consultersabs');
 
+Route::get('consulterexclus', 'TeacherSpace\ConsulterAbsController@indexExclus')->name('consulterexclus');
+Route::post('consulterexclus/afficher', 'TeacherSpace\ConsulterAbsController@afficherExclus')->name('consulterexclus.afficher');
 
 route::resource('fairelappel', 'TeacherSpace\AbsenceController');
 

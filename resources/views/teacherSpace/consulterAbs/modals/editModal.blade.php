@@ -1,4 +1,4 @@
-<div id="edit-enseignant" class="modal fade in" tabindex="-1" role="dialog"
+<div id="edit-enseignant{{$a->date}}" class="modal fade in" tabindex="-1" role="dialog"
 		 aria-labelledby="myModalLabel"
 		 aria-hidden="true">
     <div class="modal-dialog">
