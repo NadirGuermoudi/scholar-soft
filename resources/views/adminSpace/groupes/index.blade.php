@@ -50,7 +50,7 @@
 				<td>
 					<a href="{{ route('groupes.show', $groupe) }}" class="btn btn-outline-info"><i class="fa fa-eye"></i></a>
 					
-					<a href="{{ route('groupes.edit', $groupe) }}" class="btn btn-outline-info"><i class="fa fa-edit"></i></a>
+					{{-- <a href="{{ route('groupes.edit', $groupe) }}" class="btn btn-outline-info"><i class="fa fa-edit"></i></a> --}}
 
 					<button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#delete-groupe{{$groupe->id}}">
 						<i class="fa fa-times"></i>

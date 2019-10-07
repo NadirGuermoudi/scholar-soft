@@ -16,12 +16,27 @@ class Enseignant extends Authenticatable
 
 	protected $hidden = ['password',  'remember_token'];
 
-	public function seances()
-	{
+	public function getFullNameAttribute(){
+		return strtoupper($this->nom) . ' ' . ucfirst($this->prenom);
+	}
+
+	public function seances(){
 		return $this->hasMany('App\Models\Seance');
 	}
 
-	public function getFullNameAttribute() {
-		return strtoupper($this->nom) . ' ' . ucfirst($this->prenom);
+	public function mesPaquets(){
+		return $this->hasMany('App\models\Paquet', 'responsable_id');
+	}
+
+	public function mesPaquetsCorrecteur1(){
+		return $this->hasMany('App\models\Paquet', 'correcteur1_id');
+	}
+
+	public function mesPaquetsCorrecteur2(){
+		return $this->hasMany('App\models\Paquet', 'correcteur2_id');
+	}
+
+	public function mesPaquetsCorrecteur3(){
+		return $this->hasMany('App\models\Paquet', 'correcteur3_id');
 	}
 }

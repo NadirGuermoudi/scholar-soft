@@ -27,7 +27,7 @@ class SeancesTableSeeder extends Seeder
 		$seance->heur_debut = "10:00";
 		$seance->heur_fin = "11:30";
 		$seance->salle_id = $salle;
-		$seance->enseignant_id = 1;
+		$seance->enseignant_id = 4;
 		$seance->save();
 		$seance->groupes()->attach([$groupeGL]);
 
@@ -38,7 +38,7 @@ class SeancesTableSeeder extends Seeder
 		$seance->heur_debut = "11:30";
 		$seance->heur_fin = "13:00";
 		$seance->salle_id = $salle;
-		$seance->enseignant_id = 1;
+		$seance->enseignant_id = 5;
 		$seance->save();
 		$seance->groupes()->attach([$groupeGL, $groupeSIC]);
 
@@ -49,7 +49,7 @@ class SeancesTableSeeder extends Seeder
 		$seance->heur_debut = "13:30";
 		$seance->heur_fin = "16:30";
 		$seance->salle_id = $salle;
-		$seance->enseignant_id = 1;
+		$seance->enseignant_id = 4;
 		$seance->once_two_week = true;
 		$seance->save();
 		$seance->groupes()->attach([$groupeGL]);
@@ -61,7 +61,7 @@ class SeancesTableSeeder extends Seeder
 		$seance->heur_debut = "13:30";
 		$seance->heur_fin = "16:30";
 		$seance->salle_id = $salle;
-		$seance->enseignant_id = 1;
+		$seance->enseignant_id = 6;
 		$seance->once_two_week = true;
 		$seance->save();
 		$seance->groupes()->attach([$groupeGL]);
@@ -74,7 +74,7 @@ class SeancesTableSeeder extends Seeder
 		$seance->heur_debut = "08:30";
 		$seance->heur_fin = "10:00";
 		$seance->salle_id = $salle;
-		$seance->enseignant_id = 1;
+		$seance->enseignant_id = 7;
 		$seance->save();
 		$seance->groupes()->attach([$groupeGL, $groupeRSD]);
 
@@ -85,7 +85,7 @@ class SeancesTableSeeder extends Seeder
 		$seance->heur_debut = "10:00";
 		$seance->heur_fin = "11:30";
 		$seance->salle_id = $salle;
-		$seance->enseignant_id = 1;
+		$seance->enseignant_id = 3;
 		$seance->save();
 		$seance->groupes()->attach([$groupeGL]);
 
@@ -96,7 +96,7 @@ class SeancesTableSeeder extends Seeder
 		$seance->heur_debut = "11:30";
 		$seance->heur_fin = "13:00";
 		$seance->salle_id = $salle;
-		$seance->enseignant_id = 1;
+		$seance->enseignant_id = 3;
 		$seance->save();
 		$seance->groupes()->attach([$groupeGL]);
 
@@ -107,7 +107,7 @@ class SeancesTableSeeder extends Seeder
 		$seance->heur_debut = "13:30";
 		$seance->heur_fin = "16:30";
 		$seance->salle_id = $salle;
-		$seance->enseignant_id = 1;
+		$seance->enseignant_id = 3;
 		$seance->once_two_week = true;
 		$seance->save();
 		$seance->groupes()->attach([$groupeGL]);
@@ -119,7 +119,7 @@ class SeancesTableSeeder extends Seeder
 		$seance->heur_debut = "13:30";
 		$seance->heur_fin = "16:30";
 		$seance->salle_id = $salle;
-		$seance->enseignant_id = 1;
+		$seance->enseignant_id = 7;
 		$seance->once_two_week = true;
 		$seance->save();
 		$seance->groupes()->attach([$groupeGL]);
@@ -132,7 +132,7 @@ class SeancesTableSeeder extends Seeder
 		$seance->heur_debut = "08:30";
 		$seance->heur_fin = "10:00";
 		$seance->salle_id = $salle;
-		$seance->enseignant_id = 1;
+		$seance->enseignant_id = 7;
 		$seance->save();
 		$seance->groupes()->attach([$groupeGL]);
 
@@ -166,7 +166,7 @@ class SeancesTableSeeder extends Seeder
 		$seance->heur_debut = "08:30";
 		$seance->heur_fin = "10:00";
 		$seance->salle_id = $salle;
-		$seance->enseignant_id = 1;
+		$seance->enseignant_id = 8;
 		$seance->save();
 		$seance->groupes()->attach([$groupeGL]);
 
@@ -177,7 +177,7 @@ class SeancesTableSeeder extends Seeder
 		$seance->heur_debut = "10:00";
 		$seance->heur_fin = "11:30";
 		$seance->salle_id = $salle;
-		$seance->enseignant_id = 1;
+		$seance->enseignant_id = 8;
 		$seance->save();
 		$seance->groupes()->attach([$groupeGL, $groupeMID]);
 
@@ -188,7 +188,7 @@ class SeancesTableSeeder extends Seeder
 		$seance->heur_debut = "11:30";
 		$seance->heur_fin = "13:00";
 		$seance->salle_id = $salle;
-		$seance->enseignant_id = 1;
+		$seance->enseignant_id = 9;
 		$seance->save();
 		$seance->groupes()->attach([$groupeGL]);
 
@@ -199,7 +199,7 @@ class SeancesTableSeeder extends Seeder
 		$seance->heur_debut = "13:30";
 		$seance->heur_fin = "16:30";
 		$seance->salle_id = $salle;
-		$seance->enseignant_id = 1;
+		$seance->enseignant_id = 2;
 		$seance->save();
 		$seance->groupes()->attach([$groupeGL]);
 	}

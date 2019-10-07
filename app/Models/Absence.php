@@ -14,5 +14,9 @@ class Absence extends Model
     	return $this->belongsTo(Seance::class);
     }
 
+    public function etudiant()
+    {
+    	return $this->belongsTo(Etudiant::class);
+    }
 
 }

@@ -4,6 +4,8 @@ namespace App\Http\Controllers\TeacherSpace;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Auth;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -24,6 +26,12 @@ class HomeController extends Controller
 	 */
 	public function index()
 	{
-		return view('teacherSpace.home');
+		$seances = Auth::guard('enseignant')->user()->seances->count();
+		$cours = Auth::guard('enseignant')->user()->seances->where('type', 'Cours')->count();
+		$td = Auth::guard('enseignant')->user()->seances->where('type', 'TD')->count();
+		$tp = Auth::guard('enseignant')->user()->seances->where('type', 'TP')->count();
+		$heures;
+
+		return view('teacherSpace.home', compact('seances', 'cours', 'td', 'tp', 'heures'));
 	}
 }

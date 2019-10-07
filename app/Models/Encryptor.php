@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Encryptor extends Model
+class Encryptor extends Authenticatable
 {
 	use Notifiable;
 
@@ -18,5 +18,9 @@ class Encryptor extends Model
 
 	public function getFullNameAttribute() {
 		return strtoupper($this->nom) . ' ' . ucfirst($this->prenom);
+	}
+
+	public function paquets(){
+		return $this->hasMany('App\Models\Paquet');
 	}
 }
