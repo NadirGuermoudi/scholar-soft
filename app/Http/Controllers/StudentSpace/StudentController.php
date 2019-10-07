@@ -79,6 +79,7 @@ class StudentController extends Controller
 
                         'email' => 'required',
                         'password_old' => 'required'
+                        
                             ]); 
 
             // $etudiant = Etudiant::findOrFail($etudiant->id)->first();

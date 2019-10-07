@@ -16,7 +16,7 @@ Route::get('/home', 'StudentSpace\HomeController@index');
 
 route::resource('absence','StudentSpace\AbsenceController');
 
-Route::get('/emploiDuTemps', [
+Route::get('/emploi_du_temps', [
 					'as' => 'emploiDuTemps'  ,
 					'uses' => 'StudentSpace\EmploiDuTempsController@index'					
 				]

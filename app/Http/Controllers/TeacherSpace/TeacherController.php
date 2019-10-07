@@ -139,14 +139,30 @@ class TeacherController extends Controller
 
         return redirect(route('teacher.parametres'));
 
+    }
+
+
+
+
     /**
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Enseignant  $enseignant
      * @return \Illuminate\Http\Response
      */
+
+
+
+
+
+
     public function destroy(Enseignant $enseignant)
     {
         //
     }
+
+
+
+
+    
 }
