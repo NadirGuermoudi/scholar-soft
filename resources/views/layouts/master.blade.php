@@ -84,7 +84,7 @@
 
 			<!-- footer -->
 			<footer class="footer">
-				© 2019 Scolar-soft
+				© 2019 Scholar-soft
 			</footer>
 			
 		</div>

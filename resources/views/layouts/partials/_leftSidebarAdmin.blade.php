@@ -34,7 +34,7 @@
                 <li class="nav-small-cap">PERSONNEL</li>
                 
                 <li>
-                    <a href="{{route('teachers.index')}}" aria-expanded="false">
+                    <a href="{{route('teachers.index')}}" class="{{ set_active_route('teachers.index') }}" aria-expanded="false">
                         <i class="fas fa-chalkboard-teacher fa-lg"></i>
                         <span class="hide-menu">
                             Enseignants 
@@ -43,7 +43,7 @@
                 </li>
 
                 <li>
-                   <a href="{{route('encryptors.index')}}" aria-expanded="false">
+                   <a href="{{route('encryptors.index')}}" class="{{ set_active_route('encryptors.index') }}" aria-expanded="false">
                         <i class="fa fa-user-tie fa-lg"></i>
                         <span class="hide-menu">
                             Chiffreurs 
@@ -52,7 +52,7 @@
                 </li>
 
                 <li>
-                    <a href="{{ route('etudiants.index') }}" aria-expanded="false">
+                    <a href="{{ route('etudiants.index') }}" class="{{ set_active_route('etudiants.index') }}" aria-expanded="false">
                         <i class="{{-- fa fa-users --}} fas fa-glasses fa-lg"></i>
                         <span class="hide-menu">
                             Etudiants 
@@ -63,7 +63,7 @@
                 <li class="nav-devider"></li>
 
                 <li>
-                    <a href="{{ route('groupes.index') }}" aria-expanded="false">
+                    <a href="{{ route('groupes.index') }}" class="{{ set_active_route('groupes.index') }}" aria-expanded="false">
                         <i class="{{-- fa fa-users --}} fa fa-users fa-lg"></i>
                         <span class="hide-menu">
                             Groupes d'étudiants
@@ -72,7 +72,7 @@
                 </li>
 
                 <li>
-                    <a href="{{route('salles.index')}}" aria-expanded="false">
+                    <a href="{{route('salles.index')}}" class="{{ set_active_route('salles.index') }}" aria-expanded="false">
                         <i class="fas fa-door-open fa-lg"></i>
                         <span class="hide-menu">
                             Salles 
@@ -81,7 +81,7 @@
                 </li>
 
                 <li>
-                    <a href="{{route('admin.parametres')}}" aria-expanded="false">
+                    <a href="{{route('admin.parametres')}}" class="{{ set_active_route('admin.parametres') }}" aria-expanded="false">
                         <i class="fas fa-cog fa-lg"></i>
                         <span class="hide-menu">
                             Paramètres 
