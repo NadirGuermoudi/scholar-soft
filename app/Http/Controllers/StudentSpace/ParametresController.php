@@ -10,13 +10,11 @@ class ParametresController extends Controller
 
 	public function __construct()
 	{
-	    $this->middleware('etudiant');
+		$this->middleware('etudiant');
 	}
 
-    public function index()
-    {
-    	return view('studentSpace/parametres/index');
-    }
+	public function index()
+	{
+		return view('studentSpace/parametres/index');
+	}
 }
-
-?>

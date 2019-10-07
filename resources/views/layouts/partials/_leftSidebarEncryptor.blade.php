@@ -24,7 +24,7 @@
 		<nav class="sidebar-nav">
 			<ul id="sidebarnav">
 				<li>
-					<a href="{{ route('encryptor.home') }}" class="{{ Route::is(route('codeur-paquets.not.encrypted')) ? 'active' : '' }}" aria-expanded="false">
+					<a href="{{ route('encryptor.home') }}" class="{{ set_active_route('encryptor.home') }} {{ url()->current() == url('/') ? 'active' : '' }}" aria-expanded="false">
 						<i class="fas fa-home"></i>
 						<span class="hide-menu">
 							Accueil 
@@ -36,7 +36,7 @@
 
 				<li class="nav-small-cap">PAQUETS</li>
 				<li>
-					<a href="{{ route('codeur-paquets.index') }}" aria-expanded="false">
+					<a href="{{ route('codeur-paquets.index') }}" class="{{ set_active_route('codeur-paquets.index') }}" aria-expanded="false">
 						<i class="fas fa-folder fa-lg"></i>
 						<span class="hide-menu">
 							Paquets non pris 
@@ -45,7 +45,7 @@
 				</li>
 
 				<li>
-					<a href="{{ route('codeur-paquets.not.encrypted') }}" aria-expanded="false">
+					<a href="{{ route('codeur-paquets.not.encrypted') }}" class="{{ set_active_route('codeur-paquets.not.encrypted') }}" aria-expanded="false">
 						<i class="fas fa-sync-alt fa-lg"></i>
 						<span class="hide-menu">
 							Mes paquets non codées 
@@ -54,7 +54,7 @@
 				</li>
 
 				<li>
-					<a href="{{ route('codeur-paquets.encrypted') }}" aria-expanded="false">
+					<a href="{{ route('codeur-paquets.encrypted') }}" class="{{ set_active_route('codeur-paquets.encrypted') }}" aria-expanded="false">
 						<i class="fas fa-clipboard-check fa-lg"></i>
 						<span class="hide-menu">
 							Mes paquets codées  
@@ -65,7 +65,7 @@
 				<li class="nav-devider"></li>
 
 				<li>
-					<a href="{{ route('encryptor.mails') }}" aria-expanded="false">
+					<a href="{{ route('encryptor.mails') }}" class="{{ set_active_route('encryptor.mails') }}" aria-expanded="false">
 						<i class="fas fa-envelope fa-lg"></i>
 						<span class="hide-menu">
 							Mails 

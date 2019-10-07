@@ -106,7 +106,6 @@ class ConsulterAbsController extends Controller
 		$abss->justified = 0;
 		$abss->save();
 
-
 		$abs = Absence::where('seance_id', $idS)
 			->where('presence', 0)
 			->get();
@@ -126,7 +125,7 @@ class ConsulterAbsController extends Controller
 		$date = $request->input('date');
 
 		$seance = Seance::where('id', $idS)->first();
-
+    
 		if ($request->hasFile('img')) {
 			$abss = Absence::where('date', $date)
 				->where('etudiant_id', $idE)
