@@ -1,6 +1,4 @@
-@extends('layouts.master', ['title' => "Faire l'appel"])
-
-
+@extends('layouts.master', ['title' => "consulter les absences"])
 @section('content')
 	<div class="container-fluid">
 
@@ -13,7 +11,7 @@
 					<div class="card-block">
 
 						<h4 class="card-title">
-							Faire l'appel
+							Consulter les absences
 						</h4>
 
 
@@ -48,22 +46,20 @@
 							@endforeach
 						</select>
 
-						<form action="{{route('fairelappel.afficher')}}" method="post">
+						<form action="{{route('consultersabs.afficher')}}" method="post">
 							@csrf
 							<select name="seance" class="col-md-12 select2-dropdown text-dark form-control"
 											style="margin-top: 5px;display:none;"
 											onchange="button()"
 											id="seance">
-								<option disabled selected>Selectionner seance</option>
+								<option disabled selected>Selectionner Seance</option>
 
 							</select>
-
-							<input style="margin-top: 5px;display:none;" name="date" id="date" class="form-control col-12" type="date" value="{{$today}}">
 
 							<div id="button" style="margin: 5px;display:none;">
 								<!-- Button trigger modal -->
 								<button type="submit" class="btn  btn-success btn-block btn-md">
-									faire l'appel pour le groupe
+									Consulter les absences
 								</button>
 
 
@@ -79,11 +75,8 @@
 		</div>
 	</div>
 @endsection
-
 @push('scripts')
-
 	<script>
-
       $.ajaxSetup({
           headers: {
               'X-CSRF-TOKEN': '{{csrf_token()}}'
@@ -101,7 +94,7 @@
 
               url: '/fairelappel/ajax',
 
-              data: {jour: jour,id:id},
+              data: {jour: jour, id: id},
 
               success: function (data) {
                   // $('#example23').preventDefault();
@@ -111,8 +104,7 @@
                   ele.append('<option disabled selected>Selectionner seance </option>');
                   for (var i = 0; i < e.length; i++) {
                       // POPULATE SELECT ELEMENT WITH JSON.
-                      ele.append('<option value="' + e[i]['id'] + '">' + e[i]['type'] +'('+ e[i]['module']+')' + ' : ' + e[i]['heur_debut'].slice(0,5) +'h'+ '</option>');
-
+                      ele.append('<option value="' + e[i]['id'] + '">' + e[i]['type'] + '(' + e[i]['module'] + ')' + '</option>');
                   }
                   show('seance');
 
@@ -133,11 +125,5 @@
           var select = document.getElementById(id);
           select.style.display = 'inline';
       }
-
-
 	</script>
-
 @endpush
-
-
-

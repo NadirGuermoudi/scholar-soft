@@ -11,13 +11,18 @@
 				<div class="card">
 
 					<div class="card-block">
-
-						<h4 class="card-title">
-							Faire l'appel
-						</h4>
-						<h6>Selection la date voulu</h6>
-						<input id="date" class="form-control col-12" type="date" value="{{$today}}">
-
+						<div class="card-title">
+							<h3>
+								Faire l'appel
+							</h3>
+							<h5>
+								<span>Type : {{$type}}</span><br>
+								@foreach($groupe as $g)
+									<span>Groupe : {{$g->specialite}}</span><br>
+								@endforeach
+								<span>Date : {{$today}}</span>
+							</h5>
+						</div>
 						<div class="table-responsive m-t-40">
 
 							<table id="example23" class="myclass display nowrap table table-hover table-striped table-bordered"
@@ -58,8 +63,32 @@
 															onclick="groupe(this)"></i></a>
 											</td>
 											<td class="text-center">
+												@foreach($abs as $a)
+													@if($e->id == $a->etudiant_id)
+														@if($a->presence == 1)
+															<span id="success{{ $e->id }}p" class="text-success">present</span>
+															<i id="warning{{ $e->id}}" class="fas fa-sync-alt text-warning"
+																 style="display: none;"></i>
+															<span id="danger{{ $e->id }}" class="text-danger" style="display: none;">absent</span>
+															<i id="error{{ $e->id }}" class="fa fa-times text-danger" style="display: none;"></i>
+														@elseif($a->presence == 0)
+															<span id="danger{{ $e->id }}p" class="text-danger">absent</span>
+															<span id="success{{ $e->id }}" class="text-success" style="display: none;">present</span>
+															<i id="warning{{ $e->id}}" class="fas fa-sync-alt text-warning"
+																 style="display: none;"></i>
+															<i id="error{{ $e->id }}" class="fa fa-times text-danger" style="display: none;"></i>
+														@endif
+													@else
+														<span id="success{{ $e->id }}" class="text-success" style="display: none;">present</span>
+														<i id="warning{{ $e->id}}" class="fas fa-sync-alt text-warning"
+															 style="display: none;"></i>
+														<span id="danger{{ $e->id }}" class="text-danger" style="display: none;">absent</span>
+														<i id="error{{ $e->id }}" class="fa fa-times text-danger" style="display: none;"></i>
+													@endif
+												@endforeach
 												<span id="success{{ $e->id }}" class="text-success" style="display: none;">present</span>
-												<i id="warning{{ $e->id}}" class="fas fa-sync-alt text-warning" style="display: none;"></i>
+												<i id="warning{{ $e->id}}" class="fas fa-sync-alt text-warning"
+													 style="display: none;"></i>
 												<span id="danger{{ $e->id }}" class="text-danger" style="display: none;">absent</span>
 												<i id="error{{ $e->id }}" class="fa fa-times text-danger" style="display: none;"></i>
 											</td>
@@ -91,13 +120,16 @@
           var idEtudiant = $(e).attr('id-etu');
           $('#success' + idEtudiant).hide();
           $('#danger' + idEtudiant).hide();
+          $('#success' + idEtudiant + 'p').hide();
+          $('#danger' + idEtudiant + 'p').hide();
           $('#error' + idEtudiant).hide();
           $('#warning' + idEtudiant).show();
 
           var presence;
 
           var idSeance = {{$id}};
-          var date = {{$today}};
+
+          var date = "{{$today}}";
           if ($(e).attr('id') == 'present') {
               presence = 1;
           } else {

@@ -30,27 +30,45 @@ class AbsenceController extends Controller
 	{
 
 		$jour = $request->jour;
+		$id = $request->id;
 
-		$groupe = Seance::where('jour', $jour)->get();
+		$seances = Seance::where('jour', $jour)->where('enseignant_id', $id)->get();
 
 
-		$json = json_encode($groupe);
+		$json = json_encode($seances);
 
 		return response()->json($json);
 
 	}
 
-	public function absence(Request $request)
+	public function consulteraAbs()
 	{
+		$data = Auth::guard('enseignant')->user()->seances;
+		$eId = Auth::guard('enseignant')->user()->id;
 
+		return view('teacherSpace/fairelappel/consulterAbs/index', compact('eId', 'data'));
+	}
+
+	public function afficherAbs(Request $request)
+	{
+		$id = (int)$request->seance;
+		$abs = Absence::where('seance_id', $id)->where('presence',0)->get();
+		dd($abs->first()->date);
+		$type = Seance::where('id', $id)->first()->type;
+		$groupes = Seance::where('id', $id)->first()->groupes;
+
+
+		return view('teacherSpace/fairelappel/consulterAbs/show', compact(  'groupes','abs', 'type'));
 	}
 
 	public function index()
 	{
 		$data = Auth::guard('enseignant')->user()->seances;
+		$eId = Auth::guard('enseignant')->user()->id;
 
+		$today = date('Y-m-d');
 
-		return view('teacherSpace/fairelappel/index', compact('data'));
+		return view('teacherSpace/fairelappel/index', compact('eId', 'data', 'today'));
 	}
 
 
@@ -73,15 +91,15 @@ class AbsenceController extends Controller
 	 * @return \Illuminate\Http\Response
 	 */
 
+
 	public function store(Request $request)
 	{
 		$seance = Seance::where('id', $request->idSeance)->first();
 		$etudiant = Etudiant::where('id', $request->idEtudiant)->first();
-//		dd($seance->absents()->first()->pivot->date);
+		$date = $request->input('date');
 		$abs = $seance->absents()->find($etudiant->id);
 		if (!empty($abs->pivot->date)) {
-			if ($abs->pivot->date == date('Y-m-d')) {
-
+			if ($abs->pivot->date == $date) {
 				if ($request->presence == 1) {
 					$abs->pivot->presence = 1;
 					$abs->pivot->save();
@@ -94,12 +112,12 @@ class AbsenceController extends Controller
 			} else {
 				if ($request->presence == 1) {
 					$presence = 1;
-					$seance->absents()->attach($etudiant, ['date' => date('Y-m-d'), 'justified' => 0,
+					$seance->absents()->attach($etudiant, ['date' => $date, 'justified' => 0,
 						'presence' => $presence]);
 					return response()->json(['success' => 'present']);
 				} else {
 					$presence = 0;
-					$seance->absents()->attach($etudiant, ['date' => date('Y-m-d'), 'justified' => 0,
+					$seance->absents()->attach($etudiant, ['date' => $date, 'justified' => 0,
 						'presence' => $presence]);
 					return response()->json(['success' => 'absent']);
 				}
@@ -107,12 +125,12 @@ class AbsenceController extends Controller
 		} else {
 			if ($request->presence == 1) {
 				$presence = 1;
-				$seance->absents()->attach($etudiant, ['date' => date('Y-m-d'), 'justified' => 0,
+				$seance->absents()->attach($etudiant, ['date' => $date, 'justified' => 0,
 					'presence' => $presence]);
 				return response()->json(['success' => 'present']);
 			} else {
 				$presence = 0;
-				$seance->absents()->attach($etudiant, ['date' => date('Y-m-d'), 'justified' => 0,
+				$seance->absents()->attach($etudiant, ['date' => $date, 'justified' => 0,
 					'presence' => $presence]);
 				return response()->json(['success' => 'absent']);
 			}
@@ -128,25 +146,21 @@ class AbsenceController extends Controller
 	 * @param int $id
 	 * @return \Illuminate\Http\Response
 	 */
-	public
-	function show($id)
+	public function show($id)
 	{
 
 	}
 
-	public
-	function afficher(Request $request)
+	public function afficher(Request $request)
 	{
 		$id = (int)$request->seance;
+		$today = $request->input('date');
+		$abs = Absence::where('date', $today)->where('seance_id', $id)->get();
 		$groupe = Seance::where('id', $id)->first()->groupes;
-
-		$month = date('m');
-		$day = date('d');
-		$year = date('Y');
-		$today = $year . '-' . $month . '-' . $day;
+		$type = Seance::where('id', $id)->first()->type;
 
 
-		return view('teacherSpace/fairelappel/show', compact('groupe', 'today', 'id'));
+		return view('teacherSpace/fairelappel/show', compact('groupe', 'id', 'today', 'abs', 'type'));
 	}
 
 	/**
@@ -155,8 +169,7 @@ class AbsenceController extends Controller
 	 * @param int $id
 	 * @return \Illuminate\Http\Response
 	 */
-	public
-	function edit($id)
+	public function edit($id)
 	{
 		//
 	}
@@ -168,8 +181,7 @@ class AbsenceController extends Controller
 	 * @param int $id
 	 * @return \Illuminate\Http\Response
 	 */
-	public
-	function update(Request $request, $id)
+	public function update(Request $request, $id)
 	{
 		//
 	}
@@ -180,8 +192,7 @@ class AbsenceController extends Controller
 	 * @param int $id
 	 * @return \Illuminate\Http\Response
 	 */
-	public
-	function destroy($id)
+	public function destroy($id)
 	{
 		//
 	}

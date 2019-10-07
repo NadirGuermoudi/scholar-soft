@@ -40,6 +40,14 @@ route::get('isCorrected/{paquet}','TeacherSpace\PaquetController@show')->name('p
 Route::post('fairelappel/ajax', 'TeacherSpace\AbsenceController@ajaxRequestPost')->name('fairelappel.ajax');
 Route::post('fairelappel/absence', 'TeacherSpace\AbsenceController@fairlappel')->name('fairelappel.abs');
 Route::post('fairelappel/afficher', 'TeacherSpace\AbsenceController@afficher')->name('fairelappel.afficher');
+
+Route::post('consulterabs/afficher', 'TeacherSpace\ConsulterAbsController@afficherAbs')->name('consultersabs.afficher');
+Route::post('consulterabs/justification', 'TeacherSpace\ConsulterAbsController@justifier')->name('consultersabs.justification');
+Route::post('consulterabs/AjoutJus', 'TeacherSpace\ConsulterAbsController@ajoutJust')->name('consultersabs.ajoutJust');
+Route::post('consulterabs/SuppJus', 'TeacherSpace\ConsulterAbsController@suppJus')->name('consultersabs.suppJust');
+Route::get('consulterabs', 'TeacherSpace\ConsulterAbsController@index')->name('consultersabs');
+
+
 route::resource('fairelappel', 'TeacherSpace\AbsenceController');
 
 //Mails
