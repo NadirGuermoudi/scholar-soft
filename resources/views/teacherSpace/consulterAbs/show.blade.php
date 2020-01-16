@@ -67,7 +67,7 @@
 											@if($a->justification == null)
 												<div class="text-center">
 													<button type="button" class="btn btn-circle btn-success btn-md"
-																	data-toggle="modal" data-target="#add-teacher">
+																	data-toggle="modal" data-target="#add-teacher{{$a->date}}">
 														<i class="fa fa-plus"></i>
 													</button>
 													{{-- including the add Modal --}}
@@ -85,7 +85,7 @@
 													</div>
 													<div style="display: inline">
 														<button type="button" class="btn btn-warning"
-																		data-toggle="modal" data-target="#edit-enseignant">
+																		data-toggle="modal" data-target="#edit-enseignant{{$a->date}}">
 															<i class="fa fa-list"></i>
 														</button>
 														{{-- including the add Modal --}}
@@ -93,7 +93,7 @@
 													</div>
 													<div style="display: inline">
 														<button type="button" class="btn btn-danger "
-																		data-toggle="modal" data-target="#delete-enseignant">
+																		data-toggle="modal" data-target="#delete-enseignant{{$a->date}}">
 															<i class="fa fa-trash"></i>
 														</button>
 														{{-- including the add Modal --}}
