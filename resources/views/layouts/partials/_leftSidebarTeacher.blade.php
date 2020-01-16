@@ -59,15 +59,6 @@
 					</a>
 				</li>
 
-				<li>
-					<a href="{{ route('consulterexclus') }}" aria-expanded="false">
-						<i class="fas fa-list fa-lg"></i>
-						<span class="hide-menu">
-							Consulter list des Exclus
-						</span>
-					</a>
-				</li>
-
         <li class="nav-devider"></li>
 				<li class="nav-small-cap">Correction</li>
 				<li>
